@@ -16,10 +16,6 @@ public class AskOrder : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void ChoseOrder()
     {
         Rejester.Burger.Clear();

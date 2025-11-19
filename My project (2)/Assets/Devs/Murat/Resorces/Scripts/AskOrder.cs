@@ -22,7 +22,8 @@ public class AskOrder : MonoBehaviour
     }
     public void ChoseOrder()
     {
-        Toppings = Random.Range(1, 3);
+        Rejester.Burger.Clear();
+        Toppings = Random.Range(1, 4);
         Rejester.Burger.Add(lowerBun);
         for (int i = 0; i < Toppings; i++)
         {
@@ -30,5 +31,6 @@ public class AskOrder : MonoBehaviour
             Rejester.Burger.Add(toppings[chose]);
         }
         Rejester.Burger.Add(upperBun);
+        Rejester.PutOnComp();
     }
 }

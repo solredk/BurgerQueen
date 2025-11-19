@@ -650,7 +650,6 @@ GameObject:
   - component: {fileID: 709394980}
   - component: {fileID: 709394979}
   - component: {fileID: 709394978}
-  - component: {fileID: 709394977}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -671,12 +670,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1687631230}
-  - {fileID: 1184141430}
   - {fileID: 1976003275}
   - {fileID: 524795095}
   - {fileID: 1443447778}
   - {fileID: 332895275}
   - {fileID: 1775269724}
+  - {fileID: 1184141430}
   m_Father: {fileID: 114166781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -684,25 +683,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &709394977
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 709394975}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 133491ec7b20e674794108322c8acfe5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Rejester
-  Burger: []
-  CompBurger:
-  - {fileID: 1976003276}
-  - {fileID: 524795096}
-  - {fileID: 1443447779}
-  - {fileID: 332895276}
-  - {fileID: 1775269725}
 --- !u!114 &709394978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1096,7 +1076,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1184141432}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1475148802}
+        m_TargetAssemblyTypeName: AskOrder, Assembly-CSharp
+        m_MethodName: ChoseOrder
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1184141432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1613,6 +1605,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1681601641}
+  - component: {fileID: 1681601642}
   m_Layer: 0
   m_Name: Comp
   m_TagString: Untagged
@@ -1637,6 +1630,25 @@ Transform:
   - {fileID: 1930904085}
   m_Father: {fileID: 78132864}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1681601642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681601640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 133491ec7b20e674794108322c8acfe5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Rejester
+  Burger: []
+  CompBurger:
+  - {fileID: 1976003276}
+  - {fileID: 524795096}
+  - {fileID: 1443447779}
+  - {fileID: 332895276}
+  - {fileID: 1775269725}
 --- !u!1 &1687631229
 GameObject:
   m_ObjectHideFlags: 0

@@ -204,6 +204,7 @@ GameObject:
   - component: {fileID: 381374654}
   - component: {fileID: 381374653}
   - component: {fileID: 381374652}
+  - component: {fileID: 381374655}
   m_Layer: 5
   m_Name: BurgerB
   m_TagString: Untagged
@@ -275,7 +276,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1588169982}
+      - m_Target: {fileID: 381374655}
         m_TargetAssemblyTypeName: BurgerStation, Assembly-CSharp
         m_MethodName: BroodButton
         m_Mode: 1
@@ -325,6 +326,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 381374650}
   m_CullTransparentMesh: 1
+--- !u!114 &381374655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 381374650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6172784dee64de1459310ce6653c7862, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BurgerStation
 --- !u!1 &590236989
 GameObject:
   m_ObjectHideFlags: 0
@@ -818,7 +831,6 @@ GameObject:
   - component: {fileID: 1588169980}
   - component: {fileID: 1588169979}
   - component: {fileID: 1588169978}
-  - component: {fileID: 1588169982}
   m_Layer: 5
   m_Name: BurgerStation
   m_TagString: Untagged
@@ -909,19 +921,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1588169982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1588169977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6172784dee64de1459310ce6653c7862, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BurgerStation
-  breadObj: {fileID: 7082940521163260690, guid: eeb4b940f099c8f4085da61057c32df2, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

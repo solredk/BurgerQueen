@@ -1,6 +1,6 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Customers : MonoBehaviour
 {
@@ -12,17 +12,17 @@ public class Customers : MonoBehaviour
     }
 
     [SerializeField] private TextMeshProUGUI patienceText;
-    [SerializeField] private TextMeshProUGUI scoreText;
 
     [SerializeField] private Image moodImage;
 
     [SerializeField] private Sprite[] moodSprites;
 
+    [SerializeField] private int scoreMultiplier;
+    
     private CustomerMood currentMood;
 
     private float counter = 0;
 
-    private int score;
 
     private bool hasOrder;
 
@@ -52,17 +52,15 @@ public class Customers : MonoBehaviour
         switch (currentMood)
         {
             case CustomerMood.Happy:
-                score += 10;
+                ScoreManager.Instance.AddScore(10 * scoreMultiplier);
                 break;
             case CustomerMood.Neutral:
-                score += 5;
+                ScoreManager.Instance.AddScore(5 * scoreMultiplier);
                 break;
             case CustomerMood.Angry:
-                score -= 5;
+                ScoreManager.Instance.AddScore(0 * scoreMultiplier);
                 break;
         }
-
-        scoreText.text = "Score: " + score.ToString();
 
         ResetOrder();
     }

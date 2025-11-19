@@ -1018,7 +1018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0b4b0ab3c66e2b4bbcf7518bff1df7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
-  scoreText: {fileID: 233170934}
+  scoreText: {fileID: 0}
   currentScore: 0
 --- !u!4 &1621248366
 Transform:
@@ -1254,19 +1254,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1997157750}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2047703718}
-        m_TargetAssemblyTypeName: Customers, Assembly-CSharp
-        m_MethodName: ReceivedOrder
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1997157750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1316,7 +1304,7 @@ GameObject:
   - component: {fileID: 2047703719}
   - component: {fileID: 2047703718}
   m_Layer: 0
-  m_Name: Customer
+  m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1340,7 +1328,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8f9bb2cc9ff97d241a5595499cd72565, type: 3}
   - {fileID: 21300000, guid: ace17ac49837ddd4d99c78fa7a08c9e4, type: 3}
   - {fileID: 21300000, guid: 10119dd235f277f4285f358d1cd9bab4, type: 3}
-  scoreMultiplier: 1
 --- !u!4 &2047703719
 Transform:
   m_ObjectHideFlags: 0

@@ -23,9 +23,7 @@ public class Customers : MonoBehaviour
 
     private float counter = 0;
 
-
     private bool hasOrder;
-
 
     void Update()
     {
@@ -64,7 +62,6 @@ public class Customers : MonoBehaviour
 
         ResetOrder();
     }
-
 
     private void ResetOrder()
     {

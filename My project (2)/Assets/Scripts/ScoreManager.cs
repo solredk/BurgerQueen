@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -19,5 +18,5 @@ public class ScoreManager : MonoBehaviour
     {
         currentScore += score;
         scoreText.text = "Score: " + currentScore.ToString();
-    }
+    } 
 }

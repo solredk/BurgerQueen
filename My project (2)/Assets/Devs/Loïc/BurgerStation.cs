@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class BurgerStation : MonoBehaviour
 {
@@ -8,19 +10,17 @@ public class BurgerStation : MonoBehaviour
     [SerializeField] private GameObject breadObj;
     [SerializeField] private GameObject burgerObj;
     [SerializeField] private GameObject slaObj;
-
     private Vector2 mousePos;
     //private float mouseY = Input.mousePosition.y;
     private GameObject currentIngredient;
     [SerializeField] private GameObject prepPlaceObj;
-    private int ingedientanmount;
+    private int ingedientanmount = 0;
+    [SerializeField] private List<GameObject> burger;
 
     void Start()
     {
-      
+        handEmpty = true;
     }
-
- 
 
     public void JustGiveMeTheDamnMousePosition(InputAction.CallbackContext context)
     {
@@ -41,32 +41,33 @@ public class BurgerStation : MonoBehaviour
         {
             if (ingedientanmount == 0)
             {
-                Instantiate(currentIngredient, new Vector2(prepPlaceObj.transform.position.x, prepPlaceObj.transform.position.y - 200), Quaternion.identity);
-                ingedientanmount++;
+                GameObject ingredient = Instantiate(currentIngredient, new Vector2(prepPlaceObj.transform.position.x, prepPlaceObj.transform.position.y - 200), Quaternion.identity);
+                burger.Add(ingredient);
             }
             else if (ingedientanmount == 1)
             {
-                Instantiate(currentIngredient, new Vector2(prepPlaceObj.transform.position.x, prepPlaceObj.transform.position.y - 100), Quaternion.identity);
-                ingedientanmount++;
+                GameObject ingredient = Instantiate(currentIngredient, new Vector2(prepPlaceObj.transform.position.x, prepPlaceObj.transform.position.y - 100), Quaternion.identity);
+                burger.Add(ingredient);
             }
             else if (ingedientanmount == 2)
             {
-                Instantiate(currentIngredient, new Vector2(prepPlaceObj.transform.position.x, prepPlaceObj.transform.position.y), Quaternion.identity);
-                ingedientanmount++;
+               GameObject ingredient = Instantiate(currentIngredient, new Vector2(prepPlaceObj.transform.position.x, prepPlaceObj.transform.position.y), Quaternion.identity);
+                burger.Add(ingredient);
             }
             else if (ingedientanmount == 3)
             {
-                Instantiate(currentIngredient, new Vector2(prepPlaceObj.transform.position.x, prepPlaceObj.transform.position.y + 100), Quaternion.identity);
-                ingedientanmount++;
+                GameObject ingredient = Instantiate(currentIngredient, new Vector2(prepPlaceObj.transform.position.x, prepPlaceObj.transform.position.y + 100), Quaternion.identity);
+                burger.Add(ingredient);
             }
+            Destroy(currentIngredient);
+            handEmpty = true;
+            ingedientanmount++;
         }
-        handEmpty = true;
 
     }
 
     public void BroodButton()
     {
-        handEmpty = true;
         if (handEmpty)
         {
             currentIngredient = Instantiate(breadObj, mousePos, Quaternion.identity, gameObject.transform);
@@ -75,20 +76,37 @@ public class BurgerStation : MonoBehaviour
     }
     public void BurgerButton()
     {
-        handEmpty = true;
         if (handEmpty)
         {
-            currentIngredient = Instantiate(breadObj, mousePos, Quaternion.identity, gameObject.transform);
+            currentIngredient = Instantiate(burgerObj, mousePos, Quaternion.identity, gameObject.transform);
             handEmpty = false;
         }
     }
     public void SlaButton()
     {
-        handEmpty = true;
         if (handEmpty)
         {
-            currentIngredient = Instantiate(breadObj, mousePos, Quaternion.identity, gameObject.transform);
+            currentIngredient = Instantiate(slaObj, mousePos, Quaternion.identity, gameObject.transform);
             handEmpty = false;
         }
+    }
+
+    public void TrashButton()
+    {
+        if (!handEmpty)
+        {
+            Destroy(currentIngredient);
+            handEmpty = true;
+        }
+    }
+
+    public void ClearButton()
+    {
+        for (int i = 0; i < burger.Count; i++)
+        {
+            Destroy(burger[i]);
+        }
+        burger.Clear();
+        ingedientanmount = 0;
     }
 }

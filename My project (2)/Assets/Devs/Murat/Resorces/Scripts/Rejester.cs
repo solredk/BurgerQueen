@@ -23,7 +23,7 @@ public class Rejester : MonoBehaviour
             CompBurger[i].color = Burger[i].color;
         }
 
-        GameObject Order = Instantiate(pre_order,canvas.transform.position+ new Vector3(257 + -55* Orders.Count, 45, 0), transform.rotation, canvas.transform);
+        GameObject Order = Instantiate(pre_order,canvas.transform.position+ new Vector3(880 + -220* Orders.Count, 350, 0), transform.rotation, canvas.transform);
         
         Order compOrder = Order.GetComponent<Order>();
         for (int i = 0; i < compOrder.Burger.Count; i++)
@@ -42,7 +42,7 @@ public class Rejester : MonoBehaviour
     {
         for (int i = 0;i < Orders.Count; i++)
         {
-            Orders[i].transform.position = canvas.transform.position + new Vector3(257 + -55 * i, 45, 0);
+            Orders[i].transform.position = canvas.transform.position + new Vector3(880 + -220 * i, 350, 0);
         }
     }
 }

@@ -14,6 +14,7 @@ public class Order : MonoBehaviour
     {
         Rejester.Orders.Remove(gameObject);
         Rejester.ReShuffel();
+        gameObject.SetActive(false);
         Destroy(gameObject,0.1f);
     }
 }

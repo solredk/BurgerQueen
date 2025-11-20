@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "name": "MouseInput",
+    "maps": [
+        {
+            "name": "Mouse",
+            "id": "56c1d899-117c-425b-b780-905d35c96377",
+            "actions": [
+                {
+                    "name": "MousePosition",
+                    "type": "Value",
+                    "id": "96a3af2d-5e1c-4c00-9c23-0b0c22faca3c",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "6e680d1e-ad6d-4daa-8d0e-aa4431462b8a",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

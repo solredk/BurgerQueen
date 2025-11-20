@@ -12,13 +12,13 @@ public class Moving : MonoBehaviour
         {
             gameObjects[index].SetActive(false);
             index++;
-            gameObjects[index].SetActive(false);
+            gameObjects[index].SetActive(true);
         }
         else
         {
             gameObjects[index].SetActive(false);
             index = 0;
-            gameObjects[index].SetActive(false);
+            gameObjects[index].SetActive(true);
         }
 
 

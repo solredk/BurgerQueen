@@ -31,7 +31,7 @@ public class BurgerStation : MonoBehaviour
     {
         if (!handEmpty)
         {
-            currentIngredient.transform.position = mousePos - new Vector2(944, 530);
+            currentIngredient.transform.position = mousePos - new Vector2(666, 530);
         }
     }
 

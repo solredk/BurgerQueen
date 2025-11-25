@@ -11,11 +11,11 @@ public class Customers : MonoBehaviour
         Angry
     }
 
-    [SerializeField] private TextMeshProUGUI patienceText;
+ //   [SerializeField] private TextMeshProUGUI patienceText;
 
-    [SerializeField] private Image moodImage;
+ //   [SerializeField] private Image moodImage;
 
-    [SerializeField] private Sprite[] moodSprites;
+  //  [SerializeField] private Sprite[] moodSprites;
 
     [SerializeField] private int scoreMultiplier;
     
@@ -31,7 +31,7 @@ public class Customers : MonoBehaviour
         {
             counter += Time.deltaTime;
 
-            patienceText.text = "Wait Time: " + counter.ToString("F2") + "s";
+        //    patienceText.text = "Wait Time: " + counter.ToString("F2") + "s";
 
             if (counter >= 5f)
                 currentMood = CustomerMood.Neutral;
@@ -39,7 +39,7 @@ public class Customers : MonoBehaviour
             if (counter >= 10f)
                 currentMood = CustomerMood.Angry;
 
-            moodImage.sprite = moodSprites[((int)currentMood)];
+           // moodImage.sprite = moodSprites[((int)currentMood)];
         }
     }
 

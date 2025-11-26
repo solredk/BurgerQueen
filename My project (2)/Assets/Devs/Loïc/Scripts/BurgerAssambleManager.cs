@@ -87,7 +87,7 @@ public class BurgerAssambleManager : MonoBehaviour
         print(ingredientID);
     }
 
-    public void TempButton()
+    private void VoorraadCheck()
     {
         int ingredientI = ingredientID;
         // ingredient I word bepaald wanneer er op de bak met ingredienten word gedrukt
@@ -101,6 +101,11 @@ public class BurgerAssambleManager : MonoBehaviour
         {
             print("geen brood????");
         }
+    }
+
+    public void TempButton()
+    {
+        
     }
 
     public void SlaButton()

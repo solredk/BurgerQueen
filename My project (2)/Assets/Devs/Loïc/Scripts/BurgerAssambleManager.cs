@@ -59,9 +59,11 @@ public class BurgerAssambleManager : MonoBehaviour
 
     public void IsTriggered()
     {
-       // GameObject burgerIng = Instantiate(grabingS.Helditem, new Vector2(maakPlaat.transform.position.x, maakPlaat.transform.position.y), Quaternion.identity);
-       // burgerIng.layer = default;
-        Destroy(breadObj);
+        GameObject burgerIng = Instantiate(grabingS.Helditem, new Vector3(maakPlaat.transform.position.x, 1 + burger.Count, -2), Quaternion.identity);
+        burgerIng.layer = default;
+        burgerIng.GetComponent<Collider>().enabled = false;
+        burger.Add(burgerIng);
+        Destroy(grabingS.Helditem);
     }
 
     public void TempButton()

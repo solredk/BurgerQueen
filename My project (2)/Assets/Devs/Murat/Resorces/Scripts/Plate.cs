@@ -7,12 +7,14 @@ public class Plate : MonoBehaviour
 {
     [SerializeField]private
     List<GameObject> pos;
+    [SerializeField]
+    private
     List<GameObject> meat;
     private void Update()
     {
         int counting = 0;
         int tell = 0;
-        if (meat!=null)
+        if (meat[0]!=null)
         {
             for (int i = 0; i < meat.Count; i++)
             {
@@ -32,7 +34,7 @@ public class Plate : MonoBehaviour
         if (collision.gameObject.tag == "Meat")
         {
             Debug.Log(collision.gameObject);
-           // meat.Add(collision.gameObject);
+            meat.Add(collision.gameObject);
         }
     }
 }

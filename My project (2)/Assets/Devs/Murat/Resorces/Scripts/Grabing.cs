@@ -7,6 +7,7 @@ public class Grabing : MonoBehaviour
     Vector3 MousePos;
     public LayerMask mask;
     Rigidbody rb;
+    public float Zpos;
     private void Start()
     {
 
@@ -14,7 +15,7 @@ public class Grabing : MonoBehaviour
     private void Update()
     {
         Vector2 mouse = Mouse.current.position.ReadValue();
-        MousePos = new Vector3(mouse.x, mouse.y,1) ;
+        MousePos = new Vector3(mouse.x, mouse.y, Z) ;
         MousePos = Camera.main.ScreenToWorldPoint(MousePos);
         /*MousePos.z = 1f;
         MousePos = Camera.main.ScreenToWorldPoint(MousePos);*/
@@ -29,7 +30,7 @@ public class Grabing : MonoBehaviour
                 Helditem = hit.transform.gameObject;
             }
         }
-        else
+        else if (Helditem != null)
         {
             rb.useGravity = true;
             Helditem = null;

@@ -7,6 +7,7 @@ using UnityEngine.Rendering;
 
 public class BurgerAssambleManager : MonoBehaviour
 {
+    [SerializeField] private GameObject maakPlaat;
     private bool handEmpty = true;
     [SerializeField] private GameObject breadObj;
     private GameObject currentIngredient;
@@ -16,9 +17,16 @@ public class BurgerAssambleManager : MonoBehaviour
     [SerializeField] private List<int> voorraadI;
     [SerializeField] private List<TextMeshProUGUI> voorraadTexts;
     private int ingredientID;
+    private Collider plaatCollider;
+    private Grabing grabingS;
+  
+
 
     void Start()
     {
+        grabingS = FindAnyObjectByType<Grabing>();
+        plaatCollider = maakPlaat.GetComponent<Collider>();
+        
         // hoeveelheidBrood = Hoeveel brood de speler heeft toegevoegd van supply
         for (int i = 0; i < voorraadI.Count; i++)
         {
@@ -28,20 +36,11 @@ public class BurgerAssambleManager : MonoBehaviour
         handEmpty = true;
     }
 
-    //public void JustGiveMeTheDamnMousePosition(InputAction.CallbackContext context)
-    //{
-    //    mousePos = context.ReadValue<Vector2>();
-    //}
-
-    //public void LeftClick(InputAction.CallbackContext context)
-    //{
-    //    print("left clickyyyy");
-    //}
-
     void Update()
     {
     
     }
+
 
     public void AddToBurger()
     {
@@ -52,27 +51,19 @@ public class BurgerAssambleManager : MonoBehaviour
                 GameObject ingredient = Instantiate(currentIngredient, new Vector2(prepPlaceObj.transform.position.x, prepPlaceObj.transform.position.y - 200), Quaternion.identity);
                 burger.Add(ingredient);
             }
-            else if (ingedientanmount == 1)
-            {
-                GameObject ingredient = Instantiate(currentIngredient, new Vector2(prepPlaceObj.transform.position.x, prepPlaceObj.transform.position.y - 100), Quaternion.identity);
-                burger.Add(ingredient);
-            }
-            else if (ingedientanmount == 2)
-            {
-               GameObject ingredient = Instantiate(currentIngredient, new Vector2(prepPlaceObj.transform.position.x, prepPlaceObj.transform.position.y), Quaternion.identity);
-                burger.Add(ingredient);
-            }
-            else if (ingedientanmount == 3)
-            {
-                GameObject ingredient = Instantiate(currentIngredient, new Vector2(prepPlaceObj.transform.position.x, prepPlaceObj.transform.position.y + 100), Quaternion.identity);
-                burger.Add(ingredient);
-            }
             Destroy(currentIngredient);
             handEmpty = true;
             ingedientanmount++;
         }
-
     }
+
+    public void IsTriggered()
+    {
+       // GameObject burgerIng = Instantiate(grabingS.Helditem, new Vector2(maakPlaat.transform.position.x, maakPlaat.transform.position.y), Quaternion.identity);
+       // burgerIng.layer = default;
+        Destroy(breadObj);
+    }
+
     public void TempButton()
     {
 

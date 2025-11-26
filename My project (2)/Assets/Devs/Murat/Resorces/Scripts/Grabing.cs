@@ -3,11 +3,12 @@ using UnityEngine.InputSystem;
 
 public class Grabing : MonoBehaviour
 {
-    [SerializeField] private GameObject Helditem;
+    public GameObject Helditem;
     Vector3 MousePos;
     public LayerMask mask;
     Rigidbody rb;
     public float Zpos;
+    //public Plate BurgerPlate;
     private void Start()
     {
 
@@ -27,7 +28,13 @@ public class Grabing : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, 100, mask)) 
             {
+                Debug.Log(hit.transform.gameObject);
                 Helditem = hit.transform.gameObject;
+                /*
+                if (BurgerPlate.meat.Contains(Helditem))
+                {
+                    BurgerPlate.meat.Remove(Helditem);
+                }*/
             }
         }
         else if (Helditem != null)

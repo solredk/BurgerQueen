@@ -26,9 +26,8 @@ public class Grabing : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, 100, mask)) 
+            if (Physics.Raycast(ray, out hit, 100, mask) && Helditem==null) 
             {
-                Debug.Log(hit.transform.gameObject);
                 Helditem = hit.transform.gameObject;
                 /*
                 if (BurgerPlate.meat.Contains(Helditem))

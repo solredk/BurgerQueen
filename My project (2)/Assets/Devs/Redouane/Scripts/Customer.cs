@@ -10,12 +10,12 @@ public class Customer : MonoBehaviour
 {
     private float patienceCounter = 0f;
     private int patience = 1000;
-
-    private CustomerMood currentMood;
     
     private bool hasBeenServed = false;
-    
     public bool hasOrdered = false;
+
+    private CustomerMood currentMood;
+
     private void Start()
     {
         StartCoroutine(WaitToOrder());
@@ -24,17 +24,13 @@ public class Customer : MonoBehaviour
     private void UpdateMood()
     {
         if (patience >= 700)
-        {
             currentMood = CustomerMood.Happy;
-        }
+
         else if (patience < 700 && patience >= 300)
-        {
             currentMood = CustomerMood.Neutral;
-        }
+
         else if (patience < 300)
-        {
             currentMood = CustomerMood.Angry;
-        }
     }
 
     private void Decreasepatience(int amount)

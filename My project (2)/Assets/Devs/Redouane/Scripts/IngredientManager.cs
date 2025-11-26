@@ -1,10 +1,25 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class IngredientManager : MonoBehaviour
 {
     public static IngredientManager instance;
 
-    [SerializeField] private Ingredient[] ingredients;
+    [SerializeField] private List<Ingredient> ingredients;
+
+    private void Start()
+    {
+        instance = this;
+        ResetIngridients();
+    }
+
+    private void ResetIngridients()
+    {
+        foreach (Ingredient ingredients in ingredients)
+        {
+            ingredients.quantity = 0;
+        }
+    }
 
     public int GetAmount(string ingredientName)
     {

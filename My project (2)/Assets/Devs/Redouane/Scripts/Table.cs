@@ -17,7 +17,7 @@ public class Table : MonoBehaviour
         if (CleaningProgress >= 100)
         {
             CurrentState = TableState.Clean;
-            CleaningProgress = 100; // Cap at 100
+            CleaningProgress = 100;
         }
         else if (CleaningProgress >= 50)
         {

@@ -8,13 +8,14 @@ public enum CustomerMood
 }
 public class Customer : MonoBehaviour
 {
-    private int patience = 1000;
     private float patienceCounter = 0f;
+    private int patience = 1000;
 
     private CustomerMood currentMood;
+    
+    private bool hasBeenServed = false;
+    
     public bool hasOrdered = false;
-    public bool hasBeenServed = false;
-
     private void Start()
     {
         StartCoroutine(WaitToOrder());
@@ -42,14 +43,28 @@ public class Customer : MonoBehaviour
         UpdateMood();
     }
 
+    public void Ordercheck(int quality)
+    {
+        hasBeenServed = true;
+
+        if (quality == 100)
+            patience += 100;
+
+        else if (quality > 50 && quality < 100)
+            patience += 50;
+
+        else if (quality < 50)
+            patience = 0;
+    }
+
     private IEnumerator WaitToOrder()
     {
         while (hasOrdered == false)
         {
             patienceCounter += Time.deltaTime;
-            if (patienceCounter >= 30)
+            if (patienceCounter >= 10)
             {
-                Decreasepatience(100);
+                Decreasepatience(10);
                 patienceCounter = 0f;
             }
             yield return null;
@@ -63,14 +78,14 @@ public class Customer : MonoBehaviour
         while (hasBeenServed == false) 
         {
             patienceCounter += Time.deltaTime;
-            if (patienceCounter >= 30)
+            if (patienceCounter >= 10)
             {
-                Decreasepatience(100);
+                Decreasepatience(10);
                 patienceCounter = 0f;
             }
             yield return null;
         }
-            yield break;
+        yield break;
     }
 
 }

@@ -43,7 +43,7 @@ public class BurgerAssambleManager : MonoBehaviour
     
     }
 
-    public void OnPreCull()
+    public void AddToBurger()
     {
         if (!handEmpty)
         {
@@ -71,6 +71,10 @@ public class BurgerAssambleManager : MonoBehaviour
             handEmpty = true;
             ingedientanmount++;
         }
+
+    }
+    public void TempButton()
+    {
 
     }
 
@@ -103,10 +107,7 @@ public class BurgerAssambleManager : MonoBehaviour
         }
     }
 
-    public void TempButton()
-    {
-        
-    }
+    
 
     public void SlaButton()
     {

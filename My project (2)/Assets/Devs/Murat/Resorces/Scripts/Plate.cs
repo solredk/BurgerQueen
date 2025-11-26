@@ -10,6 +10,7 @@ public class Plate : MonoBehaviour
     [SerializeField]
     private
     List<GameObject> meat;
+    public float up;
     private void Update()
     {
         int counting = 0;
@@ -18,7 +19,7 @@ public class Plate : MonoBehaviour
         {
             for (int i = 0; i < meat.Count; i++)
             {
-                meat[i].transform.position = new Vector3(pos[counting].transform.position.x, pos[counting].transform.position.z + 1 * tell, pos[counting].transform.position.z);
+                meat[i].transform.position = new Vector3(pos[counting].transform.position.x, pos[counting].transform.position.y + (up * tell), pos[counting].transform.position.z);
                 counting++;
                 if (counting == 4)
                 {
@@ -34,7 +35,15 @@ public class Plate : MonoBehaviour
         if (collision.gameObject.tag == "Meat")
         {
             Debug.Log(collision.gameObject);
-            meat.Add(collision.gameObject);
+            if (meat.Contains(collision.gameObject))
+            {
+
+            }
+            else
+            {
+                meat.Add(collision.gameObject);
+            }
+            
         }
     }
 }

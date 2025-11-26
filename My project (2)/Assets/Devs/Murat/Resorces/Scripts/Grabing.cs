@@ -15,7 +15,7 @@ public class Grabing : MonoBehaviour
     private void Update()
     {
         Vector2 mouse = Mouse.current.position.ReadValue();
-        MousePos = new Vector3(mouse.x, mouse.y, Z) ;
+        MousePos = new Vector3(mouse.x, mouse.y, Zpos) ;
         MousePos = Camera.main.ScreenToWorldPoint(MousePos);
         /*MousePos.z = 1f;
         MousePos = Camera.main.ScreenToWorldPoint(MousePos);*/

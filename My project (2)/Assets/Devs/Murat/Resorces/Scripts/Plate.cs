@@ -7,15 +7,13 @@ public class Plate : MonoBehaviour
 {
     [SerializeField]private
     List<GameObject> pos;
-    [SerializeField]
-    private
-    List<GameObject> meat;
+    public List<GameObject> meat;
     public float up;
     private void Update()
     {
         int counting = 0;
         int tell = 0;
-        if (meat[0]!=null)
+        if (meat.Count != null)
         {
             for (int i = 0; i < meat.Count; i++)
             {
@@ -30,20 +28,20 @@ public class Plate : MonoBehaviour
         }
 
     }
-    public void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Meat")
+        if (other.gameObject.tag == "Meat")
         {
-            Debug.Log(collision.gameObject);
-            if (meat.Contains(collision.gameObject))
+            Debug.Log(other.gameObject);
+            if (meat.Contains(other.gameObject))
             {
 
             }
             else
             {
-                meat.Add(collision.gameObject);
+                meat.Add(other.gameObject);
             }
-            
+
         }
     }
 }

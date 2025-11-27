@@ -9,10 +9,12 @@ public class Ingredient : ScriptableObject
         Freezer
     }
 
-    public StorageType storageType;
-    public string ingredientName;
-    public int quantity;
-    public Sprite icon;
+    public string Name;
     public string Description;
-    
+
+    public GameObject Prefab;
+    public StorageType storageType;
+
+    public Sprite Icon;    
+    public int Quantity;
 }

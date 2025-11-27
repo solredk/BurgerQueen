@@ -15,14 +15,14 @@ public class Table : MonoBehaviour
     public void CleanTable(float cleaningAmount)
     {
         CleaningProgress += cleaningAmount;
+
         if (CleaningProgress >= 100)
         {
             CurrentState = TableState.Clean;
             CleaningProgress = 100;
         }
+
         else if (CleaningProgress >= 50)
-        {
             CurrentState = TableState.Messy;
-        }
     }
 }

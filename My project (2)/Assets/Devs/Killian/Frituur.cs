@@ -12,24 +12,18 @@ public class Frituur : MonoBehaviour
     [SerializeField] private GameObject friesObj;
     [SerializeField] public GameObject friedFriesobj;
     public Vector2 mousePos;
+    private Grabing grabingS;
+
 
     void Start()
     {
+        grabingS = FindAnyObjectByType<Grabing>();
         handEmpty = true;
     }
 
     void Update()
     {
-        if (!handEmpty)
-        {
-            Debug.Log(mousePos);
-            currentIngredient.transform.position = mousePos - new Vector2(666, 530);
-        }
-    }
 
-    public void JustGiveMeTheDamnMousePosition(InputAction.CallbackContext context)
-    {
-        mousePos = context.ReadValue<Vector2>();
     }
 
     public void FriesButton()
@@ -37,6 +31,7 @@ public class Frituur : MonoBehaviour
         if (handEmpty)
         {
             currentIngredient = Instantiate(friesObj, mousePos, Quaternion.identity, gameObject.transform);
+            grabingS.Helditem = currentIngredient;
             handEmpty = false;
         }
     }

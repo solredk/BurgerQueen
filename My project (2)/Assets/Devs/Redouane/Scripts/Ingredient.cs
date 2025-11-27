@@ -8,6 +8,7 @@ public class Ingredient : ScriptableObject
         Warehouse,
         Freezer
     }
+
     public StorageType storageType;
     public string ingredientName;
     public int quantity;

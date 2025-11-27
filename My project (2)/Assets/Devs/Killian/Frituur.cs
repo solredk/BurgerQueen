@@ -23,7 +23,7 @@ public class Frituur : MonoBehaviour
     {
         if (!handEmpty)
         {
-            currentIngredient.transform.position = mousePos;
+            currentIngredient.transform.position = mousePos * 0.05f;
         }
     }
 

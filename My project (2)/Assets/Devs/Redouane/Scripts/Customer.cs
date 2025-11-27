@@ -14,7 +14,7 @@ public class Customer : MonoBehaviour
     private bool hasBeenServed = false;
     public bool hasOrdered = false;
 
-    private CustomerMood currentMood;
+    public CustomerMood currentMood;
 
     private void Start()
     {

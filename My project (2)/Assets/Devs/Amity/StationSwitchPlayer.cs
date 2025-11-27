@@ -11,7 +11,7 @@ public class StationSwitchPlayer : MonoBehaviour
     private bool atStation;
     private bool moving;
     private float direction;
-    private Transform currentStation;
+    [SerializeField] private Transform currentStation;
     [SerializeField] private float speed;
     private void Start()
     {
@@ -22,6 +22,7 @@ public class StationSwitchPlayer : MonoBehaviour
         agent.isStopped = false;
         agent.SetDestination(point.transform.position);
         atStation = false;
+        moving = false;
         currentStation = point;
     }
     private void Update()
@@ -29,9 +30,10 @@ public class StationSwitchPlayer : MonoBehaviour
         if (transform.position.x == agent.destination.x && transform.position.z == agent.destination.z)
         {
             atStation = true;
+            moving = true;
             if (currentStation != null)
             {
-                transform.rotation = Quaternion.Slerp(transform.rotation, currentStation.rotation, 0.06f);
+                transform.rotation = Quaternion.Slerp(transform.rotation, currentStation.rotation, 0.04f);
                 agent.isStopped = true;
             }       
         }
@@ -43,10 +45,13 @@ public class StationSwitchPlayer : MonoBehaviour
 
     public void InStationMove(InputAction.CallbackContext context)
     {
-        if(context.performed && atStation)
+        if(context.performed)
         {
-            moving = true;
             direction = context.ReadValue<float>()/100 * speed;
+            if(atStation)
+            {
+                moving = true;
+            }
         }
         if(context.canceled)
         {

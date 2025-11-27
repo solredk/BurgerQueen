@@ -28,7 +28,7 @@
                     "name": "Attack",
                     "type": "Button",
                     "id": "6c2ab1b8-8984-453a-af3d-a3c78ae1679a",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -997,7 +997,7 @@
             "id": "fc1b6cc1-8bc0-4943-9a83-7c88b908facf",
             "actions": [
                 {
-                    "name": "New action",
+                    "name": "A/DMove",
                     "type": "Value",
                     "id": "0afd704e-01e5-4416-9482-9e83f75928d5",
                     "expectedControlType": "Integer",
@@ -1014,7 +1014,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "A/DMove",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -1025,7 +1025,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "A/DMove",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -1036,7 +1036,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "A/DMove",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }

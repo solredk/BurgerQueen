@@ -529,6 +529,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 614882805711198155, guid: 2d2d721158593974489262622e808c9b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6f5f066aedf41b343a141f8e7752956d, type: 2}
     - target: {fileID: 1407512147927692830, guid: 2d2d721158593974489262622e808c9b, type: 3}
       propertyPath: m_Name
       value: Rek

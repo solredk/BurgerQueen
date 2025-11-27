@@ -8,12 +8,13 @@ public enum CustomerMood
 }
 public class Customer : MonoBehaviour
 {
-    private int patience = 1000;
     private float patienceCounter = 0f;
-
-    private CustomerMood currentMood;
+    private int patience = 1000;
+    
+    private bool hasBeenServed = false;
     public bool hasOrdered = false;
-    public bool hasBeenServed = false;
+
+    public CustomerMood currentMood;
 
     private void Start()
     {
@@ -23,17 +24,13 @@ public class Customer : MonoBehaviour
     private void UpdateMood()
     {
         if (patience >= 700)
-        {
             currentMood = CustomerMood.Happy;
-        }
+
         else if (patience < 700 && patience >= 300)
-        {
             currentMood = CustomerMood.Neutral;
-        }
+
         else if (patience < 300)
-        {
             currentMood = CustomerMood.Angry;
-        }
     }
 
     private void Decreasepatience(int amount)
@@ -42,14 +39,28 @@ public class Customer : MonoBehaviour
         UpdateMood();
     }
 
+    public void Ordercheck(int quality)
+    {
+        hasBeenServed = true;
+
+        if (quality == 100)
+            patience += 100;
+
+        else if (quality > 50 && quality < 100)
+            patience += 50;
+
+        else if (quality < 50)
+            patience = 0;
+    }
+
     private IEnumerator WaitToOrder()
     {
         while (hasOrdered == false)
         {
             patienceCounter += Time.deltaTime;
-            if (patienceCounter >= 30)
+            if (patienceCounter >= 10)
             {
-                Decreasepatience(100);
+                Decreasepatience(10);
                 patienceCounter = 0f;
             }
             yield return null;
@@ -63,14 +74,14 @@ public class Customer : MonoBehaviour
         while (hasBeenServed == false) 
         {
             patienceCounter += Time.deltaTime;
-            if (patienceCounter >= 30)
+            if (patienceCounter >= 10)
             {
-                Decreasepatience(100);
+                Decreasepatience(10);
                 patienceCounter = 0f;
             }
             yield return null;
         }
-            yield break;
+        yield break;
     }
 
 }

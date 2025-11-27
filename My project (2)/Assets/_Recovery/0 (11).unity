@@ -144,9 +144,6 @@ MonoBehaviour:
   voorraadTexts:
   - {fileID: 1242570661}
   - {fileID: 858403573}
-  orgerIngredients:
-  - Brood(Clone)
-  - Sla(Clone)
 --- !u!114 &152689598
 MonoBehaviour:
   m_ObjectHideFlags: 0

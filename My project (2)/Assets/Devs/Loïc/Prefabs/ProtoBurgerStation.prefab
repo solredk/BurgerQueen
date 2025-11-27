@@ -1035,9 +1035,8 @@ GameObject:
   - component: {fileID: 8866795212252223175}
   - component: {fileID: 4990778022085458874}
   - component: {fileID: 2729046231480460484}
-  - component: {fileID: 8098128646103205764}
   m_Layer: 5
-  m_Name: BurgerStation
+  m_Name: ProtoBurgerStation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1144,52 +1143,6 @@ MonoBehaviour:
   slaObj: {fileID: 1104523026693136101, guid: f8d57b8c11eced04bbdbbda6cc90e89d, type: 3}
   prepPlaceObj: {fileID: 8174248227125923502}
   burger: []
---- !u!114 &8098128646103205764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7694850288569959802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
-  m_Actions: {fileID: -944628639613478452, guid: b8acce9eda9fa4c49b66af97831c603d, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2729046231480460484}
-        m_TargetAssemblyTypeName: BurgerStation, Assembly-CSharp
-        m_MethodName: JustGiveMeTheDamnMousePosition
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 96a3af2d-5e1c-4c00-9c23-0b0c22faca3c
-    m_ActionName: 'Mouse/MousePosition[/Mouse/position]'
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Mouse
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &8005616807387306196
 GameObject:
   m_ObjectHideFlags: 0

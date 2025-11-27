@@ -141,15 +141,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7ed6acee51c123d4caf4bce20fa7b46a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 958.33
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7ed6acee51c123d4caf4bce20fa7b46a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 338.56
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7ed6acee51c123d4caf4bce20fa7b46a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -99.346
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7ed6acee51c123d4caf4bce20fa7b46a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -286,7 +286,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 258588818}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -92.742}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.066702, y: 0.066702, z: 0.066702}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -296,7 +296,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 960, y: 395.26}
+  m_AnchoredPosition: {x: 0, y: 49.5}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &258588823
@@ -361,6 +361,7 @@ MonoBehaviour:
   currentIngredient: {fileID: 0}
   friesObj: {fileID: 6973682539131748009, guid: dd1ce1f2d867ddd44829e06eb5e6a629, type: 3}
   friedFriesobj: {fileID: 6973682539131748009, guid: 40c328a6902d87c45a1a9bedcdeb11ce, type: 3}
+  mousePos: {x: 0, y: 0}
 --- !u!1 &443625587 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7ed6acee51c123d4caf4bce20fa7b46a, type: 3}
@@ -1071,8 +1072,8 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 15
+  far clip plane: 100
+  field of view: 45
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1099,7 +1100,7 @@ Transform:
   m_GameObject: {fileID: 1572539848}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 980, y: 406.7, z: -1039}
+  m_LocalPosition: {x: -1.5, y: 48.6, z: -98.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

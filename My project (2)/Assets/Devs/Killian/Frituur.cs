@@ -11,19 +11,19 @@ public class Frituur : MonoBehaviour
     public GameObject currentIngredient;
     [SerializeField] private GameObject friesObj;
     [SerializeField] public GameObject friedFriesobj;
-    private Vector2 mousePos;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public Vector2 mousePos;
+
     void Start()
     {
         handEmpty = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!handEmpty)
         {
-            currentIngredient.transform.position = mousePos * 0.05f;
+            Debug.Log(mousePos);
+            currentIngredient.transform.position = mousePos - new Vector2(666, 530);
         }
     }
 

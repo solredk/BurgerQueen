@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using TMPro;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
@@ -16,6 +17,7 @@ public class BurgerAssambleManager : MonoBehaviour
     [SerializeField] private List<GameObject> burger;
     [SerializeField] private List<int> voorraadI;
     [SerializeField] private List<TextMeshProUGUI> voorraadTexts;
+    [SerializeField] private List <string> orgerIngredients;
     private int ingredientID;
     private Collider plaatCollider;
     private Grabing grabingS;
@@ -34,11 +36,6 @@ public class BurgerAssambleManager : MonoBehaviour
         }
         
         handEmpty = true;
-    }
-
-    void Update()
-    {
-    
     }
 
 
@@ -68,21 +65,36 @@ public class BurgerAssambleManager : MonoBehaviour
 
     public void TempButton()
     {
-
+        
     }
 
     public void TempButton2()
     {
-        if (ingredientID == 0)
+        //check oger
+        bool goodOrder = true;
+        for (int i = 0; i < burger.Count; i++)
         {
-            ingredientID = 1;
+            if (burger[i].gameObject.name != orgerIngredients[i])
+            {
+                print("roblox oof");
+                goodOrder = false;
+            }
+            else if (goodOrder)
+            {
+                print("that burger is a burger");
+            }
         }
-        else
-        {
-            ingredientID = 0;
-        }
-        print(ingredientID);
     }
+
+    //if (ingredientID == 0)
+    //{
+    //    ingredientID = 1;
+    //}
+    //else
+    //{
+    //    ingredientID = 0;
+    //}
+    //print(ingredientID);
 
     private void VoorraadCheck()
     {

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5499962133236047968}
   - component: {fileID: 2948737883353020977}
   - component: {fileID: 733211352248824722}
-  - component: {fileID: -6676389443247829572}
   m_Layer: 0
   m_Name: Brood
   m_TagString: Untagged
@@ -114,15 +113,3 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-6676389443247829572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7082940521163260690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: caf8c9790825d4842be4e2f158ab5464, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Ingredient

@@ -11,7 +11,7 @@ public class Customer : MonoBehaviour
     private int patience = 1000;
     private float patienceCounter = 0f;
 
-    private CustomerMood currentMood;
+    public CustomerMood currentMood;
     public bool hasOrdered = false;
     public bool hasBeenServed = false;
 

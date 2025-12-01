@@ -7,7 +7,6 @@ public class PlaatTrigger : MonoBehaviour
     private void Start()
     {
         m_AssambleManager = FindAnyObjectByType<BurgerAssambleManager>();
-        print(m_AssambleManager);
     }
 
     private void OnTriggerEnter(Collider other)

@@ -14,7 +14,7 @@ public class BurgerAssambleManager : MonoBehaviour
     private GameObject currentIngredient;
     [SerializeField] private GameObject prepPlaceObj;
     private int ingedientanmount = 0;
-    [SerializeField] private List<GameObject> burger;
+    public List<GameObject> burger;
     [SerializeField] private List<int> voorraadI;
     [SerializeField] private List<TextMeshProUGUI> voorraadTexts;
     [SerializeField] private List <string> orgerIngredients;
@@ -56,11 +56,7 @@ public class BurgerAssambleManager : MonoBehaviour
 
     public void IsTriggered()
     {
-        GameObject burgerIng = Instantiate(grabingS.Helditem, new Vector3(maakPlaat.transform.position.x, 1 + burger.Count, -2), Quaternion.identity);
-        burgerIng.layer = default;
-        burgerIng.GetComponent<Collider>().enabled = false;
-        burger.Add(burgerIng);
-        Destroy(grabingS.Helditem);
+       
     }
 
     public void TempButton()

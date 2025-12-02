@@ -98,7 +98,7 @@ Material:
     - Vector1_1E64D73: 0.1
     - Vector1_1F362672: 0
     - Vector1_3EB94769: 1
-    - Vector1_7412AF8D: 0.259
+    - Vector1_7412AF8D: 0.468
     - Vector1_7AC8BAD: 0.798
     - Vector1_921AC543: 1
     - Vector1_9C9A14CF: 1
@@ -137,9 +137,9 @@ Material:
     - _XRMotionVectorsPass: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_DA6E02B8: {r: 0.5136418, g: 0.5372549, b: 0.17647058, a: 1}
-    - Color_E6BCE01B: {r: 0.89841855, g: 0.94716984, b: 0, a: 1}
-    - Vector4_C5F4876B: {r: 0, g: 0, b: 0, a: 2}
+    - Color_DA6E02B8: {r: 0.6939157, g: 0.735849, b: 0.11523668, a: 1}
+    - Color_E6BCE01B: {r: 0.6935335, g: 0.7283019, b: 0.08107506, a: 1}
+    - Vector4_C5F4876B: {r: 0, g: 0, b: 0, a: 3}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Color_Strength: {r: 0.455, g: 0.426451, b: 0, a: 1}

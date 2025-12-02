@@ -82,15 +82,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Vector1_1E64D73: 0.1
-    - Vector1_1F362672: 2.37
-    - Vector1_3EB94769: 1
-    - Vector1_7412AF8D: 0.542
+    - Vector1_1E64D73: 0.005
+    - Vector1_1F362672: 10
+    - Vector1_3EB94769: 0.426
+    - Vector1_7412AF8D: 1
     - Vector1_7AC8BAD: 1
     - Vector1_8D88546F: 8.04
     - Vector1_921AC543: 0.08
-    - Vector1_9C9A14CF: 1
-    - Vector1_F6B82B81: 2
+    - Vector1_9C9A14CF: 10
+    - Vector1_F6B82B81: 10
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -118,11 +118,12 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_DA6E02B8: {r: 0.252314, g: 0.5924276, b: 0.6603774, a: 1}
-    - Color_E6BCE01B: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 1}
-    - Vector4_C5F4876B: {r: 0.1, g: -0.1, b: 0.1, a: 0.1}
+    - Color_DA6E02B8: {r: 0.78867924, g: 0.7748096, b: 0.08184399, a: 1}
+    - Color_E6BCE01B: {r: 0.6528301, g: 0.59469616, b: 0.14165173, a: 1}
+    - Vector4_C5F4876B: {r: 0, g: 0, b: 0, a: 0.5}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color_Strength: {r: 0.6679245, g: 0.5321257, b: 0.07435381, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []

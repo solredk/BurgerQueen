@@ -3,10 +3,16 @@ using UnityEngine.InputSystem;
 
 public class Grabing : MonoBehaviour
 {
+    public enum lookDiretion
+    {
+        lookz,
+        lookx
+    }
+    public lookDiretion look;
     public GameObject Helditem;
     Vector3 MousePos;
     public LayerMask mask;
-    [SerializeField] private Rigidbody rb;
+    private Rigidbody rb;
     public float Zpos;
     RaycastHit hit;
     //public Plate BurgerPlate;
@@ -25,18 +31,15 @@ public class Grabing : MonoBehaviour
             if (Helditem == null)
             {
                 PickUp();
-                Debug.Log("Pickup");
             }
         }else if (Helditem != null)
         {
             Drop();
-            Debug.Log("Drop");
         }
 
         if (Helditem != null)
         {
             Move();
-            Debug.Log("Move");
         }
     }
     void PickUp()
@@ -44,6 +47,7 @@ public class Grabing : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(ray, out hit, 100, mask) && Helditem == null)
         {
+            Zpos = Vector3.Distance(Camera.main.transform.position, hit.transform.position)*0.75f;
             Helditem = hit.transform.gameObject;
             rb = Helditem.GetComponent<Rigidbody>();
             
@@ -65,7 +69,17 @@ public class Grabing : MonoBehaviour
     }
     void Move()
     {
-        Vector3 direction = new Vector3(MousePos.x, MousePos.y, Helditem.transform.position.z); 
+        Vector3 direction = new Vector3();
+
+        if (look == lookDiretion.lookz)
+        {
+            direction = new Vector3(MousePos.x, MousePos.y, Helditem.transform.position.z);
+        }
+        else if (look == lookDiretion.lookx)
+        {
+            direction = new Vector3(Helditem.transform.position.x, MousePos.y, MousePos.z);
+        }
+        
         rb.MovePosition(direction);
     }
     /*

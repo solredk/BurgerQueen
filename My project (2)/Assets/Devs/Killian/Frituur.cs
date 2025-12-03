@@ -7,46 +7,40 @@ using UnityEngine.Rendering;
 
 public class Frituur : MonoBehaviour
 {
-    public bool handEmpty = true;
+    public bool noFriesSpawned = true;
     public GameObject currentIngredient;
     [SerializeField] private GameObject friesObj;
     [SerializeField] public GameObject friedFriesobj;
-    private Vector2 mousePos;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private GameObject friesSpawnPos;
+    private Grabing grabingS;
+
+
     void Start()
     {
-        handEmpty = true;
+        grabingS = FindAnyObjectByType<Grabing>();
+        noFriesSpawned = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (!handEmpty)
-        {
-            currentIngredient.transform.position = mousePos;
-        }
-    }
 
-    public void JustGiveMeTheDamnMousePosition(InputAction.CallbackContext context)
-    {
-        mousePos = context.ReadValue<Vector2>();
     }
 
     public void FriesButton()
     {
-        if (handEmpty)
+        if (noFriesSpawned)
         {
-            currentIngredient = Instantiate(friesObj, mousePos, Quaternion.identity, gameObject.transform);
-            handEmpty = false;
+            currentIngredient = Instantiate(friesObj, friesSpawnPos.transform.position, Quaternion.identity);
+            noFriesSpawned = false;
         }
     }
 
     public void TrashButton()
     {
-        if (!handEmpty)
+        if (!noFriesSpawned)
         {
             Destroy(currentIngredient);
-            handEmpty = true;
+            noFriesSpawned = true;
         }
     }
 }

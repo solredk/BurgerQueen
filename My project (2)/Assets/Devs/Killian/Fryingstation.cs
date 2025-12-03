@@ -5,6 +5,7 @@ public class Fryingstation : MonoBehaviour
     public Frituur frituur;
     [SerializeField] private float cookingTime = 10.0f;
     private bool isCooking = false;
+    [SerializeField] private GameObject friedFriesSpawn;
 
     private void Awake()
     {
@@ -26,8 +27,8 @@ public class Fryingstation : MonoBehaviour
             {
                 isCooking = false;
                 cookingTime = 10.0f;
-                frituur.handEmpty = false;
-                frituur.currentIngredient = Instantiate(frituur.friedFriesobj, transform.position + new Vector3(0.5f, 0.5f, 0), Quaternion.identity, frituur.transform);
+                frituur.noFriesSpawned = false;
+                frituur.currentIngredient = Instantiate(frituur.friedFriesobj, friedFriesSpawn.transform.position, Quaternion.identity);
             }
         }
     }
@@ -37,7 +38,7 @@ public class Fryingstation : MonoBehaviour
         if (collision.gameObject.CompareTag("Fries") && !isCooking)
         {
             Destroy(collision.gameObject);
-            frituur.handEmpty = true;
+            frituur.noFriesSpawned = true;
             isCooking = true;
         }
     }

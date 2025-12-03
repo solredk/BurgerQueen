@@ -1004,19 +1004,52 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+            "name": "Inputs",
+            "id": "fc1b6cc1-8bc0-4943-9a83-7c88b908facf",
+            "actions": [
+                {
+                    "name": "A/DMove",
+                    "type": "Value",
+                    "id": "0afd704e-01e5-4416-9482-9e83f75928d5",
+                    "expectedControlType": "Integer",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
                 {
-                    "name": "",
-                    "id": "44ded550-0ad1-438f-8d8b-963ae60c4606",
-                    "path": "",
+                    "name": "1D Axis",
+                    "id": "f9413753-d876-4ded-86f5-5e60e6892926",
+                    "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Grab",
-                    "isComposite": false,
+                    "action": "A/DMove",
+                    "isComposite": true,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "b155a34a-a054-4128-8f43-5881d623e5e4",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "A/DMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "872f05e3-beb3-4689-acf7-4d97009a456e",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "A/DMove",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }

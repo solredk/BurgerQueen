@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 
 public class PlaatTrigger : MonoBehaviour
 {
     private BurgerAssambleManager m_AssambleManager;
+    public GameObject addedIngredient;
 
     private void Start()
     {
@@ -11,6 +13,12 @@ public class PlaatTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        m_AssambleManager.IsTriggered();
+        addedIngredient = other.gameObject;
+        GameObject burgerIng = Instantiate(addedIngredient, new Vector3(gameObject.transform.position.x, 1 + m_AssambleManager.burger.Count, -2), Quaternion.identity);
+        burgerIng.layer = default;
+        burgerIng.GetComponent<Collider>().enabled = false;
+        burgerIng.GetComponent<Rigidbody>().useGravity = false;
+        m_AssambleManager.burger.Add(burgerIng);
+        Destroy(addedIngredient);
     }
 }

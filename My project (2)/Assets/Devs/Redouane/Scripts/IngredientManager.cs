@@ -17,7 +17,7 @@ public class IngredientManager : MonoBehaviour
     {
         foreach (Ingredient ingredients in ingredients)
         {
-            ingredients.quantity = 0;
+            ingredients.Quantity = 0;
         }
     }
 
@@ -25,12 +25,12 @@ public class IngredientManager : MonoBehaviour
     {
         foreach (Ingredient ingredient in ingredients)
         {
-            if (ingredient.ingredientName == ingredientName)
-            {
-                return ingredient.quantity;
-            }
+            if (ingredient.Name == ingredientName)
+                return ingredient.Quantity;
         }
+
         Debug.Log("ingredient not found");
+
         return 0;
     }
 
@@ -38,9 +38,9 @@ public class IngredientManager : MonoBehaviour
     {
         foreach (Ingredient ingredient in ingredients)
         {
-            if (ingredient.ingredientName == ingredientName)
+            if (ingredient.Name == ingredientName)
             {
-                ingredient.quantity += amount;
+                ingredient.Quantity += amount;
                 break;
             }
         }

@@ -119,6 +119,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &86812078
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 86812079}
+  m_Layer: 0
+  m_Name: FriesSpawnPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &86812079
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86812078}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.73, y: 5.51, z: -2.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &88249843 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 99aa4b44a79b57446932a1fa6f759903, type: 3}
@@ -138,6 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Fryingstation
   frituur: {fileID: 0}
   cookingTime: 10
+  friedFriesSpawn: {fileID: 1084895814}
 --- !u!4 &88249848 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 99aa4b44a79b57446932a1fa6f759903, type: 3}
@@ -162,8 +194,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.8513155, y: 0.48344427, z: 2.1885202}
-  m_Center: {x: -0.0449395, y: 2.372978, z: -8.925133e-17}
+  m_Size: {x: 1.8513155, y: 0.6176425, z: 0.6683838}
+  m_Center: {x: -0.0449395, y: 1.9061401, z: 0.5519716}
 --- !u!1001 &113647477
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -194,7 +226,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 99aa4b44a79b57446932a1fa6f759903, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -21
+      value: -23.06
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 99aa4b44a79b57446932a1fa6f759903, type: 3}
       propertyPath: m_LocalRotation.w
@@ -234,7 +266,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 99aa4b44a79b57446932a1fa6f759903, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1084895815}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 99aa4b44a79b57446932a1fa6f759903, type: 3}
       insertIndex: -1
@@ -243,75 +278,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 88249851}
   m_SourcePrefab: {fileID: 100100000, guid: 99aa4b44a79b57446932a1fa6f759903, type: 3}
---- !u!1001 &167998551
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6973682539131748009, guid: dd1ce1f2d867ddd44829e06eb5e6a629, type: 3}
-      propertyPath: m_Name
-      value: Fries
-      objectReference: {fileID: 0}
-    - target: {fileID: 8610896702271608246, guid: dd1ce1f2d867ddd44829e06eb5e6a629, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8610896702271608246, guid: dd1ce1f2d867ddd44829e06eb5e6a629, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8610896702271608246, guid: dd1ce1f2d867ddd44829e06eb5e6a629, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8610896702271608246, guid: dd1ce1f2d867ddd44829e06eb5e6a629, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.37
-      objectReference: {fileID: 0}
-    - target: {fileID: 8610896702271608246, guid: dd1ce1f2d867ddd44829e06eb5e6a629, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 10.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8610896702271608246, guid: dd1ce1f2d867ddd44829e06eb5e6a629, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8610896702271608246, guid: dd1ce1f2d867ddd44829e06eb5e6a629, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8610896702271608246, guid: dd1ce1f2d867ddd44829e06eb5e6a629, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8610896702271608246, guid: dd1ce1f2d867ddd44829e06eb5e6a629, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8610896702271608246, guid: dd1ce1f2d867ddd44829e06eb5e6a629, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8610896702271608246, guid: dd1ce1f2d867ddd44829e06eb5e6a629, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8610896702271608246, guid: dd1ce1f2d867ddd44829e06eb5e6a629, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8610896702271608246, guid: dd1ce1f2d867ddd44829e06eb5e6a629, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: dd1ce1f2d867ddd44829e06eb5e6a629, type: 3}
 --- !u!1 &258588818
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,18 +368,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 258588818}
-  m_LocalRotation: {x: 0.42261827, y: -0, z: -0, w: 0.9063079}
-  m_LocalPosition: {x: 0, y: 0, z: -22.527328}
-  m_LocalScale: {x: 0.1, y: 0.099999994, z: 0.099999994}
+  m_LocalRotation: {x: 0.3128677, y: -0, z: -0, w: 0.9497967}
+  m_LocalPosition: {x: 0, y: 0, z: -21.12}
+  m_LocalScale: {x: 0.017911015, y: 0.017911015, z: 0.017911015}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1658620711}
   - {fileID: 1030667070}
   m_Father: {fileID: 1332948854}
-  m_LocalEulerAnglesHint: {x: 50, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 36.464, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -24.504301, y: 0}
+  m_AnchoredPosition: {x: -17.75, y: 8.11}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &258588824
@@ -428,11 +394,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 502879a3b6b9c924ebc8b9e98cfea687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Frituur
-  handEmpty: 1
+  noFriesSpawned: 1
   currentIngredient: {fileID: 0}
   friesObj: {fileID: 6973682539131748009, guid: dd1ce1f2d867ddd44829e06eb5e6a629, type: 3}
   friedFriesobj: {fileID: 6973682539131748009, guid: 40c328a6902d87c45a1a9bedcdeb11ce, type: 3}
-  mousePos: {x: 0, y: 0}
+  friesSpawnPos: {fileID: 86812078}
 --- !u!1 &508555226
 GameObject:
   m_ObjectHideFlags: 0
@@ -802,8 +768,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1030667069}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 0.6532175, y: 0.6532175, z: 0.6532175}
+  m_LocalPosition: {x: 0, y: 0, z: 0.000052933}
+  m_LocalScale: {x: 4.804468, y: 4.804468, z: 4.804468}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1037128616}
@@ -811,7 +777,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 127, y: 142}
+  m_AnchoredPosition: {x: 473.34, y: 142}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1030667071
@@ -1044,6 +1010,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1037128615}
   m_CullTransparentMesh: 1
+--- !u!1 &1084895814
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1084895815}
+  m_Layer: 0
+  m_Name: FriedFriesSpawnPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1084895815
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084895814}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.28, y: 2.391, z: 0.542}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 88249848}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1332948853
 GameObject:
   m_ObjectHideFlags: 0
@@ -1165,13 +1162,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1572539848}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.4680798, y: -0, z: -0, w: 0.88368624}
-  m_LocalPosition: {x: -17.13, y: 19.6, z: -30.4}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -17.8, y: 9.01, z: -40.91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1332948854}
-  m_LocalEulerAnglesHint: {x: 55.819, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1572539852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1261,8 +1258,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1658620710}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.0000030651}
-  m_LocalScale: {x: 0.6532175, y: 0.6532175, z: 0.6532175}
+  m_LocalPosition: {x: 0, y: 0, z: 0.000055998}
+  m_LocalScale: {x: 4.804468, y: 4.804468, z: 4.804468}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 508555227}
@@ -1270,7 +1267,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 18, y: 142}
+  m_AnchoredPosition: {x: -328.34998, y: 142.00006}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1658620713
@@ -1498,4 +1495,4 @@ SceneRoots:
   - {fileID: 880648167}
   - {fileID: 2031511123}
   - {fileID: 1332948854}
-  - {fileID: 167998551}
+  - {fileID: 86812079}

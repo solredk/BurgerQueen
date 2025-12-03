@@ -5,6 +5,16 @@ TagManager:
   serializedVersion: 3
   tags:
   - Fries
+<<<<<<< Updated upstream
+=======
+  - Grill
+  - Grabable
+  - Meat
+  - OldOil
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX

@@ -14,21 +14,15 @@ public class BurgerAssambleManager : MonoBehaviour
     private GameObject currentIngredient;
     [SerializeField] private GameObject prepPlaceObj;
     private int ingedientanmount = 0;
-    [SerializeField] private List<GameObject> burger;
+    public List<GameObject> burger;
     [SerializeField] private List<int> voorraadI;
     [SerializeField] private List<TextMeshProUGUI> voorraadTexts;
     [SerializeField] private List <string> orgerIngredients;
-    private int ingredientID;
-    private Collider plaatCollider;
-    private Grabing grabingS;
-  
+    private int ingredientID;  
 
 
     void Start()
-    {
-        grabingS = FindAnyObjectByType<Grabing>();
-        plaatCollider = maakPlaat.GetComponent<Collider>();
-        
+    {        
         // hoeveelheidBrood = Hoeveel brood de speler heeft toegevoegd van supply
         for (int i = 0; i < voorraadI.Count; i++)
         {
@@ -52,15 +46,6 @@ public class BurgerAssambleManager : MonoBehaviour
             handEmpty = true;
             ingedientanmount++;
         }
-    }
-
-    public void IsTriggered()
-    {
-        GameObject burgerIng = Instantiate(grabingS.Helditem, new Vector3(maakPlaat.transform.position.x, 1 + burger.Count, -2), Quaternion.identity);
-        burgerIng.layer = default;
-        burgerIng.GetComponent<Collider>().enabled = false;
-        burger.Add(burgerIng);
-        Destroy(grabingS.Helditem);
     }
 
     public void TempButton()
@@ -109,26 +94,6 @@ public class BurgerAssambleManager : MonoBehaviour
         else
         {
             print("geen brood????");
-        }
-    }
-
-    
-
-    public void SlaButton()
-    {
-        if (handEmpty)
-        {
-          //  currentIngredient = Instantiate(slaObj, mousePos, Quaternion.identity, gameObject.transform);
-            handEmpty = false;
-        }
-    }
-
-    public void TrashButton()
-    {
-        if (!handEmpty)
-        {
-            Destroy(currentIngredient);
-            handEmpty = true;
         }
     }
 

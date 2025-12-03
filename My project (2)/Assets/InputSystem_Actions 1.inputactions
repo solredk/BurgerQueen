@@ -1,0 +1,57 @@
+{
+    "version": 1,
+    "name": "InputSystem_Actions 1",
+    "maps": [
+        {
+            "name": "Inputs",
+            "id": "f9915c09-bec8-4db3-9105-bc448094bd4a",
+            "actions": [
+                {
+                    "name": "A/D Movement",
+                    "type": "Value",
+                    "id": "6f646a2f-c112-48f6-801c-55d96cf8eab4",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "1D Axis",
+                    "id": "98a0a92a-f99e-4409-beb5-8bdbdf2a1a19",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "A/D Movement",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "ab2c89b9-9033-415f-b475-9a234dfcf7d5",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "A/D Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "b022bf56-e1fb-4268-8cfb-6be40c41ee2b",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "A/D Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

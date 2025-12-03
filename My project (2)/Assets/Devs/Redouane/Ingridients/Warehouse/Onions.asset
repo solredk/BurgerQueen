@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77723a9eed8854f4bb26cb9ddcddf0dd, type: 3}
   m_Name: Onions
   m_EditorClassIdentifier: Assembly-CSharp::Ingredient
-  storageType: 0
-  ingredientName: Onions
-  quantity: 0
-  icon: {fileID: 0}
+  Name: Onion
   Description: 
+  Prefab: {fileID: 0}
+  storageType: 0
+  Icon: {fileID: 0}
+  Quantity: 0

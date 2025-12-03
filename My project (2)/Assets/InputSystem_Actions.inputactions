@@ -993,6 +993,17 @@
             ]
         },
         {
+            "name": "MouseInput",
+            "id": "5d9c62ac-408c-41bc-bdaa-e28c17bf86fd",
+            "actions": [
+                {
+                    "name": "Grab",
+                    "type": "Button",
+                    "id": "be871795-4852-4833-9242-d721f9d443cf",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
             "name": "Inputs",
             "id": "fc1b6cc1-8bc0-4943-9a83-7c88b908facf",
             "actions": [

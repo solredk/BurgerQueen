@@ -18,17 +18,11 @@ public class BurgerAssambleManager : MonoBehaviour
     [SerializeField] private List<int> voorraadI;
     [SerializeField] private List<TextMeshProUGUI> voorraadTexts;
     [SerializeField] private List <string> orgerIngredients;
-    private int ingredientID;
-    private Collider plaatCollider;
-    private Grabing grabingS;
-  
+    private int ingredientID;  
 
 
     void Start()
-    {
-        grabingS = FindAnyObjectByType<Grabing>();
-        plaatCollider = maakPlaat.GetComponent<Collider>();
-        
+    {        
         // hoeveelheidBrood = Hoeveel brood de speler heeft toegevoegd van supply
         for (int i = 0; i < voorraadI.Count; i++)
         {
@@ -52,11 +46,6 @@ public class BurgerAssambleManager : MonoBehaviour
             handEmpty = true;
             ingedientanmount++;
         }
-    }
-
-    public void IsTriggered()
-    {
-       
     }
 
     public void TempButton()
@@ -105,26 +94,6 @@ public class BurgerAssambleManager : MonoBehaviour
         else
         {
             print("geen brood????");
-        }
-    }
-
-    
-
-    public void SlaButton()
-    {
-        if (handEmpty)
-        {
-          //  currentIngredient = Instantiate(slaObj, mousePos, Quaternion.identity, gameObject.transform);
-            handEmpty = false;
-        }
-    }
-
-    public void TrashButton()
-    {
-        if (!handEmpty)
-        {
-            Destroy(currentIngredient);
-            handEmpty = true;
         }
     }
 

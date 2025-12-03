@@ -17,9 +17,8 @@ public class PlaatTrigger : MonoBehaviour
         GameObject burgerIng = Instantiate(addedIngredient, new Vector3(gameObject.transform.position.x, 1 + m_AssambleManager.burger.Count, -2), Quaternion.identity);
         burgerIng.layer = default;
         burgerIng.GetComponent<Collider>().enabled = false;
+        burgerIng.GetComponent<Rigidbody>().useGravity = false;
         m_AssambleManager.burger.Add(burgerIng);
         Destroy(addedIngredient);
-
-      //  m_AssambleManager.IsTriggered();
     }
 }

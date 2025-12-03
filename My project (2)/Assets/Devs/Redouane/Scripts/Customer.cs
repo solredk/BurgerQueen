@@ -10,7 +10,11 @@ public class Customer : MonoBehaviour
 {
     private float patienceCounter = 0f;
     private int patience = 1000;
-    
+
+    [SerializeField] private Material happyMaterial;
+    [SerializeField] private Material neutralMaterial;
+    [SerializeField] private Material angryMaterial;
+
     private bool hasBeenServed = false;
     public bool hasOrdered = false;
 
@@ -21,6 +25,21 @@ public class Customer : MonoBehaviour
         StartCoroutine(WaitToOrder());
     }
 
+    private void Update()
+    {
+        if (currentMood == CustomerMood.Happy)
+        {
+            GetComponent<Renderer>().material = happyMaterial;
+        }
+        else if (currentMood == CustomerMood.Neutral)
+        {
+            GetComponent<Renderer>().material = neutralMaterial;
+        }
+        else if (currentMood == CustomerMood.Angry)
+        {
+            GetComponent<Renderer>().material = angryMaterial;
+        }
+    }
     private void UpdateMood()
     {
         if (patience >= 700)
@@ -58,9 +77,9 @@ public class Customer : MonoBehaviour
         while (hasOrdered == false)
         {
             patienceCounter += Time.deltaTime;
-            if (patienceCounter >= 10)
+            if (patienceCounter >= 1)
             {
-                Decreasepatience(10);
+                Decreasepatience(50);
                 patienceCounter = 0f;
             }
             yield return null;

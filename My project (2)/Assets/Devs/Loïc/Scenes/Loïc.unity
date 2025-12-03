@@ -1330,6 +1330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d94839e39b84a4fa2e28f35a64fb97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlaatTrigger
+  addedIngredient: {fileID: 0}
 --- !u!1 &2130144236
 GameObject:
   m_ObjectHideFlags: 0
@@ -1594,6 +1595,7 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 64
+  rb: {fileID: 0}
   Zpos: 10
 --- !u!1001 &4101941185623055498
 PrefabInstance:

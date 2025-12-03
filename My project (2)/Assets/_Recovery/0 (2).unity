@@ -388,7 +388,8 @@ MonoBehaviour:
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
+  m_fontSharedMaterials:
+  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
@@ -921,7 +922,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6172784dee64de1459310ce6653c7862, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BurgerStation
+  maakPlaat: {fileID: 0}
   breadObj: {fileID: 7082940521163260690, guid: eeb4b940f099c8f4085da61057c32df2, type: 3}
+  prepPlaceObj: {fileID: 0}
+  burger: []
+  voorraadI: 
+  voorraadTexts: []
+  orgerIngredients: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

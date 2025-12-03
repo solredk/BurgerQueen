@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using TMPro;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
@@ -13,20 +14,15 @@ public class BurgerAssambleManager : MonoBehaviour
     private GameObject currentIngredient;
     [SerializeField] private GameObject prepPlaceObj;
     private int ingedientanmount = 0;
-    [SerializeField] private List<GameObject> burger;
+    public List<GameObject> burger;
     [SerializeField] private List<int> voorraadI;
     [SerializeField] private List<TextMeshProUGUI> voorraadTexts;
-    private int ingredientID;
-    private Collider plaatCollider;
-    private Grabing grabingS;
-  
+    [SerializeField] private List <string> orgerIngredients;
+    private int ingredientID;  
 
 
     void Start()
-    {
-        grabingS = FindAnyObjectByType<Grabing>();
-        plaatCollider = maakPlaat.GetComponent<Collider>();
-        
+    {        
         // hoeveelheidBrood = Hoeveel brood de speler heeft toegevoegd van supply
         for (int i = 0; i < voorraadI.Count; i++)
         {
@@ -34,11 +30,6 @@ public class BurgerAssambleManager : MonoBehaviour
         }
         
         handEmpty = true;
-    }
-
-    void Update()
-    {
-    
     }
 
 
@@ -57,32 +48,38 @@ public class BurgerAssambleManager : MonoBehaviour
         }
     }
 
-    public void IsTriggered()
-    {
-        GameObject burgerIng = Instantiate(grabingS.Helditem, new Vector3(maakPlaat.transform.position.x, 1 + burger.Count, -2), Quaternion.identity);
-        burgerIng.layer = default;
-        burgerIng.GetComponent<Collider>().enabled = false;
-        burger.Add(burgerIng);
-        Destroy(grabingS.Helditem);
-    }
-
     public void TempButton()
     {
-
+        
     }
 
     public void TempButton2()
     {
-        if (ingredientID == 0)
+        //check oger
+        bool goodOrder = true;
+        for (int i = 0; i < burger.Count; i++)
         {
-            ingredientID = 1;
+            if (burger[i].gameObject.name != orgerIngredients[i])
+            {
+                print("roblox oof");
+                goodOrder = false;
+            }
+            else if (goodOrder)
+            {
+                print("that burger is a burger");
+            }
         }
-        else
-        {
-            ingredientID = 0;
-        }
-        print(ingredientID);
     }
+
+    //if (ingredientID == 0)
+    //{
+    //    ingredientID = 1;
+    //}
+    //else
+    //{
+    //    ingredientID = 0;
+    //}
+    //print(ingredientID);
 
     private void VoorraadCheck()
     {
@@ -97,26 +94,6 @@ public class BurgerAssambleManager : MonoBehaviour
         else
         {
             print("geen brood????");
-        }
-    }
-
-    
-
-    public void SlaButton()
-    {
-        if (handEmpty)
-        {
-          //  currentIngredient = Instantiate(slaObj, mousePos, Quaternion.identity, gameObject.transform);
-            handEmpty = false;
-        }
-    }
-
-    public void TrashButton()
-    {
-        if (!handEmpty)
-        {
-            Destroy(currentIngredient);
-            handEmpty = true;
         }
     }
 

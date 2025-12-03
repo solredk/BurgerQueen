@@ -35,7 +35,19 @@ public class StationSwitchPlayer : MonoBehaviour
             {
                 transform.rotation = Quaternion.Slerp(transform.rotation, currentStation.rotation, 0.04f);
                 agent.isStopped = true;
-            }       
+                if (currentStation.gameObject.tag == "Fries")
+                {
+                    Debug.Log("at frying station");
+                }
+                if(currentStation.gameObject.tag == "Respawn")
+                {
+                    Debug.Log("at burger station");
+                }
+                if(currentStation.gameObject.tag == "Finish")
+                {
+                    Debug.Log("at checkout counter");
+                }
+            }
         }
         if(moving)
         {

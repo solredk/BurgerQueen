@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -5827792665480336469}
   - component: {fileID: 6169875348085916614}
   - component: {fileID: 8134442662402968869}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Meat
   m_TagString: Meat
   m_Icon: {fileID: 0}
@@ -179,5 +179,5 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 112
   m_CollisionDetection: 0

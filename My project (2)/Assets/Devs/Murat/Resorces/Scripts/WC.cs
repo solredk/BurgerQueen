@@ -48,6 +48,7 @@ public class WC : MonoBehaviour
         {
             case flushgame.dirty:
                 Twater.GetComponent<MeshRenderer>().material = durtyness[0];
+
                 break;
             case flushgame.doused:
                 Twater.GetComponent<MeshRenderer>().material = durtyness[1];

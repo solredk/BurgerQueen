@@ -7,10 +7,10 @@
             "id": "b9fe5237-1519-432e-a6c8-9d7d9c8c9f6d",
             "actions": [
                 {
-                    "name": "New action",
-                    "type": "Button",
+                    "name": "MouseClick",
+                    "type": "Value",
                     "id": "759f2645-461a-4472-8ec4-ae80aec0e7f8",
-                    "expectedControlType": "",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -24,18 +24,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "bff6f4fe-94ea-4d47-a87d-7a8d8cdf9f47",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "New action",
+                    "action": "MouseClick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

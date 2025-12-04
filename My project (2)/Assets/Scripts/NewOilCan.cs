@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class NewOilCan : MonoBehaviour
@@ -7,8 +6,6 @@ public class NewOilCan : MonoBehaviour
     [SerializeField] private GameObject newOilPrefab;
     [SerializeField] private float requiredTriggerTime = 3f;
     [SerializeField] private GameObject newOilCanSpawnPoint;
-    [SerializeField] private GameObject frituurObject;
-    [SerializeField] private float sceneChangeDelay = 3f;
 
     private GameObject currentFrituurObject;
     private float triggerTimer = 0f;
@@ -18,10 +15,13 @@ public class NewOilCan : MonoBehaviour
 
     private void Update()
     {
+        // Only count timer while inside frituur and not yet used
         if (isInFrituur && !hasBeenUsed)
         {
             triggerTimer += Time.deltaTime;
+            Debug.Log($"Pouring oil... {triggerTimer:F1}s / {requiredTriggerTime}s");
 
+            // Spawn new oil after timer completes
             if (triggerTimer >= requiredTriggerTime)
             {
                 SpawnNewOil();
@@ -32,21 +32,29 @@ public class NewOilCan : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!hasBeenUsed && (other.gameObject.name == "Frituur" || (frituurObject != null && other.gameObject == frituurObject)))
+        Debug.Log($"NewOilCan triggered by: {other.gameObject.name}");
+
+        // Check for Frituur collision
+        if (!hasBeenUsed && other.gameObject.name == "Frituur")
         {
+            Debug.Log("NewOilCan entered Frituur! Starting pour timer...");
             currentFrituurObject = other.gameObject;
             isInFrituur = true;
-            triggerTimer = 0f;
+            triggerTimer = 0f; // Reset timer when entering
         }
 
+        // Check for spawn point collision after oil has been used
         if (hasBeenUsed && !hasReturnedToSpawn && other.gameObject.name == "NewOilCanSpawnPoint")
         {
+            Debug.Log("New Oil Can returned to spawn point!");
             hasReturnedToSpawn = true;
             OnSequenceComplete();
         }
 
+        // Alternative: Also check by GameObject reference
         if (hasBeenUsed && !hasReturnedToSpawn && newOilCanSpawnPoint != null && other.gameObject == newOilCanSpawnPoint)
         {
+            Debug.Log("New Oil Can returned to spawn point (by reference)!");
             hasReturnedToSpawn = true;
             OnSequenceComplete();
         }
@@ -54,31 +62,42 @@ public class NewOilCan : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if ((other.gameObject.name == "Frituur" || (frituurObject != null && other.gameObject == frituurObject)) && isInFrituur)
+        Debug.Log($"NewOilCan exited trigger: {other.gameObject.name}");
+
+        // Stop timer if exiting Frituur
+        if (other.gameObject.name == "Frituur" && isInFrituur)
         {
+            Debug.Log("NewOilCan left Frituur! Stopping pour timer.");
             isInFrituur = false;
-            triggerTimer = 0f;
+            triggerTimer = 0f; // Reset timer when exiting
             currentFrituurObject = null;
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!hasBeenUsed && (collision.gameObject.name == "Frituur" || (frituurObject != null && collision.gameObject == frituurObject)))
+        Debug.Log($"NewOilCan collision with: {collision.gameObject.name}");
+
+        // Check for Frituur collision
+        if (!hasBeenUsed && collision.gameObject.name == "Frituur")
         {
+            Debug.Log("NewOilCan collision with Frituur! Starting pour timer...");
             currentFrituurObject = collision.gameObject;
             isInFrituur = true;
             triggerTimer = 0f;
         }
 
+        // Check for spawn point collision after oil has been used
         if (hasBeenUsed && !hasReturnedToSpawn && collision.gameObject.name == "NewOilCanSpawnPoint")
         {
+            Debug.Log("New Oil Can returned to spawn point!");
             hasReturnedToSpawn = true;
             OnSequenceComplete();
         }
 
         if (hasBeenUsed && !hasReturnedToSpawn && newOilCanSpawnPoint != null && collision.gameObject == newOilCanSpawnPoint)
         {
+            Debug.Log("New Oil Can returned to spawn point (by reference)!");
             hasReturnedToSpawn = true;
             OnSequenceComplete();
         }
@@ -86,8 +105,10 @@ public class NewOilCan : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if ((collision.gameObject.name == "Frituur" || (frituurObject != null && collision.gameObject == frituurObject)) && isInFrituur)
+        // Stop timer if exiting Frituur
+        if (collision.gameObject.name == "Frituur" && isInFrituur)
         {
+            Debug.Log("NewOilCan left Frituur collision! Stopping pour timer.");
             isInFrituur = false;
             triggerTimer = 0f;
             currentFrituurObject = null;
@@ -98,34 +119,26 @@ public class NewOilCan : MonoBehaviour
     {
         Vector3 spawnPosition;
 
-        if (frituurObject != null)
-        {
-            spawnPosition = frituurObject.transform.position;
-        }
-        else if (currentFrituurObject != null)
+        // Spawn at Frituur position (since that's where the oil goes)
+        if (currentFrituurObject != null)
         {
             spawnPosition = currentFrituurObject.transform.position;
         }
         else
         {
+            // Fallback to can position
             spawnPosition = transform.position;
         }
 
+        Debug.Log($"Spawning new oil at Frituur position: {spawnPosition}");
         Instantiate(newOilPrefab, spawnPosition, Quaternion.identity);
 
-        
-        StartCoroutine(DelayedSceneChange());
-    }
-
-    private IEnumerator DelayedSceneChange()
-    {
-        yield return new WaitForSeconds(sceneChangeDelay);
-        SceneManager.LoadScene(0);
+        Debug.Log("Oil pour complete! Return can to spawn point to finish sequence.");
     }
 
     private void OnSequenceComplete()
     {
-
+        Debug.Log("New Oil Can sequence completed!");
     }
 
     public void ResetCan()

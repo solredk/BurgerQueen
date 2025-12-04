@@ -17,6 +17,7 @@ public class OldOilCan : MonoBehaviour
     {
         canRenderer = GetComponent<Renderer>();
 
+        // Ensure NewOilCan starts without Grabable tag
         if (newOilCan != null)
         {
             newOilCan.tag = "Untagged";
@@ -25,20 +26,27 @@ public class OldOilCan : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log($"OldOilCan triggered by: {other.gameObject.name}");
+
         if (other.gameObject.name == "Old Oil" && !hasBeenUsed)
         {
+            Debug.Log("Hit Old Oil! Processing collision...");
             hasBeenUsed = true;
             StartCoroutine(DelayedProcessOil(other.gameObject));
         }
 
+        // Check spawn point collision using name instead of reference
         if (hasBeenUsed && !hasReturnedToSpawn && other.gameObject.name == "OldCanSpawnPoint")
         {
+            Debug.Log("Old Oil Can returned to spawn point!");
             hasReturnedToSpawn = true;
             MakeNewOilCanGrabable();
         }
 
+        // Alternative: Also check by GameObject reference if name doesn't work
         if (hasBeenUsed && !hasReturnedToSpawn && oldCanSpawnPoint != null && other.gameObject == oldCanSpawnPoint)
         {
+            Debug.Log("Old Oil Can returned to spawn point (by reference)!");
             hasReturnedToSpawn = true;
             MakeNewOilCanGrabable();
         }
@@ -46,20 +54,27 @@ public class OldOilCan : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log($"OldOilCan collision with: {collision.gameObject.name}");
+
         if (collision.gameObject.name == "Old Oil" && !hasBeenUsed)
         {
+            Debug.Log("Collision with Old Oil! Processing...");
             hasBeenUsed = true;
             StartCoroutine(DelayedProcessOil(collision.gameObject));
         }
 
+        // Check spawn point collision using name
         if (hasBeenUsed && !hasReturnedToSpawn && collision.gameObject.name == "OldCanSpawnPoint")
         {
+            Debug.Log("Old Oil Can returned to spawn point!");
             hasReturnedToSpawn = true;
             MakeNewOilCanGrabable();
         }
 
+        // Alternative: Also check by GameObject reference
         if (hasBeenUsed && !hasReturnedToSpawn && oldCanSpawnPoint != null && collision.gameObject == oldCanSpawnPoint)
         {
+            Debug.Log("Old Oil Can returned to spawn point (by reference)!");
             hasReturnedToSpawn = true;
             MakeNewOilCanGrabable();
         }
@@ -70,6 +85,11 @@ public class OldOilCan : MonoBehaviour
         if (newOilCan != null)
         {
             newOilCan.tag = "Grabable";
+            Debug.Log($"New Oil Can is now draggable! Tag set to: {newOilCan.tag}");
+        }
+        else
+        {
+            Debug.LogWarning("New Oil Can reference is missing!");
         }
     }
 
@@ -90,6 +110,8 @@ public class OldOilCan : MonoBehaviour
         {
             canRenderer.material = darkBrownMaterial;
         }
+
+        Debug.Log("Oil processed. Return to spawn point to continue.");
     }
 
     public void ResetCan(Material originalMaterial)

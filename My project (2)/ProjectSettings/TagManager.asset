@@ -8,6 +8,7 @@ TagManager:
   - Grill
   - Grabable
   - Meat
+  - Snap
   layers:
   - Default
   - TransparentFX

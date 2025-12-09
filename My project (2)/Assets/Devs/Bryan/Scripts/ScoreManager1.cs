@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +15,8 @@ public class ScoreManager1 : MonoBehaviour
     public Customer currentCustomerScript;
     [SerializeField]
     private float scoreTimer;
+    public bool stageEnd = false;
+    public TextMeshProUGUI scoreText;
 
     private void Start()
     {
@@ -36,27 +39,8 @@ public class ScoreManager1 : MonoBehaviour
             StartCoroutine(TookToLong());
         }
 
-        //if (currentCustomerScript.currentMood == CustomerMood.Angry && !ignoreCustomer)
-        //{
-        //    GoingDownSatisfaction();
-        //    ignoreCustomer = true;
-        //}
-       
-
-        //if (currentCustomerScript.hasBeenServed && !ignoreCustomer) {
-        //    ignoreCustomer = true;
-        //    switch (currentCustomerScript.currentMood) { 
-        //        case CustomerMood.Happy:
-        //            customerSatisfaction += 2;
-        //            break;
-        //            case CustomerMood.Neutral:
-        //            customerSatisfaction += 1;
-        //            break;
-            
-        //    }
-        
-        //}
-
+        scoreText.text = "Score:" + score;
+      
 
     }
 
@@ -78,9 +62,12 @@ public class ScoreManager1 : MonoBehaviour
         {
             score += 0;
         }
+
+        stageEnd = false;
     }
 
-   
+
+
     IEnumerator TookToLong()
     {
         customerSatisfaction -= 2;

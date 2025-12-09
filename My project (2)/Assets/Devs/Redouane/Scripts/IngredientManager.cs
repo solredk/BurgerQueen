@@ -1,0 +1,49 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+public class IngredientManager : MonoBehaviour
+{
+    public static IngredientManager instance;
+
+    [SerializeField] private List<Ingredient> ingredients;
+
+    private void Start()
+    {
+        instance = this;
+        ResetIngridients();
+    }
+
+    private void ResetIngridients()
+    {
+        foreach (Ingredient ingredients in ingredients)
+        {
+            ingredients.Quantity = 0;
+        }
+    }
+
+    public int GetAmount(string ingredientName)
+    {
+        foreach (Ingredient ingredient in ingredients)
+        {
+            if (ingredient.Name == ingredientName)
+                return ingredient.Quantity;
+        }
+
+        Debug.Log("ingredient not found");
+
+        return 0;
+    }
+
+    public void GiveAmount(string ingredientName, int amount)
+    {
+        foreach (Ingredient ingredient in ingredients)
+        {
+            if (ingredient.Name == ingredientName)
+            {
+                ingredient.Quantity += amount;
+                break;
+            }
+        }
+        Debug.Log("ingredient not found");
+    }
+}

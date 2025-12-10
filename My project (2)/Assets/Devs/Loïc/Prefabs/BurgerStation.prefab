@@ -155,7 +155,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4552344069890056783
 RectTransform:
   m_ObjectHideFlags: 0
@@ -472,7 +472,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: TempButton2
+  m_text: CheckOrder
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -947,7 +947,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.6656, y: -0, z: 0.19106}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.09, y: 0.09, z: 0.09}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2001873790223457638}
@@ -970,17 +970,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6172784dee64de1459310ce6653c7862, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BurgerStation
-  maakPlaat: {fileID: 8165204081717479754}
-  breadObj: {fileID: 3860275929366500568}
-  prepPlaceObj: {fileID: 0}
+  storage: 
+  storageText: []
+  orderIngredients: []
   burger: []
-  voorraadI: 050000000a000000
-  voorraadTexts:
-  - {fileID: 9000956079482425614}
-  - {fileID: 1314229692711535958}
-  orgerIngredients:
-  - Brood(Clone)
-  - Sla(Clone)
+  workStation: {fileID: 0}
+  breadObject: {fileID: 0}
+  prepPlaceObj: {fileID: 0}
 --- !u!114 &6229592717840566072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1157,6 +1153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlaatTrigger
   addedIngredient: {fileID: 0}
+  ingredientDistance: 9
 --- !u!1001 &1926667697395738687
 PrefabInstance:
   m_ObjectHideFlags: 0

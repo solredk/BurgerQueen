@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class NewOilCan : MonoBehaviour
@@ -7,6 +8,7 @@ public class NewOilCan : MonoBehaviour
     [SerializeField] private float requiredTriggerTime = 3f;
     [SerializeField] private GameObject newOilCanSpawnPoint;
     [SerializeField] private GameObject frituurObject;
+    [SerializeField] private float sceneChangeDelay = 3f;
 
     private GameObject currentFrituurObject;
     private float triggerTimer = 0f;
@@ -110,6 +112,15 @@ public class NewOilCan : MonoBehaviour
         }
 
         Instantiate(newOilPrefab, spawnPosition, Quaternion.identity);
+
+        
+        StartCoroutine(DelayedSceneChange());
+    }
+
+    private IEnumerator DelayedSceneChange()
+    {
+        yield return new WaitForSeconds(sceneChangeDelay);
+        SceneManager.LoadScene(0);
     }
 
     private void OnSequenceComplete()

@@ -7,6 +7,7 @@ public class CleanSpray : MonoBehaviour
     Grabing Grabing;
     [SerializeField] private ParticleSystem SprayEffect;
     [SerializeField] private GameObject Wc;
+    [SerializeField] private GameObject SprayTrigger;
     
     void Start()
     {
@@ -35,7 +36,8 @@ public class CleanSpray : MonoBehaviour
     }
     IEnumerator spraying()
     {
-
-        yield return new WaitForSeconds(0.4f);
+        SprayTrigger.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        SprayTrigger.SetActive(false);
     }
 }

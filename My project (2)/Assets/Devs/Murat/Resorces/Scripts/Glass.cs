@@ -15,11 +15,12 @@ public class Glass : MonoBehaviour
             if (!Full)
             {
                 transform.position = place.transform.position + new Vector3(0, 0.25f, 0);
-                gameObject.layer = filling.value;
+                gameObject.layer = filling.value-1;
             }
             else
             {
-                gameObject.layer = filled.value;
+                gameObject.layer = filled.value -1;
+                place = null;
             }
         }
     }

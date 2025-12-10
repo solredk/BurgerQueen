@@ -5,7 +5,7 @@ public class IngredientManager : MonoBehaviour
 {
     public static IngredientManager instance;
 
-    [SerializeField] private List<Ingredient> ingredients;
+    [SerializeField] public List<Ingredient> ingredients;
 
     private void Start()
     {

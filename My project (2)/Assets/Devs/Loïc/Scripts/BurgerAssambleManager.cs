@@ -1,65 +1,77 @@
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+using System.Data.SqlTypes;
 using TMPro;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 
 public class BurgerAssambleManager : MonoBehaviour
 {
-    [SerializeField] private GameObject maakPlaat;
     private bool handEmpty = true;
-    [SerializeField] private GameObject breadObj;
-    private GameObject currentIngredient;
-    [SerializeField] private GameObject prepPlaceObj;
-    private int ingedientanmount = 0;
-    public List<GameObject> burger;
-    [SerializeField] private List<int> voorraadI;
-    [SerializeField] private List<TextMeshProUGUI> voorraadTexts;
-    [SerializeField] private List <string> orgerIngredients;
+
+    private int ingedientAmount = 0;
     private int ingredientID;  
+    
+    [SerializeField] private List<int> storage;
+    [SerializeField] private List<TextMeshProUGUI> storageText;
+    [SerializeField] private List <string> orderIngredients;
+    public List<GameObject> burger;
+
+    [SerializeField] private IngredientManager ingredientManager;
+
+    [SerializeField] private GameObject workStation;
+    [SerializeField] private GameObject breadObject;
+    [SerializeField] private GameObject prepPlaceObj;
+    private GameObject CurrentIngredient;
 
 
     void Start()
-    {        
-        // hoeveelheidBrood = Hoeveel brood de speler heeft toegevoegd van supply
-        for (int i = 0; i < voorraadI.Count; i++)
+    {
+        if (StorageIngridientsCheck())
         {
-            voorraadTexts[i].text = voorraadI[i].ToString();
+            // hoeveelheidBrood = Hoeveel brood de speler heeft toegevoegd van supply
+            for (int i = 0; i < ingredientManager.ingredients.Count; i++)
+            {
+
+                storageText[i].text = storage[i].ToString();
+            }
+
+            handEmpty = true;
         }
-        
-        handEmpty = true;
     }
 
+    public bool StorageIngridientsCheck()
+    {
+        if (ingredientManager.GetAmount("Burger Bun") > 1) 
+        { 
+
+            return true;
+        }
+        return false;
+    }
 
     public void AddToBurger()
     {
         if (!handEmpty)
         {
-            if (ingedientanmount == 0)
+            if (ingedientAmount == 0)
             {
-                GameObject ingredient = Instantiate(currentIngredient, new Vector2(prepPlaceObj.transform.position.x, prepPlaceObj.transform.position.y - 200), Quaternion.identity);
+                GameObject ingredient = Instantiate(CurrentIngredient, new Vector2(prepPlaceObj.transform.position.x, prepPlaceObj.transform.position.y - 200), Quaternion.identity);
                 burger.Add(ingredient);
             }
-            Destroy(currentIngredient);
+            Destroy(CurrentIngredient);
             handEmpty = true;
-            ingedientanmount++;
+            ingedientAmount++;
         }
     }
 
     public void TempButton()
     {
-        
-    }
-
-    public void TempButton2()
-    {
         //check oger
         bool goodOrder = true;
         for (int i = 0; i < burger.Count; i++)
         {
-            if (burger[i].gameObject.name != orgerIngredients[i])
+            if (burger[i].gameObject.name != orderIngredients[i])
             {
                 print("roblox oof");
                 goodOrder = false;
@@ -86,10 +98,10 @@ public class BurgerAssambleManager : MonoBehaviour
         int ingredientI = ingredientID;
         // ingredient I word bepaald wanneer er op de bak met ingredienten word gedrukt
         // int ingredientI = ingredientDieGepaktWilWordenID
-        if (voorraadI[ingredientI] > 0)
+        if (storage[ingredientI] > 0)
         {
-            voorraadI[ingredientI]--;
-            voorraadTexts[ingredientI].text = voorraadI[ingredientI].ToString();
+            storage[ingredientI]--;
+            storageText[ingredientI].text = storage[ingredientI].ToString();
         }
         else
         {
@@ -104,6 +116,6 @@ public class BurgerAssambleManager : MonoBehaviour
             Destroy(burger[i]);
         }
         burger.Clear();
-        ingedientanmount = 0;
+        ingedientAmount = 0;
     }
 }

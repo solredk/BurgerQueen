@@ -3,6 +3,13 @@ using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class Glass : MonoBehaviour
 {
+    public enum container
+    {
+        Drink,
+        IceCreamCup,
+        IceCreamCone
+    }
+    public container contaner;
     public bool Full = false;
     public GameObject Drink;
     public GameObject place;
@@ -14,13 +21,15 @@ public class Glass : MonoBehaviour
         {
             if (!Full)
             {
-                transform.position = place.transform.position + new Vector3(0, 0.25f, 0);
-                gameObject.layer = filling.value-1;
+                transform.position = place.transform.position + new Vector3(0, 0.15f, 0);
+                gameObject.layer = filling.value;
+                GetComponent<Rigidbody>().isKinematic = true;
             }
             else
             {
-                gameObject.layer = filled.value -1;
+                gameObject.layer = filled.value;
                 place = null;
+                GetComponent<Rigidbody>().isKinematic = false;
             }
         }
     }

@@ -12,6 +12,8 @@ public class Ingredient : ScriptableObject
     public string Name;
     public string Description;
 
+    public int ID;
+
     public GameObject Prefab;
     public StorageType storageType;
 

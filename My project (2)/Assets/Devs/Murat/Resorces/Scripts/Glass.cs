@@ -21,7 +21,15 @@ public class Glass : MonoBehaviour
         {
             if (!Full)
             {
-                transform.position = place.transform.position + new Vector3(0, 0.15f, 0);
+                if (contaner== container.IceCreamCup)
+                {
+                    transform.position = place.transform.position + new Vector3(0, 0, 0);
+                }
+                else
+                {
+                    transform.position = place.transform.position + new Vector3(0, 0, 0);
+                }
+                
                 gameObject.layer = filling.value;
                 GetComponent<Rigidbody>().isKinematic = true;
             }

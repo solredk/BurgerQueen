@@ -43,27 +43,73 @@ public class DrinkMachine : MonoBehaviour
                 drink = hit.transform.gameObject.GetComponent<Glass>();
                 if (on)
                 {
-                    Math();
-                    drink.Drink.GetComponent<MeshRenderer>().material = ColorDrink[chosenColor];
+                    float sizeX = 0;
+                    float sizeZ = 0;
                     switch (drink.contaner)
                     {
                         case Glass.container.Drink:
-                            poorDrink.SetActive(true);
-                            poorDrink.GetComponent<MeshRenderer>().material = ColorDrink[chosenColor];
+                            if (chosenColor > 2)
+                            {
+                                Debug.Log("falty"+chosenColor);
+                                on = false;
+                            }
+                            else
+                            {
+                                poorDrink.SetActive(true);
+                                poorDrink.GetComponent<MeshRenderer>().material = ColorDrink[chosenColor];
+                                drink.Drink.GetComponent<MeshRenderer>().material = ColorDrink[chosenColor];
+                                Size = 0.25f;
+                                hight = 0.15f;
+                                timer = 20;
+                                sizeX = 0;
+                                sizeZ = 0;
+                            }
                             break;
                         case Glass.container.IceCreamCup:
+                            if (chosenColor!= 3)
+                            {
+                                on = false;
+                            }
+                            else
+                            {
+                                poorDrink.SetActive(true);
+                                poorDrink.GetComponent<MeshRenderer>().material = ColorDrink[chosenColor];
+                                drink.Drink.GetComponent<MeshRenderer>().material = ColorDrink[chosenColor];
+                                Size = 0.06f;
+                                hight = 0.05f;
+                                timer = 20;
+                                sizeX = 0;
+                                sizeZ = 0;
+                            }
+
                             break;
                         case Glass.container.IceCreamCone:
+                            if (chosenColor != 3)
+                            {
+                                on = false;
+                            }
+                            else
+                            {
+                                poorDrink.SetActive(true);
+                                poorDrink.GetComponent<MeshRenderer>().material = ColorDrink[chosenColor];
+                                drink.Drink.GetComponent<MeshRenderer>().material = ColorDrink[chosenColor];
+                                Size = 0.026f;
+                                sizeX = 0.026f;
+                                sizeZ = 0.026f;
+                                hight = 0.085f;
+                                timer = 20;
+                            }
                             break;
+                            default: break;
                     }
-                    if (!drink.Full && drink.place != null)
+                    if (drink.Drink.transform.localScale.y <= Size && !drink.Full && drink.place != null && on) 
                     {
-                        drink.Drink.transform.localScale = Vector3.MoveTowards(drink.Drink.transform.localScale, drink.Drink.transform.localScale + new Vector3(0, hight, 0), timer);
-                        drink.Drink.transform.position = Vector3.MoveTowards(drink.Drink.transform.position, drink.Drink.transform.position + new Vector3(0, hight, 0), timer);
+                        drink.Drink.transform.localScale = Vector3.MoveTowards(drink.Drink.transform.localScale, drink.Drink.transform.localScale + new Vector3(sizeX * Time.deltaTime, Size*Time.deltaTime, sizeZ * Time.deltaTime), timer);
+                        drink.Drink.transform.position = Vector3.MoveTowards(drink.Drink.transform.position, drink.Drink.transform.position + new Vector3(0, hight * Time.deltaTime, 0), timer);
 
                         Debug.Log("filling");
                     }
-                    else if (drink.Drink.transform.localScale.y >= 0.25f)
+                    else if (drink.Drink.transform.localScale.y >= Size && on)
                     {
                         drink.Full = true;
                         on = false;
@@ -72,23 +118,6 @@ public class DrinkMachine : MonoBehaviour
                     }
                 }
             }
-        }
-    }
-    void Math()
-    {
-        switch (drink.contaner)
-        {
-            case Glass.container.Drink: 
-                Size = 0.25f;
-                hight = 0.15f;
-                timer = 2;
-                break;
-            case Glass.container.IceCreamCup:
-                Size = 0.06f;
-                hight = 0.1f;
-                break;
-            case Glass.container.IceCreamCone: 
-                break;
         }
     }
 

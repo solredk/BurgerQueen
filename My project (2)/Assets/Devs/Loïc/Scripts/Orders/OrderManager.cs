@@ -75,9 +75,16 @@ public class OrderManager : MonoBehaviour
             else
             {
                 print("I ASKED FOR NO PICKLES");
+                WrongOrder();
+
             }
         }
     
+    }
+
+    private void WrongOrder() // wanneer een foute order ingeleverd word
+    {
+        
     }
 
     public void OrdersTab()

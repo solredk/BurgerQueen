@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -15,8 +16,9 @@ public class BurgerAssambleManager : MonoBehaviour
     [SerializeField] private List<TextMeshProUGUI> storageText;
     [SerializeField] private List <string> orderIngredients;
     public List<GameObject> burger;
-    
-    
+
+    [SerializeField] private IngredientManager ingredientManager;
+
     [SerializeField] private GameObject workStation;
     [SerializeField] private GameObject breadObject;
     [SerializeField] private GameObject prepPlaceObj;
@@ -24,16 +26,29 @@ public class BurgerAssambleManager : MonoBehaviour
 
 
     void Start()
-    {        
-        // hoeveelheidBrood = Hoeveel brood de speler heeft toegevoegd van supply
-        for (int i = 0; i < storage.Count; i++)
+    {
+        if (StorageIngridientsCheck())
         {
-            storageText[i].text = storage[i].ToString();
+            // hoeveelheidBrood = Hoeveel brood de speler heeft toegevoegd van supply
+            for (int i = 0; i < ingredientManager.ingredients.Count; i++)
+            {
+
+                storageText[i].text = storage[i].ToString();
+            }
+
+            handEmpty = true;
         }
-        
-        handEmpty = true;
     }
 
+    public bool StorageIngridientsCheck()
+    {
+        if (ingredientManager.GetAmount("Burger Bun") > 1) 
+        { 
+
+            return true;
+        }
+        return false;
+    }
 
     public void AddToBurger()
     {

@@ -11,7 +11,9 @@ public class Table : MonoBehaviour
 {
     [SerializeField] private float CleaningProgress = 0;
 
-    private float dirtyTimer;
+    private float dirtyingCounter;
+
+    public bool cleaning;
 
     public TableState CurrentState = TableState.Dirty;
 
@@ -20,9 +22,15 @@ public class Table : MonoBehaviour
     [SerializeField] private Material messyMaterial;
     [SerializeField] private Material cleanMaterial;
 
+    private Renderer renderer;
+
+    private void Start()
+    {
+        renderer = GetComponent<Renderer>();    
+    }
+
     private void Update()
     {
-        Renderer renderer = GetComponent<Renderer>();
         switch (CurrentState)
         {
             case TableState.Dirty:
@@ -35,12 +43,17 @@ public class Table : MonoBehaviour
                 renderer.material = cleanMaterial;
                 break;
         }
-        //DirtyProgress();
+        DirtyProgress();
     }
 
-    private void DirtyProgress()
+    public void DirtyProgress()
     {
-        if (CurrentState != TableState.Dirty && dirtyTimer <= 0)
+        dirtyingCounter += Time.deltaTime;
+        if (dirtyingCounter >= 20f)
+        {
+            CleaningProgress = 0f;
+        }
+        /*if (CurrentState != TableState.Dirty && dirtyTimer <= 0)
         {
             dirtyTimer = Random.Range(30f, 60f);
         }
@@ -63,13 +76,12 @@ public class Table : MonoBehaviour
                 CurrentState = TableState.Dirty;
                 dirtyTimer = 0f;
             }
-        }
+        }*/
     }
 
     public void CleanTable(float cleaningAmount)
     {
         CleaningProgress += cleaningAmount;
-
         if (CleaningProgress >= 100)
         {
             CurrentState = TableState.Clean;
@@ -78,5 +90,6 @@ public class Table : MonoBehaviour
 
         else if (CleaningProgress >= 50)
             CurrentState = TableState.Messy;
+        cleaning = false; ;
     }
 }

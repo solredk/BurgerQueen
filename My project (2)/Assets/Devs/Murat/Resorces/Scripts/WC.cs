@@ -70,7 +70,7 @@ public class WC : MonoBehaviour
 
 
     }
-    IEnumerator Flushing()
+    private IEnumerator Flushing()
     {
         flushing = true;
         GameObject pivit = flushbutton.transform.parent.gameObject;

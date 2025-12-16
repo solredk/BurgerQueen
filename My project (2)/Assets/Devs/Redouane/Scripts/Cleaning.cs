@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +7,7 @@ public class Cleaning : MonoBehaviour
     [SerializeField] private bool isCleaning;
 
     [SerializeField] private Camera cam;
+    [SerializeField] private float counter;
 
     private void FixedUpdate()
     {

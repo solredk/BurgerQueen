@@ -21,7 +21,7 @@ public class OrderManager : MonoBehaviour
     [SerializeField] private List<int> burger;
     [SerializeField] private List<int> frituur;
     [SerializeField] private List<int> drinks;
-
+    public bool orderGivePoints = false;
     private bool closed = true;
 
 
@@ -84,7 +84,7 @@ public class OrderManager : MonoBehaviour
 
     private void WrongOrder() // wanneer een foute order ingeleverd word
     {
-        
+        orderGivePoints = true; //public bool stuurt door naar een ander script
     }
 
     public void OrdersTab()

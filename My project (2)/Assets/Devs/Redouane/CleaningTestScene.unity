@@ -364,7 +364,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e45d8a68a82eb3c43a805bb46e9b9b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IngredientManager
-  ingredients: []
+  ingredients:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &1079696653
 Transform:
   m_ObjectHideFlags: 0
@@ -507,6 +510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Table
   CleaningProgress: 0
+  cleaning: 0
   CurrentState: 2
   dirtyMaterial: {fileID: 2100000, guid: cc41b9ed21172d745a3bfcc0d5c11db7, type: 2}
   messyMaterial: {fileID: 2100000, guid: b0ddae8988664024d805eca79bee7b3d, type: 2}

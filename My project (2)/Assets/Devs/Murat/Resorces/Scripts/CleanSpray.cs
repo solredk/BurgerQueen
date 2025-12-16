@@ -34,9 +34,9 @@ public class CleanSpray : MonoBehaviour
             {
                 if (transform.position.y> Wc.transform.position.y+0.3f&& !inPosition)
                 {
-                    Debug.Log(transform.rotation.z);
-                    transform.rotation = Quaternion.RotateTowards(transform.rotation, new Quaternion(transform.rotation.x, transform.rotation.y, transform.rotation.z + -1 * Time.deltaTime, transform.rotation.w),1);
-                    if (transform.rotation.z > 100)
+                    Debug.Log(transform.localRotation.z);
+                    transform.localRotation = Quaternion.RotateTowards(transform.localRotation, new Quaternion(transform.localRotation.x, transform.localRotation.y, transform.localRotation.z + -1 * Time.deltaTime, transform.localRotation.w),1);
+                    if (transform.localRotation.z > 100)
                     {
                         Debug.Log("trou");
                         inPosition = true;
@@ -44,8 +44,8 @@ public class CleanSpray : MonoBehaviour
                 }
                 else if(transform.position.y < Wc.transform.position.y && inPosition)
                 {
-                    transform.rotation = Quaternion.RotateTowards(transform.rotation, new Quaternion(transform.rotation.x, transform.rotation.y, transform.rotation.z + 1 * Time.deltaTime, transform.rotation.w), 1);
-                    if(transform.rotation.z < 5&& transform.rotation.z > -5)
+                    transform.localRotation = Quaternion.RotateTowards(transform.localRotation, new Quaternion(transform.localRotation.x, transform.localRotation.y, transform.localRotation.z + 1 * Time.deltaTime, transform.rotation.w), 1);
+                    if(transform.rotation.z < 5&& transform.localRotation.z > -5)
                     {
                         inPosition = false;
                     }
@@ -55,7 +55,7 @@ public class CleanSpray : MonoBehaviour
         }
         else
         {
-            transform.rotation = Quaternion.identity;
+            transform.localRotation = Quaternion.identity;
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         }
         
@@ -63,7 +63,7 @@ public class CleanSpray : MonoBehaviour
     IEnumerator ReversPosition()
     {
         inPosition = false;
-        while (transform.rotation.z >= 0)
+        while (transform.localRotation.z >= 0)
         {
             transform.Rotate(0, 0, -1);
             yield return new WaitForSeconds(0.1f);

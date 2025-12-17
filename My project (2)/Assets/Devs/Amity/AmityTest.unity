@@ -542,7 +542,7 @@ RectTransform:
   m_GameObject: {fileID: 170687206}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1385367875}
@@ -553,7 +553,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 750, y: 370}
+  m_AnchoredPosition: {x: 300, y: 130}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &170687208
@@ -599,6 +599,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5827792665480336469, guid: f2674a018e552474b8ab37fc2ce06d39, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2491283403098436782, guid: f2674a018e552474b8ab37fc2ce06d39, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.7687652
@@ -1266,7 +1270,7 @@ RectTransform:
   m_GameObject: {fileID: 515011514}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1818493394}
@@ -1275,7 +1279,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 750, y: 370}
+  m_AnchoredPosition: {x: 300, y: 130}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &515011516
@@ -3037,11 +3041,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2322366356614072114, guid: 5122fb00c27b39b4686bd89894f350b9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.08
+      value: -3.38
       objectReference: {fileID: 0}
     - target: {fileID: 2322366356614072114, guid: 5122fb00c27b39b4686bd89894f350b9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.47
+      value: 1.37
       objectReference: {fileID: 0}
     - target: {fileID: 2322366356614072114, guid: 5122fb00c27b39b4686bd89894f350b9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3421,11 +3425,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63d4a80dc2a7a3c458aefe3726463a0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Customer
-  happyMaterial: {fileID: 0}
-  neutralMaterial: {fileID: 0}
-  angryMaterial: {fileID: 0}
-  hasOrdered: 0
   currentMood: 0
+  hasOrdered: 0
+  hasBeenServed: 0
 --- !u!1 &1362827460
 GameObject:
   m_ObjectHideFlags: 0
@@ -3610,7 +3612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -3858,7 +3860,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -4077,7 +4079,7 @@ RectTransform:
   m_GameObject: {fileID: 1707656883}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2054198801}
@@ -4085,7 +4087,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 750, y: 370}
+  m_AnchoredPosition: {x: 300, y: 130}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1707656885
@@ -4547,6 +4549,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5827792665480336469, guid: f2674a018e552474b8ab37fc2ce06d39, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2491283403098436782, guid: f2674a018e552474b8ab37fc2ce06d39, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.7708657
@@ -4644,7 +4650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}

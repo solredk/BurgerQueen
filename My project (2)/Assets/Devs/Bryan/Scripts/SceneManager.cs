@@ -19,4 +19,9 @@ public class SceneManager : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("EndScene");
     }
+
+    public void endGame()
+    {
+        Application.Quit();
+    }
 }

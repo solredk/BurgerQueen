@@ -27,6 +27,7 @@ public class OrderManager : MonoBehaviour
     [SerializeField] private List<int> drinks;
 
     public bool orderGivePoints = false;
+    public bool orderGiveReverse = false;
     private bool closed = true;
     private bool spotfilled;
 
@@ -93,6 +94,7 @@ public class OrderManager : MonoBehaviour
             if (allOrders[orderNumberI].Order[i] == thisOrder[i])
             {
                 print("nice soup");
+                orderGiveReverse = true;
             }
             else
             {

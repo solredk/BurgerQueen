@@ -14,6 +14,7 @@ public class ScoreManager1 : MonoBehaviour
     public int score;
     public Customer currentCustomerScript;
     [SerializeField]
+    public OrderManager orderPoints;
     private float scoreTimer;
     public bool stageEnd = false;
     public TextMeshProUGUI scoreText;
@@ -40,6 +41,14 @@ public class ScoreManager1 : MonoBehaviour
         }
 
         scoreText.text = "Score:" + score;
+
+        if (orderPoints.orderGivePoints)
+        {
+            StartCoroutine(pointsGoDown());
+        }else if (orderPoints.orderGiveReverse)
+        {
+            StartCoroutine(pointsGoUp());
+        }
       
 
     }
@@ -64,6 +73,20 @@ public class ScoreManager1 : MonoBehaviour
         }
 
         stageEnd = false;
+    }
+
+    IEnumerator pointsGoUp()
+    {
+        score += 10;
+        yield return new WaitForEndOfFrame();
+        orderPoints.orderGiveReverse = false;
+    }
+
+    IEnumerator pointsGoDown()
+    {
+        score -= 10;
+        yield return  new WaitForEndOfFrame();
+        orderPoints.orderGivePoints = false;
     }
 
 

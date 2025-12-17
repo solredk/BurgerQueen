@@ -42,7 +42,7 @@ public class ScoreManager1 : MonoBehaviour
 
         scoreText.text = "Score:" + score;
 
-<<<<<<< Updated upstream
+
         if (orderPoints.orderGivePoints)
         {
             StartCoroutine(pointsGoDown());
@@ -51,12 +51,12 @@ public class ScoreManager1 : MonoBehaviour
             StartCoroutine(pointsGoUp());
         }
       
-=======
+
         if (stageEnd)
         {
             timeBonus();
         }
->>>>>>> Stashed changes
+
 
     }
 

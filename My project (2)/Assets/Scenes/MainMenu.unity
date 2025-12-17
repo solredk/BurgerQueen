@@ -323,7 +323,7 @@ GameObject:
   - component: {fileID: 1042226695}
   - component: {fileID: 1042226694}
   m_Layer: 5
-  m_Name: Main menu
+  m_Name: Main menu TEMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

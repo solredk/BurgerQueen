@@ -6,6 +6,7 @@ public class PlaatTrigger : MonoBehaviour
     private BurgerAssambleManager m_AssambleManager;
     public GameObject addedIngredient;
     [SerializeField] float ingredientDistance;
+    private bool ingredientPlaced;
 
     private void Start()
     {

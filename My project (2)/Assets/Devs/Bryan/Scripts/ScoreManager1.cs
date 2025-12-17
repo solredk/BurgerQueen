@@ -21,7 +21,8 @@ public class ScoreManager1 : MonoBehaviour
 
     private void Start()
     {
-        satisfactionSlider = FindFirstObjectByType<Slider>();
+        //satisfactionSlider = FindFirstObjectByType<Slider>();
+        orderPoints = FindFirstObjectByType<OrderManager>();
 
     }
 
@@ -31,14 +32,14 @@ public class ScoreManager1 : MonoBehaviour
     private void Update()
     {
         scoreTimer += Time.deltaTime;
-        currentCustomerScript = FindFirstObjectByType<Customer>();
+        //currentCustomerScript = FindFirstObjectByType<Customer>();
 
-        satisfactionSlider.value = customerSatisfaction;
+        //satisfactionSlider.value = customerSatisfaction;
 
-        if (takingToLong)
-        {
-            StartCoroutine(TookToLong());
-        }
+        //if (takingToLong)
+        //{
+        //    StartCoroutine(TookToLong());
+        //}
 
         scoreText.text = "Score:" + score;
 

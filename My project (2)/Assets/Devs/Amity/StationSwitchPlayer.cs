@@ -29,23 +29,35 @@ public class StationSwitchPlayer : MonoBehaviour
     {
         if (transform.position.x == agent.destination.x && transform.position.z == agent.destination.z)
         {
-            atStation = true;
-            moving = true;
             if (currentStation != null)
             {
-                transform.rotation = Quaternion.Slerp(transform.rotation, currentStation.rotation, 0.04f);
+                if (currentStation.gameObject.tag == "Respawn")
+            {
                 agent.isStopped = true;
-                if (currentStation.gameObject.tag == "Fries")
-                {
-                    Debug.Log("at frying station");
-                }
-                if(currentStation.gameObject.tag == "Respawn")
-                {
-                    Debug.Log("at burger station");
-                }
-                if(currentStation.gameObject.tag == "Finish")
-                {
-                    Debug.Log("at checkout counter");
+                agent.enabled = false;
+                transform.position = currentStation.GetComponent<TeleportPoints>().endPoint.transform.position;
+                transform.rotation = currentStation.GetComponent<TeleportPoints>().endPoint.transform.rotation;
+                agent.enabled = true;
+                currentStation = null;
+            }
+            else
+            {
+                    atStation = true;
+                    moving = true;
+                    transform.rotation = Quaternion.Slerp(transform.rotation, currentStation.rotation, 0.04f);
+                    agent.isStopped = true;
+                    if (currentStation.gameObject.tag == "Fries")
+                    {
+                        Debug.Log("at frying station");
+                    }
+                    if (currentStation.gameObject.tag == "Grill")
+                    {
+                        Debug.Log("at burger station");
+                    }
+                    if (currentStation.gameObject.tag == "Finish")
+                    {
+                        Debug.Log("at checkout counter");
+                    }
                 }
             }
         }

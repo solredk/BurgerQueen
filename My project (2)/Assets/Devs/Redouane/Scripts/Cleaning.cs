@@ -9,12 +9,6 @@ public class Cleaning : MonoBehaviour
     [SerializeField] private Camera cam;
     [SerializeField] private float counter;
 
-    private void FixedUpdate()
-    {
-        if (isCleaning)
-            tableToClean.CleanTable(0.1f);
-    }
-
     public void DoCleaning(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -31,14 +25,14 @@ public class Cleaning : MonoBehaviour
                     {
                         tableToClean = table;
                         if (table == tableToClean)
-                            isCleaning = true;
+                            tableToClean.isCleaning = true;
                     }
                 }
             }
         }
 
         else if (context.canceled)
-            isCleaning = false;
+            tableToClean.isCleaning = false;
     }
 
 }

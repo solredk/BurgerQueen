@@ -8,48 +8,32 @@ public enum CustomerMood
 }
 public class Customer : MonoBehaviour
 {
-    private float patienceCounter = 0f;
     private int patience = 1000;
-
-    [SerializeField] private Material happyMaterial;
-    [SerializeField] private Material neutralMaterial;
-    [SerializeField] private Material angryMaterial;
-
-    private bool hasBeenServed = false;
-    public bool hasOrdered = false;
+    private float patienceCounter = 0f;
 
     public CustomerMood currentMood;
+    public bool hasOrdered = false;
+    public bool hasBeenServed = false;
 
     private void Start()
     {
         StartCoroutine(WaitToOrder());
     }
 
-    private void Update()
-    {
-        if (currentMood == CustomerMood.Happy)
-        {
-            GetComponent<Renderer>().material = happyMaterial;
-        }
-        else if (currentMood == CustomerMood.Neutral)
-        {
-            GetComponent<Renderer>().material = neutralMaterial;
-        }
-        else if (currentMood == CustomerMood.Angry)
-        {
-            GetComponent<Renderer>().material = angryMaterial;
-        }
-    }
     private void UpdateMood()
     {
         if (patience >= 700)
+        {
             currentMood = CustomerMood.Happy;
-
+        }
         else if (patience < 700 && patience >= 300)
+        {
             currentMood = CustomerMood.Neutral;
-
+        }
         else if (patience < 300)
+        {
             currentMood = CustomerMood.Angry;
+        }
     }
 
     private void Decreasepatience(int amount)
@@ -58,28 +42,14 @@ public class Customer : MonoBehaviour
         UpdateMood();
     }
 
-    public void Ordercheck(int quality)
-    {
-        hasBeenServed = true;
-
-        if (quality == 100)
-            patience += 100;
-
-        else if (quality > 50 && quality < 100)
-            patience += 50;
-
-        else if (quality < 50)
-            patience = 0;
-    }
-
     private IEnumerator WaitToOrder()
     {
         while (hasOrdered == false)
         {
             patienceCounter += Time.deltaTime;
-            if (patienceCounter >= 1)
+            if (patienceCounter >= 30)
             {
-                Decreasepatience(50);
+                Decreasepatience(100);
                 patienceCounter = 0f;
             }
             yield return null;
@@ -93,14 +63,14 @@ public class Customer : MonoBehaviour
         while (hasBeenServed == false) 
         {
             patienceCounter += Time.deltaTime;
-            if (patienceCounter >= 10)
+            if (patienceCounter >= 30)
             {
-                Decreasepatience(10);
+                Decreasepatience(100);
                 patienceCounter = 0f;
             }
             yield return null;
         }
-        yield break;
+            yield break;
     }
 
 }

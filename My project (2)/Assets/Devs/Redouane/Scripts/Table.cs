@@ -44,22 +44,30 @@ public class Table : MonoBehaviour
                 break;
         }
         CleaningStateCheck();
+
         if (isCleaning)
         {
             CleanTable(0.1f);
         }
 
-        if (CleaningProgress >= 1 && !isCleaning)
-        DirtyProgress();
+        if (CleaningProgress > 0 && !isCleaning)
+            DirtyProgress();
     }
 
     public void DirtyProgress()
     {
-        dirtyingCounter += Time.deltaTime;
+        if (dirtyingCounter <= 20f)
+            dirtyingCounter += Time.deltaTime;
+
         if (dirtyingCounter >= 20f)
         {
-            dirtyingCounter = 0f;
-            CleaningProgress = 0f;
+            dirtyingCounter = 20f;
+            CleaningProgress -= 0.1f;
+            if (CleaningProgress <= 0)
+            {
+                CleaningProgress = 0;
+                dirtyingCounter = 0f;
+            }
         }
     }
 

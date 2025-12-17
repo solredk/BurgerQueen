@@ -18,10 +18,8 @@ public class TeleportPoints : MonoBehaviour
         if(other.gameObject ==  player)
         {
             int i = 0;
-            Debug.Log("collided");
             foreach(GameObject map in maps)
             {
-                Debug.Log(i);
                 if( i != m_Map)
                 {
                     maps[i].SetActive(false);

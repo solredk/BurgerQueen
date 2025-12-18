@@ -34,8 +34,8 @@ public class CleanSpray : MonoBehaviour
             {
                 if (transform.position.y> Wc.transform.position.y+0.3f&& !inPosition)
                 {
-                    Debug.Log(transform.localRotation.z);
-                    transform.localRotation = Quaternion.RotateTowards(transform.localRotation, new Quaternion(transform.localRotation.x, transform.localRotation.y, transform.localRotation.z + -1 * Time.deltaTime, transform.localRotation.w),1);
+                    Debug.Log(transform.rotation.z);
+                    transform.localRotation = Quaternion.RotateTowards(transform.localRotation, new Quaternion(transform.localRotation.x, transform.localRotation.y, transform.localRotation.z + -1 * Time.deltaTime, transform.localRotation.w),360);
                     if (transform.localRotation.z > 100)
                     {
                         Debug.Log("trou");
@@ -44,7 +44,7 @@ public class CleanSpray : MonoBehaviour
                 }
                 else if(transform.position.y < Wc.transform.position.y && inPosition)
                 {
-                    transform.localRotation = Quaternion.RotateTowards(transform.localRotation, new Quaternion(transform.localRotation.x, transform.localRotation.y, transform.localRotation.z + 1 * Time.deltaTime, transform.rotation.w), 1);
+                    transform.localRotation = Quaternion.RotateTowards(transform.localRotation, new Quaternion(transform.localRotation.x, transform.localRotation.y, transform.localRotation.z + 1 * Time.deltaTime, transform.rotation.w), 360);
                     if(transform.rotation.z < 5&& transform.localRotation.z > -5)
                     {
                         inPosition = false;

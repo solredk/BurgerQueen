@@ -120,7 +120,7 @@ public class NewOilCan : MonoBehaviour
     private IEnumerator DelayedSceneChange()
     {
         yield return new WaitForSeconds(sceneChangeDelay);
-        SceneManager.LoadScene(0);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
     private void OnSequenceComplete()

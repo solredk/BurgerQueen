@@ -6,8 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/CoreBuild/MainGame.unity
-    guid: 1e320718e2b5cb64b8381dbbf8bdcc3b
+    path: Assets/Scenes/MainMenu.unity
+    guid: 7a28a3ab07982f4478a7371c0293336e
+  - enabled: 1
+    path: Assets/Scenes/CoreBuild/Settings.unity
+    guid: 25a59352094629a4a840d69c4554a398
+  - enabled: 1
+    path: Assets/Scenes/CoreBuild/Credits.unity
+    guid: bbbb0438c0977694898d69c580ef5300
+  - enabled: 1
+    path: Assets/Scenes/CoreBuild/Trainings.unity
+    guid: 5bad0355a12260b4c9ddc7eacb191c44
+  - enabled: 1
+    path: Assets/Scenes/AlphaBuilt/MainGame.unity
+    guid: a4b92d2171f64c04aa3d02b10b60c4ae
   - enabled: 1
     path: Assets/Scenes/ManasseTestScene.unity
     guid: babf612be2c170d4995c069dd1f4eafb

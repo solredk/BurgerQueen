@@ -9,6 +9,7 @@ TagManager:
   - Grabable
   - Meat
   - Snap
+  - trashBag
   layers:
   - Default
   - TransparentFX

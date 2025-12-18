@@ -22,7 +22,7 @@ public class BurgerAssambleManager : MonoBehaviour
     [SerializeField] private GameObject workStation;
     [SerializeField] private GameObject breadObject;
     [SerializeField] private GameObject prepPlaceObj;
-    private GameObject CurrentIngredient;
+    private GameObject currentIngredient;
 
 
     void Start()
@@ -56,10 +56,10 @@ public class BurgerAssambleManager : MonoBehaviour
         {
             if (ingedientAmount == 0)
             {
-                GameObject ingredient = Instantiate(CurrentIngredient, new Vector2(prepPlaceObj.transform.position.x, prepPlaceObj.transform.position.y - 200), Quaternion.identity);
+                GameObject ingredient = Instantiate(currentIngredient, new Vector2(prepPlaceObj.transform.position.x, prepPlaceObj.transform.position.y - 200), Quaternion.identity);
                 burger.Add(ingredient);
             }
-            Destroy(CurrentIngredient);
+            Destroy(currentIngredient);
             handEmpty = true;
             ingedientAmount++;
         }

@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,12 +7,7 @@ public class Cleaning : MonoBehaviour
     [SerializeField] private bool isCleaning;
 
     [SerializeField] private Camera cam;
-
-    private void FixedUpdate()
-    {
-        if (isCleaning)
-            tableToClean.CleanTable(0.1f);
-    }
+    [SerializeField] private float counter;
 
     public void DoCleaning(InputAction.CallbackContext context)
     {
@@ -31,14 +25,14 @@ public class Cleaning : MonoBehaviour
                     {
                         tableToClean = table;
                         if (table == tableToClean)
-                            isCleaning = true;
+                            tableToClean.isCleaning = true;
                     }
                 }
             }
         }
 
         else if (context.canceled)
-            isCleaning = false;
+            tableToClean.isCleaning = false;
     }
 
 }

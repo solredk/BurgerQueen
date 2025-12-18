@@ -459,6 +459,7 @@ MonoBehaviour:
   tableToClean: {fileID: 0}
   isCleaning: 0
   cam: {fileID: 663284166}
+  counter: 0
 --- !u!4 &1163800029
 Transform:
   m_ObjectHideFlags: 0
@@ -507,6 +508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Table
   CleaningProgress: 0
+  isCleaning: 0
   CurrentState: 2
   dirtyMaterial: {fileID: 2100000, guid: cc41b9ed21172d745a3bfcc0d5c11db7, type: 2}
   messyMaterial: {fileID: 2100000, guid: b0ddae8988664024d805eca79bee7b3d, type: 2}

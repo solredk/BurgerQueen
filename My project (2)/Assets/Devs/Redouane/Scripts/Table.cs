@@ -13,7 +13,7 @@ public class Table : MonoBehaviour
 
     private float dirtyingCounter;
 
-    public bool cleaning;
+    public bool isCleaning;
 
     public TableState CurrentState = TableState.Dirty;
 
@@ -43,45 +43,43 @@ public class Table : MonoBehaviour
                 renderer.material = cleanMaterial;
                 break;
         }
-        DirtyProgress();
+        CleaningStateCheck();
+
+        if (isCleaning)
+        {
+            CleanTable(0.1f);
+        }
+
+        if (CleaningProgress > 0 && !isCleaning)
+            DirtyProgress();
     }
 
     public void DirtyProgress()
     {
-        dirtyingCounter += Time.deltaTime;
+        if (dirtyingCounter <= 20f)
+            dirtyingCounter += Time.deltaTime;
+
         if (dirtyingCounter >= 20f)
         {
-            CleaningProgress = 0f;
-        }
-        /*if (CurrentState != TableState.Dirty && dirtyTimer <= 0)
-        {
-            dirtyTimer = Random.Range(30f, 60f);
-        }
-
-        if (TableState.Clean == CurrentState)
-        {
-            dirtyTimer -= Time.deltaTime;
-            if (dirtyTimer >= 10f)
+            dirtyingCounter = 20f;
+            CleaningProgress -= 0.1f;
+            if (CleaningProgress <= 0)
             {
-                CurrentState = TableState.Messy;
-                dirtyTimer = 0f;
+                CleaningProgress = 0;
+                dirtyingCounter = 0f;
             }
         }
-
-        else if (TableState.Messy == CurrentState)
-        {
-            dirtyTimer += Time.deltaTime;
-            if (dirtyTimer >= 10f)
-            {
-                CurrentState = TableState.Dirty;
-                dirtyTimer = 0f;
-            }
-        }*/
     }
 
     public void CleanTable(float cleaningAmount)
     {
         CleaningProgress += cleaningAmount;
+        if (isCleaning)
+            dirtyingCounter = 0f;
+    }
+
+    private void CleaningStateCheck()
+    {
         if (CleaningProgress >= 100)
         {
             CurrentState = TableState.Clean;
@@ -90,6 +88,8 @@ public class Table : MonoBehaviour
 
         else if (CleaningProgress >= 50)
             CurrentState = TableState.Messy;
-        cleaning = false; ;
+
+        else if (CleaningProgress <= 0)
+            CurrentState = TableState.Dirty;
     }
 }

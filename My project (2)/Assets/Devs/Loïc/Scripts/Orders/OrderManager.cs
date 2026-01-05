@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-
 public class OrderManager : MonoBehaviour
 {
     [SerializeField] private GameObject ordersTab;
@@ -25,7 +24,6 @@ public class OrderManager : MonoBehaviour
     public bool orderGiveReverse = false;
     private bool closed = true;
     private bool spotfilled;
-
 
 
     private void Start()
@@ -53,7 +51,7 @@ public class OrderManager : MonoBehaviour
         currentOrder.Add(orderBurger);
         int orderFrituur = UnityEngine.Random.Range(0, frituur.Count);
         currentOrder.Add(orderFrituur);
-        int orderDrink = UnityEngine.Random.Range(0, drinks.Count); ,m /
+        int orderDrink = UnityEngine.Random.Range(0, drinks.Count); 
         currentOrder.Add(orderDrink);
 
         //currentCard.transform.SetParent(ordersTab.transform);

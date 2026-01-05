@@ -23,7 +23,9 @@ public class BurgerAssambleManager : MonoBehaviour
     [SerializeField] private GameObject breadObject;
     [SerializeField] private GameObject prepPlaceObj;
     private GameObject currentIngredient;
-
+    
+    [SerializeField] private GameObject pauseScreen;
+    private bool paused;
 
     void Start()
     {
@@ -38,6 +40,23 @@ public class BurgerAssambleManager : MonoBehaviour
 
             handEmpty = true;
         }
+    }
+
+    public void Pause()
+    {
+        if (paused == false)
+        {
+            pauseScreen.SetActive(true);
+            paused = true;
+            Time.timeScale = 0f;
+           
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            pauseScreen.SetActive(false);
+            paused = false;
+        }   
     }
 
     public bool StorageIngridientsCheck()

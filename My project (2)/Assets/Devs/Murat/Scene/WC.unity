@@ -178,7 +178,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a58d77b1a7b9e9742924122a39bccaa0, type: 2}
+  - {fileID: 2100000, guid: 6e26e2a2946ca884886a1c6327a974c7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -241,6 +241,7 @@ GameObject:
   m_Component:
   - component: {fileID: 105750210}
   - component: {fileID: 105750211}
+  - component: {fileID: 105750212}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -284,6 +285,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.4, y: 0.5, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &105750212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105750209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d1b314daaf7a784885ccc409be26b82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WCWater
+  dif: 1
+  progres: 0
 --- !u!1 &157158800
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,11 +311,11 @@ GameObject:
   - component: {fileID: 157158802}
   m_Layer: 6
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: CleanWater
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &157158801
 Transform:
   m_ObjectHideFlags: 0
@@ -597,7 +612,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a0882773b30ecde4b8ee9f4ecdab1e0b, type: 2}
+  - {fileID: 2100000, guid: 165cceafb35c6b04b9108a95f7498f9a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -638,6 +653,7 @@ GameObject:
   m_Component:
   - component: {fileID: 453576606}
   - component: {fileID: 453576607}
+  - component: {fileID: 453576608}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -681,6 +697,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.4, y: 0.5, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &453576608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453576605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d1b314daaf7a784885ccc409be26b82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WCWater
+  dif: 1
+  progres: 0
 --- !u!1 &531000691
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,6 +721,7 @@ GameObject:
   m_Component:
   - component: {fileID: 531000692}
   - component: {fileID: 531000693}
+  - component: {fileID: 531000694}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: Untagged
@@ -734,6 +765,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.4, y: 0.5, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &531000694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531000691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d1b314daaf7a784885ccc409be26b82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WCWater
+  dif: 1
+  progres: 0
 --- !u!1 &554230219
 GameObject:
   m_ObjectHideFlags: 0
@@ -746,6 +791,7 @@ GameObject:
   - component: {fileID: 554230223}
   - component: {fileID: 554230222}
   - component: {fileID: 554230221}
+  - component: {fileID: 554230224}
   m_Layer: 0
   m_Name: Water
   m_TagString: Untagged
@@ -816,7 +862,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 59baad61d6a0d8447a09a4e44b835f9b, type: 2}
+  - {fileID: 2100000, guid: bab37145774dbab4287a121b533a0971, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -847,6 +893,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 554230219}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &554230224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554230219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d1b314daaf7a784885ccc409be26b82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WCWater
+  dif: 0
+  progres: 0
 --- !u!1 &674002205
 GameObject:
   m_ObjectHideFlags: 0
@@ -1000,10 +1060,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WC
   flushbutton: {fileID: 1628829099}
   Twater: {fileID: 554230219}
+  Lid: {fileID: 102305652}
+  Rim: {fileID: 1155122611}
+  durtynessWater:
+  - {fileID: 2100000, guid: 5d10aef7a053ae04f9165c714d4da51c, type: 2}
+  - {fileID: 2100000, guid: bab37145774dbab4287a121b533a0971, type: 2}
+  - {fileID: 2100000, guid: f874d6bd445bc7849ad86bd2ff594cb7, type: 2}
   durtyness:
-  - {fileID: 2100000, guid: e80ed732fcd25dc49acd42f4e979efe7, type: 2}
-  - {fileID: 2100000, guid: 59baad61d6a0d8447a09a4e44b835f9b, type: 2}
-  - {fileID: 2100000, guid: a0882773b30ecde4b8ee9f4ecdab1e0b, type: 2}
+  - {fileID: 2100000, guid: 6e26e2a2946ca884886a1c6327a974c7, type: 2}
+  - {fileID: 2100000, guid: bfd6ff06b703fbb419bc498b4ca7a7c9, type: 2}
+  - {fileID: 2100000, guid: 165cceafb35c6b04b9108a95f7498f9a, type: 2}
+  water:
+  - {fileID: 453576608}
+  - {fileID: 105750212}
+  - {fileID: 531000694}
 --- !u!1 &815798533
 GameObject:
   m_ObjectHideFlags: 0
@@ -5852,11 +5922,11 @@ GameObject:
   - component: {fileID: 871028353}
   m_Layer: 6
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: CleanWC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &871028352
 Transform:
   m_ObjectHideFlags: 0
@@ -6231,7 +6301,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a0882773b30ecde4b8ee9f4ecdab1e0b, type: 2}
+  - {fileID: 2100000, guid: a58d77b1a7b9e9742924122a39bccaa0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6544,7 +6614,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a58d77b1a7b9e9742924122a39bccaa0, type: 2}
+  - {fileID: 2100000, guid: 6e26e2a2946ca884886a1c6327a974c7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

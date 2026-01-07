@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Data.SqlTypes;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
@@ -23,6 +24,10 @@ public class BurgerAssambleManager : MonoBehaviour
     [SerializeField] private GameObject breadObject;
     [SerializeField] private GameObject prepPlaceObj;
     private GameObject currentIngredient;
+
+    [SerializeField] private List<Collider> ingredientBucket;
+
+    [SerializeField] private List<GameObject> ingredients;
     
     [SerializeField] private GameObject pauseScreen;
     private bool paused;
@@ -40,6 +45,10 @@ public class BurgerAssambleManager : MonoBehaviour
 
             handEmpty = true;
         }
+
+        ingredientManager.GiveAmount("Lettuce", 5);
+        storageText[0].text = ingredientManager.GetAmount("Lettuce").ToString();
+        
     }
 
     public void Pause()
@@ -87,44 +96,42 @@ public class BurgerAssambleManager : MonoBehaviour
     public void TempButton()
     {
         //check oger
-        bool goodOrder = true;
-        for (int i = 0; i < burger.Count; i++)
-        {
-            if (burger[i].gameObject.name != orderIngredients[i])
-            {
-                print("roblox oof");
-                goodOrder = false;
-            }
-            else if (goodOrder)
-            {
-                print("that burger is a burger");
-            }
-        }
+        //bool goodOrder = true;
+        //for (int i = 0; i < burger.Count; i++)
+        //{
+        //    if (burger[i].gameObject.name != orderIngredients[i])
+        //    {
+        //        print("roblox oof");
+        //        goodOrder = false;
+        //    }
+        //    else if (goodOrder)
+        //    {
+        //        print("that burger is a burger");
+        //    }
+        //}
+
+        ingredientManager.GiveAmount("Lettuce", 5);
+
+        int lettuceAmount = ingredientManager.GetAmount("Lettuce");
+        print(lettuceAmount);
     }
 
-    //if (ingredientID == 0)
-    //{
-    //    ingredientID = 1;
-    //}
-    //else
-    //{
-    //    ingredientID = 0;
-    //}
-    //print(ingredientID);
-
-    private void VoorraadCheck()
+    public void AddLettuce()
     {
-        int ingredientI = ingredientID;
-        // ingredient I word bepaald wanneer er op de bak met ingredienten word gedrukt
-        // int ingredientI = ingredientDieGepaktWilWordenID
-        if (storage[ingredientI] > 0)
+        int lettuceAmount = ingredientManager.GetAmount("Lettuce");
+        for (int i = 0; i < ingredientBucket.Count; i++)
         {
-            storage[ingredientI]--;
-            storageText[ingredientI].text = storage[ingredientI].ToString();
-        }
-        else
-        {
-            print("geen brood????");
+            bool canEnter = ingredientBucket[i].gameObject.GetComponent<CollisionDetector>().occupied;
+            if (canEnter == false)
+            {
+                if (lettuceAmount > 0)
+                {
+                    Instantiate(ingredients[0], ingredientBucket[i].gameObject.transform.position, Quaternion.identity);
+                    lettuceAmount--;
+                    storageText[0].text = lettuceAmount.ToString();
+                }
+            }
+
         }
     }
 

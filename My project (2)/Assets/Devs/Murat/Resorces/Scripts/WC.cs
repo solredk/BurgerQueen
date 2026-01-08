@@ -35,6 +35,9 @@ public class WC : MonoBehaviour
     public List<Material> durtynessWater; 
     public List<Material> durtyness;
     public List<WCWater> water;
+
+    public GameObject wipe;
+    private float cleanProgres = 0;
     void Start()
     {
         
@@ -142,6 +145,19 @@ public class WC : MonoBehaviour
         }
         Debug.Log("done");
         flushing = false;
+    }
+    private void OnCollisionStay(Collision collision)
+    {
+        if(Spraygame == spraygame.Sprayed)
+        {
+            if (cleanProgres<=3&& wipe==collision.gameObject)
+            {
+                cleanProgres += Time.deltaTime;
+            }else if (cleanProgres>3)
+            {
+                Spraygame = spraygame.clean;
+            }
+        }
     }
 
 }

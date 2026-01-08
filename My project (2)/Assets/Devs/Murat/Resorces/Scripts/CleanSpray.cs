@@ -38,8 +38,7 @@ public class CleanSpray : MonoBehaviour
                     transform.localRotation = Quaternion.Euler(0, 0, rotateZ);
                     if (rotateZ < -180)
                     {
-                        transform.localRotation = Quaternion.Euler(0, 0, -180);
-                        Debug.Log("trou");
+                        rotateZ = -180;
                     }
                 }
                 else if(transform.position.y < Wc.transform.position.y)
@@ -48,7 +47,7 @@ public class CleanSpray : MonoBehaviour
                     transform.localRotation = Quaternion.Euler(0, 0, rotateZ);
                     if (rotateZ < 5&& rotateZ > -5)
                     {
-                        transform.localRotation = Quaternion.Euler(0, 0, 0);
+                        rotateZ = 0;
                     }
                 }
             }

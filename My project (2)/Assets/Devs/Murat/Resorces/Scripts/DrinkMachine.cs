@@ -60,97 +60,75 @@ public class DrinkMachine : MonoBehaviour
                 {
                     float sizeX = 0;
                     float sizeZ = 0;
-                    if (chosenColor == 0)
+                    switch (drink.contaner)
                     {
-                        //Ice
-                    }else
+                        case Glass.container.Drink:
+                            if(chosenColor != 0)
+                            {
+                                poorDrink.SetActive(true);
+                                Size = 0.25f;
+                                hight = 0.15f;
+                                sizeX = 0;
+                                sizeZ = 0;
+                            }
+                            else
+                            {
+                                on = false ;
+                            }
+                            break;
+                        case Glass.container.IceCreamCone:
+                            if (chosenColor == 0)
+                            {
+                                poorDrink.SetActive(true);
+                                Size = 0.026f;
+                                sizeX = 0.026f;
+                                sizeZ = 0.026f;
+                                hight = 0.085f;
+                            }
+                            else
+                            {
+                                on = false;
+                            }
+                            break;
+                        case Glass.container.IceCreamCup:
+                            if (chosenColor == 0)
+                            {
+                                poorDrink.SetActive(true);
+                                Size = 0.06f;
+                                hight = 0.05f;
+                                sizeX = 0;
+                                sizeZ = 0;
+                            }
+                            else
+                            {
+                                on = false;
+                            }
+                            break;
+                        default: break;
+                    }
+                    
+                    poorDrink.GetComponent<MeshRenderer>().material = ColorDrink[chosenColor];
+                    drink.Drink.GetComponent<MeshRenderer>().material = ColorDrink[chosenColor];
+                    timer = 20;
+                    if (drink.Drink.transform.localScale.y <= Size && !drink.Full && drink.place != null && on)
                     {
+                        drink.Drink.transform.localScale = Vector3.MoveTowards(drink.Drink.transform.localScale, drink.Drink.transform.localScale + new Vector3(sizeX * Time.deltaTime, Size * Time.deltaTime, sizeZ * Time.deltaTime), timer);
+                        drink.Drink.transform.position = Vector3.MoveTowards(drink.Drink.transform.position, drink.Drink.transform.position + new Vector3(0, hight * Time.deltaTime, 0), timer);
 
-                        poorDrink.SetActive(true);
-                        poorDrink.GetComponent<MeshRenderer>().material = ColorDrink[chosenColor];
-                        drink.Drink.GetComponent<MeshRenderer>().material = ColorDrink[chosenColor];
-                        Size = 0.25f;
-                        hight = 0.15f;
-                        timer = 20;
-                        sizeX = 0;
-                        sizeZ = 0;
-
-                        if (drink.Drink.transform.localScale.y <= Size && !drink.Full && drink.place != null && on)
-                        {
-                            drink.Drink.transform.localScale = Vector3.MoveTowards(drink.Drink.transform.localScale, drink.Drink.transform.localScale + new Vector3(sizeX * Time.deltaTime, Size * Time.deltaTime, sizeZ * Time.deltaTime), timer);
-                            drink.Drink.transform.position = Vector3.MoveTowards(drink.Drink.transform.position, drink.Drink.transform.position + new Vector3(0, hight * Time.deltaTime, 0), timer);
-
-                            Debug.Log("filling");
-                        }
-                        else if (drink.Drink.transform.localScale.y >= Size && on)
-                        {
-                            drink.Full = true;
-                            on = false;
-                            poorDrink.SetActive(false);
-                            Debug.Log("done");
-                        }
+                        Debug.Log("filling");
+                    }
+                    else if (drink.Drink.transform.localScale.y >= Size && on)
+                    {
+                        drink.Full = true;
+                        on = false;
+                        poorDrink.SetActive(false);
+                        Debug.Log("done");
                     }
                 }
             }
         }
     }
     /*
-                         switch (drink.contaner)
-                    {
-                        case Glass.container.Drink:
-                            if (chosenColor > 2)
-                            {
-                                Debug.Log("falty"+chosenColor);
-                                on = false;
-                            }
-                            else
-                            {
-                                poorDrink.SetActive(true);
-                                poorDrink.GetComponent<MeshRenderer>().material = ColorDrink[chosenColor];
-                                drink.Drink.GetComponent<MeshRenderer>().material = ColorDrink[chosenColor];
-                                Size = 0.25f;
-                                hight = 0.15f;
-                                timer = 20;
-                                sizeX = 0;
-                                sizeZ = 0;
-                            }
-                            break;
-                        case Glass.container.IceCreamCup:
-                            if (chosenColor!= 3)
-                            {
-                                on = false;
-                            }
-                            else
-                            {
-                                poorDrink.SetActive(true);
-                                poorDrink.GetComponent<MeshRenderer>().material = ColorDrink[chosenColor];
-                                drink.Drink.GetComponent<MeshRenderer>().material = ColorDrink[chosenColor];
-                                Size = 0.06f;
-                                hight = 0.05f;
-                                timer = 20;
-                                sizeX = 0;
-                                sizeZ = 0;
-                            }
 
-                            break;
-                        case Glass.container.IceCreamCone:
-                            if (chosenColor != 3)
-                            {
-                                on = false;
-                            }
-                            else
-                            {
-                                poorDrink.SetActive(true);
-                                poorDrink.GetComponent<MeshRenderer>().material = ColorDrink[chosenColor];
-                                drink.Drink.GetComponent<MeshRenderer>().material = ColorDrink[chosenColor];
-                                Size = 0.026f;
-                                sizeX = 0.026f;
-                                sizeZ = 0.026f;
-                                hight = 0.085f;
-                                timer = 20;
-                            }
-                            break;
-                            default: break;
-                    }
      */
 }

@@ -25,7 +25,12 @@ public class BurgerAssambleManager : MonoBehaviour
     [SerializeField] private GameObject prepPlaceObj;
     private GameObject currentIngredient;
 
-    [SerializeField] private List<Collider> ingredientBucket;
+    [SerializeField] private List<Collider> breadBucket;
+    [SerializeField] private List<Collider> lettuceBucket;
+    [SerializeField] private List<Collider> cheeseBucket;
+    [SerializeField] private List<Collider> tomatoBucket;
+
+
 
     [SerializeField] private List<GameObject> ingredients;
     
@@ -46,9 +51,19 @@ public class BurgerAssambleManager : MonoBehaviour
             handEmpty = true;
         }
 
-        ingredientManager.GiveAmount("Lettuce", 5);
-        storageText[0].text = ingredientManager.GetAmount("Lettuce").ToString();
-        
+        ingredientManager.GiveAmount("Burger Bun", 20);
+        storageText[0].text = ingredientManager.GetAmount("Burger Bun").ToString();
+
+        ingredientManager.GiveAmount("Lettuce", 20);
+        storageText[1].text = ingredientManager.GetAmount("Lettuce").ToString();
+
+        ingredientManager.GiveAmount("Cheese", 20);
+        storageText[2].text = ingredientManager.GetAmount("Cheese").ToString();
+
+        ingredientManager.GiveAmount("Tomatoes", 20);
+        storageText[3].text = ingredientManager.GetAmount("Tomatoes").ToString();
+
+
     }
 
     public void Pause()
@@ -110,29 +125,40 @@ public class BurgerAssambleManager : MonoBehaviour
         //    }
         //}
 
-        ingredientManager.GiveAmount("Lettuce", 5);
-
-        int lettuceAmount = ingredientManager.GetAmount("Lettuce");
-        print(lettuceAmount);
     }
 
-    public void AddLettuce()
+    private bool firstTime = true;
+    private void AddIngredient(string ingredientName, int ingredientNumber, List<Collider> buckets)
     {
-        int lettuceAmount = ingredientManager.GetAmount("Lettuce");
-        for (int i = 0; i < ingredientBucket.Count; i++)
+        for (int i = 0; i < buckets.Count; i++)
         {
-            bool canEnter = ingredientBucket[i].gameObject.GetComponent<CollisionDetector>().occupied;
-            if (canEnter == false)
+            bool bucketFilled = buckets[i].gameObject.GetComponent<CollisionDetector>().occupied;
+            if (bucketFilled == false)
             {
-                if (lettuceAmount > 0)
+                if (ingredientManager.GetAmount(ingredientName) > 0)
                 {
-                    Instantiate(ingredients[0], ingredientBucket[i].gameObject.transform.position, Quaternion.identity);
-                    lettuceAmount--;
-                    storageText[0].text = lettuceAmount.ToString();
+                    Instantiate(ingredients[ingredientNumber], buckets[i].gameObject.transform.position, Quaternion.identity);
+                    ingredientManager.GiveAmount(ingredientName, -1);
                 }
             }
-
+            storageText[ingredientNumber].text = ingredientManager.GetAmount(ingredientName).ToString();
         }
+    }
+    public void AddBun()
+    {
+        AddIngredient("Burger Bun", 0, breadBucket);
+    }
+    public void AddLettuce()
+    {
+        AddIngredient("Lettuce", 1, lettuceBucket);
+    }
+    public void AddCheese()
+    {
+        AddIngredient("Cheese", 2, cheeseBucket);
+    }
+    public void AddTomatoes()
+    {
+        AddIngredient("Tomatoes", 3, tomatoBucket);
     }
 
     public void ClearButton()

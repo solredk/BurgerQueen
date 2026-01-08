@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 695168429734405223}
   - component: {fileID: 5034904218309591101}
   - component: {fileID: 1185018142936782654}
-  - component: {fileID: 4613744918059754003}
+  - component: {fileID: 221631206608469705}
   m_Layer: 6
-  m_Name: Sla
+  m_Name: Cheese
   m_TagString: Meat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1818501504e30cc4392b9c77ec3f7367, type: 2}
+  - {fileID: 2100000, guid: 53bd644190513234093df17dd64e1b53, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -118,7 +118,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &4613744918059754003
+--- !u!65 &221631206608469705
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

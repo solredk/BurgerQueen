@@ -17,7 +17,7 @@ public class PlaatTrigger : MonoBehaviour
     {
         addedIngredient = other.gameObject;
         GameObject burgerIng = Instantiate(addedIngredient, new Vector3(gameObject.transform.position.x, m_AssambleManager.burger.Count / ingredientDistance + 1.55f, gameObject.transform.position.z), Quaternion.identity);
-        burgerIng.transform.localScale = new Vector3(0.3f, 0.06f, 0.3f);
+        burgerIng.transform.localScale = burgerIng.transform.localScale / 10;
         burgerIng.layer = default;
         burgerIng.GetComponent<Collider>().enabled = false;
         burgerIng.GetComponent<Rigidbody>().useGravity = false;

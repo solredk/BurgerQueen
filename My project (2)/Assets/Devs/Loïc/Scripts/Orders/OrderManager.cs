@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-
 public class OrderManager : MonoBehaviour
 {
     [SerializeField] private GameObject ordersTab;
@@ -25,7 +24,6 @@ public class OrderManager : MonoBehaviour
     public bool orderGiveReverse = false;
     private bool closed = true;
     private bool spotfilled;
-
 
 
     private void Start()
@@ -53,7 +51,7 @@ public class OrderManager : MonoBehaviour
         currentOrder.Add(orderBurger);
         int orderFrituur = UnityEngine.Random.Range(0, frituur.Count);
         currentOrder.Add(orderFrituur);
-        int orderDrink = UnityEngine.Random.Range(0, drinks.Count); ,m /
+        int orderDrink = UnityEngine.Random.Range(0, drinks.Count); 
         currentOrder.Add(orderDrink);
 
         //currentCard.transform.SetParent(ordersTab.transform);
@@ -64,15 +62,19 @@ public class OrderManager : MonoBehaviour
             {
                 GameObject currentCard = Instantiate(orderCard, cardPositions[i]);
                 orderCards.Insert(i ,currentCard);
+                currentCard.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = orderBurger.ToString();
+                currentCard.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = orderFrituur.ToString();
+                currentCard.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = orderDrink.ToString();
+
                 spotfilled = true;
             }
 
             //  Vector3 cardPosition = currentCard.transform.position += ordersTab.transform.position;
             // cardPosition.x = currentCard.transform.position.x - ordersTab.transform.position.x * 5 * orderCards.Count + 1;
             // currentCard.transform.position = cardPosition;
-
-            AddCustomerOrder(new List<int>() { currentOrder[0], currentOrder[1], currentOrder[2] });
         }
+
+        AddCustomerOrder(new List<int>() { currentOrder[0], currentOrder[1], currentOrder[2] });
     }
 
     public void CompareOrder()

@@ -109,6 +109,24 @@ public partial class @MouseInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""84e7b61b-0c62-4816-a75b-60c82375820d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OrderTab"",
+                    ""type"": ""Button"",
+                    ""id"": ""551b99a4-5628-4316-b552-93694cd8f501"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -133,6 +151,39 @@ public partial class @MouseInput: IInputActionCollection2, IDisposable
                     ""action"": ""Click"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""54682473-5ad5-4b74-ac6f-359f64e7f5b8"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ee0dbcd4-b73e-443c-86dc-7e3bbaa7e077"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9f1ffb04-4ed4-47be-acdf-06552903cca1"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OrderTab"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -143,6 +194,8 @@ public partial class @MouseInput: IInputActionCollection2, IDisposable
         m_Mouse = asset.FindActionMap("Mouse", throwIfNotFound: true);
         m_Mouse_MousePosition = m_Mouse.FindAction("MousePosition", throwIfNotFound: true);
         m_Mouse_Click = m_Mouse.FindAction("Click", throwIfNotFound: true);
+        m_Mouse_Pause = m_Mouse.FindAction("Pause", throwIfNotFound: true);
+        m_Mouse_OrderTab = m_Mouse.FindAction("OrderTab", throwIfNotFound: true);
     }
 
     ~@MouseInput()
@@ -225,6 +278,8 @@ public partial class @MouseInput: IInputActionCollection2, IDisposable
     private List<IMouseActions> m_MouseActionsCallbackInterfaces = new List<IMouseActions>();
     private readonly InputAction m_Mouse_MousePosition;
     private readonly InputAction m_Mouse_Click;
+    private readonly InputAction m_Mouse_Pause;
+    private readonly InputAction m_Mouse_OrderTab;
     /// <summary>
     /// Provides access to input actions defined in input action map "Mouse".
     /// </summary>
@@ -244,6 +299,14 @@ public partial class @MouseInput: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Mouse/Click".
         /// </summary>
         public InputAction @Click => m_Wrapper.m_Mouse_Click;
+        /// <summary>
+        /// Provides access to the underlying input action "Mouse/Pause".
+        /// </summary>
+        public InputAction @Pause => m_Wrapper.m_Mouse_Pause;
+        /// <summary>
+        /// Provides access to the underlying input action "Mouse/OrderTab".
+        /// </summary>
+        public InputAction @OrderTab => m_Wrapper.m_Mouse_OrderTab;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -276,6 +339,12 @@ public partial class @MouseInput: IInputActionCollection2, IDisposable
             @Click.started += instance.OnClick;
             @Click.performed += instance.OnClick;
             @Click.canceled += instance.OnClick;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
+            @OrderTab.started += instance.OnOrderTab;
+            @OrderTab.performed += instance.OnOrderTab;
+            @OrderTab.canceled += instance.OnOrderTab;
         }
 
         /// <summary>
@@ -293,6 +362,12 @@ public partial class @MouseInput: IInputActionCollection2, IDisposable
             @Click.started -= instance.OnClick;
             @Click.performed -= instance.OnClick;
             @Click.canceled -= instance.OnClick;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
+            @OrderTab.started -= instance.OnOrderTab;
+            @OrderTab.performed -= instance.OnOrderTab;
+            @OrderTab.canceled -= instance.OnOrderTab;
         }
 
         /// <summary>
@@ -347,5 +422,19 @@ public partial class @MouseInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnClick(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Pause" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPause(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "OrderTab" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnOrderTab(InputAction.CallbackContext context);
     }
 }

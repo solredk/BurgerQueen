@@ -1,13 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEditor.UI;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
+
 
 public class OrderManager : MonoBehaviour
 {
@@ -58,7 +53,7 @@ public class OrderManager : MonoBehaviour
         currentOrder.Add(orderBurger);
         int orderFrituur = UnityEngine.Random.Range(0, frituur.Count);
         currentOrder.Add(orderFrituur);
-        int orderDrink = UnityEngine.Random.Range(0, drinks.Count);
+        int orderDrink = UnityEngine.Random.Range(0, drinks.Count); ,m /
         currentOrder.Add(orderDrink);
 
         //currentCard.transform.SetParent(ordersTab.transform);

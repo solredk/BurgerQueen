@@ -12,6 +12,8 @@ TagManager:
   - trashBag
   - CleanWater
   - CleanWC
+  - bread
+  - lettuce
   layers:
   - Default
   - TransparentFX

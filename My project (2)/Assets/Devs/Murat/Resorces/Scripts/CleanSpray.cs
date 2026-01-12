@@ -9,7 +9,7 @@ public class CleanSpray : MonoBehaviour
     [SerializeField] private ParticleSystem SprayEffect;
     [SerializeField] private GameObject Wc;
     [SerializeField] private GameObject SprayTrigger;
-    [SerializeField] private bool inPosition = false;
+    private float rotateZ = 0;
     
     void Start()
     {
@@ -32,26 +32,25 @@ public class CleanSpray : MonoBehaviour
                 transform.LookAt(Wc.transform.position);
             }else if (spray == 1)
             {
-                if (transform.position.y> Wc.transform.position.y+0.3f&& !inPosition)
+                if (transform.position.y> Wc.transform.position.y+0.3f)
                 {
-                    Debug.Log(transform.rotation.z);
-                    transform.localRotation = Quaternion.RotateTowards(transform.localRotation, new Quaternion(transform.localRotation.x, transform.localRotation.y, transform.localRotation.z + -1 * Time.deltaTime, transform.localRotation.w),360);
-                    if (transform.localRotation.z > 100)
+                    rotateZ -= Time.deltaTime*160;
+                    transform.localRotation = Quaternion.Euler(0, 0, rotateZ);
+                    if (rotateZ < -180)
                     {
-                        Debug.Log("trou");
-                        inPosition = true;
+                        rotateZ = -180;
                     }
                 }
-                else if(transform.position.y < Wc.transform.position.y && inPosition)
+                else if(transform.position.y < Wc.transform.position.y)
                 {
-                    transform.localRotation = Quaternion.RotateTowards(transform.localRotation, new Quaternion(transform.localRotation.x, transform.localRotation.y, transform.localRotation.z + 1 * Time.deltaTime, transform.rotation.w), 360);
-                    if(transform.rotation.z < 5&& transform.localRotation.z > -5)
+                    rotateZ += Time.deltaTime * 160;
+                    transform.localRotation = Quaternion.Euler(0, 0, rotateZ);
+                    if (rotateZ < 5&& rotateZ > -5)
                     {
-                        inPosition = false;
+                        rotateZ = 0;
                     }
                 }
             }
-            
         }
         else
         {
@@ -59,17 +58,6 @@ public class CleanSpray : MonoBehaviour
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         }
         
-    }
-    IEnumerator ReversPosition()
-    {
-        inPosition = false;
-        while (transform.localRotation.z >= 0)
-        {
-            transform.Rotate(0, 0, -1);
-            yield return new WaitForSeconds(0.1f);
-            yield return null;
-        }
-        yield return new WaitForSeconds(0.3f);
     }
     IEnumerator spraying()
     {

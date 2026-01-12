@@ -13,6 +13,7 @@ public class Glass : MonoBehaviour
     public bool Full = false;
     public GameObject Drink;
     public GameObject place;
+    public GameObject Ice;
     [SerializeField] private LayerMask filling;
     [SerializeField] private LayerMask filled;
     private void Update()

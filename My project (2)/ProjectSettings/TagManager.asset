@@ -10,6 +10,8 @@ TagManager:
   - Meat
   - Snap
   - trashBag
+  - CleanWater
+  - CleanWC
   layers:
   - Default
   - TransparentFX

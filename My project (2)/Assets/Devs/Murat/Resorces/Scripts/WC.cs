@@ -13,17 +13,31 @@ public class WC : MonoBehaviour
         doused,
         clean
     }
-    //spray game
-    //flush game
+    enum spraygame
+    {
+        dirty,
+        Sprayed,
+        clean
+    }
+
     flushgame fleshgame;
+
+    spraygame Spraygame;
     bool sprayG = false;
     bool flushG = false;
     bool flushing = false;
     public GameObject flushbutton;
 
     [SerializeField] private GameObject Twater;
-    
+    [SerializeField] private GameObject Lid;
+    [SerializeField] private GameObject Rim;
+
+    public List<Material> durtynessWater; 
     public List<Material> durtyness;
+    public List<WCWater> water;
+
+    public GameObject wipe;
+    private float cleanProgres = 0;
     void Start()
     {
         
@@ -33,6 +47,43 @@ public class WC : MonoBehaviour
     void Update()
     {
         FlushGame();
+        CleanGame();
+        if(flushG&&sprayG)
+        {
+            //win
+        }
+    }
+    void CleanGame()
+    {
+        switch (Spraygame)
+        {
+            case spraygame.dirty:
+                Lid.GetComponent<MeshRenderer>().material = durtyness[0];
+                Rim.GetComponent<MeshRenderer>().material = durtyness[0];
+                int show = 0;
+                for (int i = 0; i < water.Count; i++)
+                {
+                    if (water[i].progres)
+                    {
+                        show++;
+                    }
+                }
+                if (show >= 3)
+                {
+                    Spraygame = spraygame.Sprayed;
+                }
+                break;
+            case spraygame.Sprayed:
+                Lid.GetComponent<MeshRenderer>().material = durtyness[1];
+                Rim.GetComponent<MeshRenderer>().material = durtyness[1];
+                break;
+            case spraygame.clean:
+                Lid.GetComponent<MeshRenderer>().material = durtyness[2];
+                Rim.GetComponent<MeshRenderer>().material = durtyness[2];
+                sprayG = true;
+                break;
+            default: break;
+        }
     }
     void FlushGame()
     {
@@ -52,18 +103,22 @@ public class WC : MonoBehaviour
         switch (fleshgame)
         {
             case flushgame.dirty:
-                Twater.GetComponent<MeshRenderer>().material = durtyness[0];
-
+                Twater.GetComponent<MeshRenderer>().material = durtynessWater[0];
+                if (Twater.GetComponent<WCWater>().progres)
+                {
+                    fleshgame = flushgame.doused;
+                }
+                
                 break;
             case flushgame.doused:
                 if (flushing)
                 {
                     fleshgame = flushgame.clean;
                 }
-                Twater.GetComponent<MeshRenderer>().material = durtyness[1];
+                Twater.GetComponent<MeshRenderer>().material = durtynessWater[1];
                 break;
             case flushgame.clean: flushG = true;
-                Twater.GetComponent<MeshRenderer>().material = durtyness[2];
+                Twater.GetComponent<MeshRenderer>().material = durtynessWater[2];
                 break;
             default: break;
         }
@@ -90,6 +145,19 @@ public class WC : MonoBehaviour
         }
         Debug.Log("done");
         flushing = false;
+    }
+    private void OnCollisionStay(Collision collision)
+    {
+        if(Spraygame == spraygame.Sprayed)
+        {
+            if (cleanProgres<=3&& wipe==collision.gameObject)
+            {
+                cleanProgres += Time.deltaTime;
+            }else if (cleanProgres>3)
+            {
+                Spraygame = spraygame.clean;
+            }
+        }
     }
 
 }

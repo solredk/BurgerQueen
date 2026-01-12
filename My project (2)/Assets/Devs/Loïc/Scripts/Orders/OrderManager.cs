@@ -62,15 +62,19 @@ public class OrderManager : MonoBehaviour
             {
                 GameObject currentCard = Instantiate(orderCard, cardPositions[i]);
                 orderCards.Insert(i ,currentCard);
+                currentCard.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = orderBurger.ToString();
+                currentCard.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = orderFrituur.ToString();
+                currentCard.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = orderDrink.ToString();
+
                 spotfilled = true;
             }
 
             //  Vector3 cardPosition = currentCard.transform.position += ordersTab.transform.position;
             // cardPosition.x = currentCard.transform.position.x - ordersTab.transform.position.x * 5 * orderCards.Count + 1;
             // currentCard.transform.position = cardPosition;
-
-            AddCustomerOrder(new List<int>() { currentOrder[0], currentOrder[1], currentOrder[2] });
         }
+
+        AddCustomerOrder(new List<int>() { currentOrder[0], currentOrder[1], currentOrder[2] });
     }
 
     public void CompareOrder()

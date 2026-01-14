@@ -61,10 +61,10 @@ public class IceMachine : MonoBehaviour
                     {
                         case Glass.container.IceCreamCone:
                             poorDrink.SetActive(true);
-                            Size = 0.026f;
-                            sizeX = 0.026f;
-                            sizeZ = 0.026f;
-                            hight = 0.085f;
+                            Size = 1.5f;
+                            sizeX = 1.8f;
+                            sizeZ = 1.8f;
+                            hight = 0.07f;
                             break;
                         case Glass.container.IceCreamCup:
                             poorDrink.SetActive(true);

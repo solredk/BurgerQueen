@@ -25,9 +25,11 @@ public class Glass : MonoBehaviour
                 transform.position = place.transform.position + new Vector3(0, 0, 0);
                 gameObject.layer = filling.value;
                 GetComponent<Rigidbody>().isKinematic = true;
+                Debug.Log("not full");
             }
             else
             {
+                Debug.Log("filled");
                 gameObject.layer = filled.value;
                 place = null;
                 GetComponent<Rigidbody>().isKinematic = false;

@@ -7,17 +7,16 @@ public class IngredientManager : MonoBehaviour
 
     [SerializeField] public List<Ingredient> ingredients;
 
-    private void Start()
+    private void Awake()
     {
-        instance = this;
-        ResetIngridients();
+        instance = this;        
     }
 
-    private void ResetIngridients()
+    public void ResetIngridients(int defeaultValue)
     {
         foreach (Ingredient ingredients in ingredients)
         {
-            ingredients.Quantity = 0;
+            ingredients.Quantity = defeaultValue;
         }
     }
 

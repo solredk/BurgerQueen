@@ -17,7 +17,7 @@ public class BurgerAssambleManager : MonoBehaviour
     [SerializeField] private List <string> orderIngredients;
     public List<GameObject> burger;
 
-    [SerializeField] private IngredientManager ingredientManager;
+  //  [SerializeField] private IngredientManager ingredientManager;
 
     [SerializeField] private GameObject workStation;
     [SerializeField] private GameObject breadObject;
@@ -37,10 +37,23 @@ public class BurgerAssambleManager : MonoBehaviour
 
     void Start()
     {
+        
+        IngredientManager.instance.ResetIngridients(20);
+
+        storageText[0].text = IngredientManager.instance. GetAmount("Burger Bun").ToString();
+
+        storageText[1].text = IngredientManager.instance.GetAmount("Lettuce").ToString();
+
+        storageText[2].text = IngredientManager.instance.GetAmount("Cheese").ToString();
+
+        storageText[3].text = IngredientManager.instance.GetAmount("Tomatoes").ToString();
+
+        storageText[4].text = IngredientManager.instance.GetAmount("Meat").ToString();
+
         if (StorageIngridientsCheck())
         {
             // hoeveelheidBrood = Hoeveel brood de speler heeft toegevoegd van supply
-            for (int i = 0; i < ingredientManager.ingredients.Count; i++)
+            for (int i = 0; i < IngredientManager.instance.ingredients.Count; i++)
             {
 
                 storageText[i].text = storage[i].ToString();
@@ -49,20 +62,7 @@ public class BurgerAssambleManager : MonoBehaviour
             handEmpty = true;
         }
 
-        ingredientManager.GiveAmount("Burger Bun", 20);
-        storageText[0].text = ingredientManager.GetAmount("Burger Bun").ToString();
-
-        ingredientManager.GiveAmount("Lettuce", 20);
-        storageText[1].text = ingredientManager.GetAmount("Lettuce").ToString();
-
-        ingredientManager.GiveAmount("Cheese", 20);
-        storageText[2].text = ingredientManager.GetAmount("Cheese").ToString();
-
-        ingredientManager.GiveAmount("Tomatoes", 20);
-        storageText[3].text = ingredientManager.GetAmount("Tomatoes").ToString();
-        
-        ingredientManager.GiveAmount("Meat", 20);
-        storageText[4].text = ingredientManager.GetAmount("Meat").ToString();
+       
 
     }
 
@@ -85,7 +85,7 @@ public class BurgerAssambleManager : MonoBehaviour
 
     public bool StorageIngridientsCheck()
     {
-        if (ingredientManager.GetAmount("Burger Bun") > 1) 
+        if (IngredientManager.instance.GetAmount("Burger Bun") > 1) 
         { 
 
             return true;
@@ -101,13 +101,13 @@ public class BurgerAssambleManager : MonoBehaviour
             bool bucketFilled = buckets[i].gameObject.GetComponent<CollisionDetector>().occupied;
             if (bucketFilled == false)
             {
-                if (ingredientManager.GetAmount(ingredientName) > 0)
+                if (IngredientManager.instance.GetAmount(ingredientName) > 0)
                 {
                     Instantiate(ingredients[ingredientNumber], buckets[i].gameObject.transform.position, Quaternion.identity);
-                    ingredientManager.GiveAmount(ingredientName, -1);
+                    IngredientManager.instance.GiveAmount(ingredientName, -1);
                 }
             }
-            storageText[ingredientNumber].text = ingredientManager.GetAmount(ingredientName).ToString();
+            storageText[ingredientNumber].text = IngredientManager.instance.GetAmount(ingredientName).ToString();
         }
     }
     public void AddBun()

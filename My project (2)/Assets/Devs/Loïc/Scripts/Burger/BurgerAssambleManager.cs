@@ -30,9 +30,6 @@ public class BurgerAssambleManager : MonoBehaviour
     [SerializeField] private List<Collider> tomatoBucket;
     [SerializeField] private List<Collider> meatBucket;
 
-
-
-
     [SerializeField] private List<GameObject> ingredients;
     
     [SerializeField] private GameObject pauseScreen;

@@ -34,17 +34,27 @@ public class IngredientManager : MonoBehaviour
         return 0;
     }
 
-    public void GiveAmount()
+    public void GiveAmount(string ingredientName, int amount)
+    {
+        foreach (Ingredient ingredient in ingredients)
+        {
+            if (ingredient.Name == ingredientName)
+            {
+                ingredient.Quantity += amount;
+                break;
+            }
+        }
+        Debug.Log("ingredient not found");
+    }
+    public void setAmount()
     {
         foreach (Ingredient ingredient in ingredients)
         {
             if (ingredient.Quantity < 20)
-            ingredient.Quantity += 10;
-            //if (ingredient.Name == ingredientName)
-            //{
-            //    ingredient.Quantity += amount;
-            //    break;
-            //}
+            {
+                ingredient.Quantity += 10;
+                break;
+            }
         }
         Debug.Log("ingredient not found");
     }

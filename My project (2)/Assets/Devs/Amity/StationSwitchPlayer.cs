@@ -25,7 +25,7 @@ public class StationSwitchPlayer : MonoBehaviour
         moving = false;
         currentStation = point;
     }
-    private void Update()
+    private void FixedUpdate()
     {
         if (transform.position.x == agent.destination.x && transform.position.z == agent.destination.z)
         {

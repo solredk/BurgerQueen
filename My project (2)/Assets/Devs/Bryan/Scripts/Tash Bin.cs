@@ -22,12 +22,12 @@ public class TashBin : MonoBehaviour
         numberOffTrash = Random.Range(0, 10);
         reachTrash = Random.Range(-20, -30);
 
-        for (int i = 0; i < numberOffTrash; i++)
-        {
-            reachTrash = Random.Range(-20, -30);
-            Instantiate(trashbag, new Vector3(reachTrash, -7, 15), Quaternion.identity);
+        //for (int i = 0; i < numberOffTrash; i++)
+        //{
+        //    reachTrash = Random.Range(-20, -30);
+        //    Instantiate(trashbag, new Vector3(reachTrash, -7, 15), Quaternion.identity);
            
-        }
+        //}
         trashTotal = GameObject.FindGameObjectsWithTag("trashBag");
         trashRequirement = trashTotal.Length;
 

@@ -46,7 +46,7 @@ public class OrderManager : MonoBehaviour
     {
         //takeOrderButton.SetActive(false);
         currentOrder.Clear();
-        
+
         int orderBurger = UnityEngine.Random.Range(0, burger.Count);
         currentOrder.Add(orderBurger);
         int orderFrituur = UnityEngine.Random.Range(0, frituur.Count);
@@ -61,7 +61,7 @@ public class OrderManager : MonoBehaviour
             if (orderCards[i] == null && spotfilled == false)
             {
                 GameObject currentCard = Instantiate(orderCard, cardPositions[i]);
-                orderCards.Insert(i ,currentCard);
+                orderCards.Insert(i, currentCard);
                 currentCard.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = orderBurger.ToString();
                 currentCard.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = orderFrituur.ToString();
                 currentCard.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = orderDrink.ToString();
@@ -78,7 +78,7 @@ public class OrderManager : MonoBehaviour
     }
 
     public void CompareOrder()
-    {   
+    {
         string orderNumberS = orderNumberGO.text;
         int orderNumberI = 0;
         int.TryParse(orderNumberS, out orderNumberI);
@@ -86,7 +86,7 @@ public class OrderManager : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             //thisOrder.Add(allOrders[orderNumberI].Order[i]);
-          //  thisOrder[0] = 4;
+            //  thisOrder[0] = 4;
 
             if (allOrders[orderNumberI].Order[i] == thisOrder[i])
             {
@@ -100,7 +100,7 @@ public class OrderManager : MonoBehaviour
 
             }
         }
-    
+
     }
 
     private void WrongOrder() // wanneer een foute order ingeleverd word

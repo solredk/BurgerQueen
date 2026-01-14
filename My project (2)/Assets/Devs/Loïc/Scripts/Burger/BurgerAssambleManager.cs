@@ -10,8 +10,7 @@ public class BurgerAssambleManager : MonoBehaviour
 {
     private bool handEmpty = true;
 
-    private int ingedientAmount = 0;
-    private int ingredientID;  
+    public int ingedientAmount = 0;
     
     [SerializeField] private List<int> storage;
     [SerializeField] private List<TextMeshProUGUI> storageText;
@@ -29,6 +28,8 @@ public class BurgerAssambleManager : MonoBehaviour
     [SerializeField] private List<Collider> lettuceBucket;
     [SerializeField] private List<Collider> cheeseBucket;
     [SerializeField] private List<Collider> tomatoBucket;
+    [SerializeField] private List<Collider> meatBucket;
+
 
 
 
@@ -62,7 +63,9 @@ public class BurgerAssambleManager : MonoBehaviour
 
         ingredientManager.GiveAmount("Tomatoes", 20);
         storageText[3].text = ingredientManager.GetAmount("Tomatoes").ToString();
-
+        
+        ingredientManager.GiveAmount("Meat", 20);
+        storageText[4].text = ingredientManager.GetAmount("Meat").ToString();
 
     }
 
@@ -93,41 +96,7 @@ public class BurgerAssambleManager : MonoBehaviour
         return false;
     }
 
-    public void AddToBurger()
-    {
-        if (!handEmpty)
-        {
-            if (ingedientAmount == 0)
-            {
-                GameObject ingredient = Instantiate(currentIngredient, new Vector2(prepPlaceObj.transform.position.x, prepPlaceObj.transform.position.y - 200), Quaternion.identity);
-                burger.Add(ingredient);
-            }
-            Destroy(currentIngredient);
-            handEmpty = true;
-            ingedientAmount++;
-        }
-    }
 
-    public void TempButton()
-    {
-        //check oger
-        //bool goodOrder = true;
-        //for (int i = 0; i < burger.Count; i++)
-        //{
-        //    if (burger[i].gameObject.name != orderIngredients[i])
-        //    {
-        //        print("roblox oof");
-        //        goodOrder = false;
-        //    }
-        //    else if (goodOrder)
-        //    {
-        //        print("that burger is a burger");
-        //    }
-        //}
-
-    }
-
-    private bool firstTime = true;
     private void AddIngredient(string ingredientName, int ingredientNumber, List<Collider> buckets)
     {
         for (int i = 0; i < buckets.Count; i++)
@@ -160,14 +129,10 @@ public class BurgerAssambleManager : MonoBehaviour
     {
         AddIngredient("Tomatoes", 3, tomatoBucket);
     }
-
-    public void ClearButton()
+    public void AddMeat()
     {
-        for (int i = 0; i < burger.Count; i++)
-        {
-            Destroy(burger[i]);
-        }
-        burger.Clear();
-        ingedientAmount = 0;
+        AddIngredient("Meat", 4, meatBucket);
     }
+
+    
 }

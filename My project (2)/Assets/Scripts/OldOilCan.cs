@@ -8,6 +8,7 @@ public class OldOilCan : MonoBehaviour
     [SerializeField] private float processDelay = 0.5f;
     [SerializeField] private GameObject oldCanSpawnPoint;
     [SerializeField] private GameObject newOilCan;
+    [SerializeField] private SendMessage messageSystem;
 
     private Renderer canRenderer;
     private bool hasBeenUsed = false;
@@ -16,100 +17,42 @@ public class OldOilCan : MonoBehaviour
     private void Awake()
     {
         canRenderer = GetComponent<Renderer>();
-
-        if (newOilCan != null)
-        {
-            newOilCan.tag = "Untagged";
-        }
+        newOilCan.tag = "Untagged";
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "Old Oil" && !hasBeenUsed)
+        if (other.gameObject == oldOilObject && !hasBeenUsed)
         {
             hasBeenUsed = true;
-            StartCoroutine(DelayedProcessOil(other.gameObject));
+            StartCoroutine(DelayedProcessOil());
         }
 
-        if (hasBeenUsed && !hasReturnedToSpawn && other.gameObject.name == "OldCanSpawnPoint")
+        if (hasBeenUsed && !hasReturnedToSpawn && other.gameObject == oldCanSpawnPoint)
         {
             hasReturnedToSpawn = true;
-            MakeNewOilCanGrabable();
-        }
-
-        if (hasBeenUsed && !hasReturnedToSpawn && oldCanSpawnPoint != null && other.gameObject == oldCanSpawnPoint)
-        {
-            hasReturnedToSpawn = true;
-            MakeNewOilCanGrabable();
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.name == "Old Oil" && !hasBeenUsed)
-        {
-            hasBeenUsed = true;
-            StartCoroutine(DelayedProcessOil(collision.gameObject));
-        }
-
-        if (hasBeenUsed && !hasReturnedToSpawn && collision.gameObject.name == "OldCanSpawnPoint")
-        {
-            hasReturnedToSpawn = true;
-            MakeNewOilCanGrabable();
-        }
-
-        if (hasBeenUsed && !hasReturnedToSpawn && oldCanSpawnPoint != null && collision.gameObject == oldCanSpawnPoint)
-        {
-            hasReturnedToSpawn = true;
-            MakeNewOilCanGrabable();
-        }
-    }
-
-    private void MakeNewOilCanGrabable()
-    {
-        if (newOilCan != null)
-        {
             newOilCan.tag = "Grabable";
+            Debug.Log("Test");
+            messageSystem.UpdateMessage("Drag the new oil can into the oil and fill it for 3 seconds");
         }
     }
 
-    private IEnumerator DelayedProcessOil(GameObject hitOilObject)
+    private IEnumerator DelayedProcessOil()
     {
         yield return new WaitForSeconds(processDelay);
-
-        if (oldOilObject != null)
-        {
-            oldOilObject.SetActive(false);
-        }
-        else
-        {
-            hitOilObject.SetActive(false);
-        }
-
-        if (canRenderer != null && darkBrownMaterial != null)
-        {
-            canRenderer.material = darkBrownMaterial;
-        }
+        oldOilObject.SetActive(false);
+        canRenderer.material = darkBrownMaterial;
+        yield return new WaitForSeconds(processDelay);
+        messageSystem.UpdateMessage("Put the filled old oil can back to it's place");
     }
 
     public void ResetCan(Material originalMaterial)
     {
         hasBeenUsed = false;
         hasReturnedToSpawn = false;
-
-        if (canRenderer != null && originalMaterial != null)
-        {
-            canRenderer.material = originalMaterial;
-        }
-
-        if (oldOilObject != null)
-        {
-            oldOilObject.SetActive(true);
-        }
-
-        if (newOilCan != null)
-        {
-            newOilCan.tag = "Untagged";
-        }
+        canRenderer.material = originalMaterial;
+        oldOilObject.SetActive(true);
+        newOilCan.tag = "Untagged";
+        messageSystem.UpdateMessage("Drag the Old Oil can into the Old oil");
     }
 }

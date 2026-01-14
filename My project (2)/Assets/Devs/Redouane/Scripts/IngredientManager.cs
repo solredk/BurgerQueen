@@ -7,9 +7,9 @@ public class IngredientManager : MonoBehaviour
 
     [SerializeField] public List<Ingredient> ingredients;
 
-    private void Start()
+    private void Awake()
     {
-        instance = this;
+        instance = this;        
     }
 
     public void ResetIngridients(int defeaultValue)

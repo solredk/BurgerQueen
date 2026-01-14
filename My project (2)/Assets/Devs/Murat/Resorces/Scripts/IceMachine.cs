@@ -1,15 +1,12 @@
-using NUnit.Framework;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
-public class DrinkMachine : MonoBehaviour
+public class IceMachine : MonoBehaviour
 {
     [SerializeField] private GameObject Dispence;
     [SerializeField] private GameObject poorDrink;
-    [SerializeField] private List <Material> ColorDrink;
+    [SerializeField] private List<Material> ColorDrink;
     [SerializeField] private List<GameObject> Buttons;
     private int chosenColor;
     private bool on = false;
@@ -24,20 +21,12 @@ public class DrinkMachine : MonoBehaviour
     }
     public void drinkColor(int color)
     {
-        if(drink!= null&&!on)
+        if (drink != null && !on)
         {
-            if(drink.place!= null)
+            if (drink.place != null)
             {
-                if (color==0&& !drink.Ice.active)
-                {
-                    drink.Ice.active = true;
-                }
-                else if(color != 0)
-                {
-                    on = true;
-                    chosenColor = color;
-                }
-
+                on = true;
+                chosenColor = color;
             }
         }
     }
@@ -45,7 +34,7 @@ public class DrinkMachine : MonoBehaviour
     {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-        if (Physics.Raycast(ray,out hit)&& Mouse.current.leftButton.IsPressed())
+        if (Physics.Raycast(ray, out hit) && Mouse.current.leftButton.IsPressed())
         {
             if (Buttons.Contains(hit.transform.gameObject))
             {
@@ -58,7 +47,7 @@ public class DrinkMachine : MonoBehaviour
     {
         RaycastHit hit;
         Ray ray = new Ray(Dispence.transform.position, Dispence.transform.forward);
-        Debug.DrawRay(Dispence.transform.position, Dispence.transform.forward*10, Color.blue);
+        Debug.DrawRay(Dispence.transform.position, Dispence.transform.forward * 10, Color.blue);
         if (Physics.Raycast(ray, out hit, 2))
         {
             if (hit.transform.gameObject.GetComponent<Glass>())
@@ -68,18 +57,25 @@ public class DrinkMachine : MonoBehaviour
                 {
                     float sizeX = 0;
                     float sizeZ = 0;
-                    if (chosenColor != 0)
+                    switch (drink.contaner)
                     {
-                        poorDrink.SetActive(true);
-                        Size = 0.25f;
-                        hight = 0.15f;
-                        sizeX = 0;
-                        sizeZ = 0;
+                        case Glass.container.IceCreamCone:
+                            poorDrink.SetActive(true);
+                            Size = 0.026f;
+                            sizeX = 0.026f;
+                            sizeZ = 0.026f;
+                            hight = 0.085f;
+                            break;
+                        case Glass.container.IceCreamCup:
+                            poorDrink.SetActive(true);
+                            Size = 0.06f;
+                            hight = 0.05f;
+                            sizeX = 0;
+                            sizeZ = 0;
+                            break;
+                        default: break;
                     }
-                    else
-                    {
-                        on = false;
-                    }
+
                     poorDrink.GetComponent<MeshRenderer>().material = ColorDrink[chosenColor];
                     drink.Drink.GetComponent<MeshRenderer>().material = ColorDrink[chosenColor];
                     timer = 20;

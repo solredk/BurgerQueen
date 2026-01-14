@@ -4,10 +4,12 @@ using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 public class CleanSpray : MonoBehaviour
 {
+    [SerializeField] private int spray = 0;
     Grabing Grabing;
     [SerializeField] private ParticleSystem SprayEffect;
     [SerializeField] private GameObject Wc;
     [SerializeField] private GameObject SprayTrigger;
+    private float rotateZ = 0;
     
     void Start()
     {
@@ -25,11 +27,34 @@ public class CleanSpray : MonoBehaviour
                 StartCoroutine(spraying());
             }
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-            transform.LookAt(Wc.transform.position);
+            if (spray == 0)
+            {
+                transform.LookAt(Wc.transform.position);
+            }else if (spray == 1)
+            {
+                if (transform.position.y> Wc.transform.position.y+0.3f)
+                {
+                    rotateZ -= Time.deltaTime*160;
+                    transform.localRotation = Quaternion.Euler(0, 0, rotateZ);
+                    if (rotateZ < -180)
+                    {
+                        rotateZ = -180;
+                    }
+                }
+                else if(transform.position.y < Wc.transform.position.y)
+                {
+                    rotateZ += Time.deltaTime * 160;
+                    transform.localRotation = Quaternion.Euler(0, 0, rotateZ);
+                    if (rotateZ < 5&& rotateZ > -5)
+                    {
+                        rotateZ = 0;
+                    }
+                }
+            }
         }
         else
         {
-            transform.rotation = Quaternion.identity;
+            transform.localRotation = Quaternion.identity;
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         }
         

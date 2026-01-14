@@ -10,7 +10,6 @@ TagManager:
   - Meat
   - Snap
   - trashBag
-  - Trash
   layers:
   - Default
   - TransparentFX

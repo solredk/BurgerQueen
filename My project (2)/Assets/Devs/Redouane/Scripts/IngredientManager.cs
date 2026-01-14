@@ -10,14 +10,13 @@ public class IngredientManager : MonoBehaviour
     private void Start()
     {
         instance = this;
-        ResetIngridients();
     }
 
-    private void ResetIngridients()
+    public void ResetIngridients(int defeaultValue)
     {
         foreach (Ingredient ingredients in ingredients)
         {
-            ingredients.Quantity = 0;
+            ingredients.Quantity = defeaultValue;
         }
     }
 

@@ -13,6 +13,7 @@ public class StationSwitchPlayer : MonoBehaviour
     private float direction;
     [SerializeField] private Transform currentStation;
     [SerializeField] private float speed;
+    [SerializeField] private float turnSpeed;
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -44,7 +45,7 @@ public class StationSwitchPlayer : MonoBehaviour
             {
                     atStation = true;
                     moving = true;
-                    transform.rotation = Quaternion.Slerp(transform.rotation, currentStation.rotation, 0.04f);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, currentStation.rotation, turnSpeed);
                     agent.isStopped = true;
                     if (currentStation.gameObject.tag == "Fries")
                     {

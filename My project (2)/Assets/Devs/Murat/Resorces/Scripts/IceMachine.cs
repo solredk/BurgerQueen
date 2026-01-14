@@ -83,15 +83,12 @@ public class IceMachine : MonoBehaviour
                     {
                         drink.Drink.transform.localScale = Vector3.MoveTowards(drink.Drink.transform.localScale, drink.Drink.transform.localScale + new Vector3(sizeX * Time.deltaTime, Size * Time.deltaTime, sizeZ * Time.deltaTime), timer);
                         drink.Drink.transform.position = Vector3.MoveTowards(drink.Drink.transform.position, drink.Drink.transform.position + new Vector3(0, hight * Time.deltaTime, 0), timer);
-
-                        Debug.Log("filling");
                     }
                     else if (drink.Drink.transform.localScale.y >= Size && on)
                     {
                         drink.Full = true;
                         on = false;
                         poorDrink.SetActive(false);
-                        Debug.Log("done");
                     }
                 }
             }

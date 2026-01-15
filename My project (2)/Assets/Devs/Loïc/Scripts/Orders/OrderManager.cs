@@ -51,7 +51,7 @@ public class OrderManager : MonoBehaviour
         currentOrder.Add(orderBurger);
         int orderFrituur = UnityEngine.Random.Range(0, frituur.Count);
         currentOrder.Add(orderFrituur);
-        int orderDrink = UnityEngine.Random.Range(0, drinks.Count);
+        int orderDrink = UnityEngine.Random.Range(0, drinks.Count); 
         currentOrder.Add(orderDrink);
 
         //currentCard.transform.SetParent(ordersTab.transform);

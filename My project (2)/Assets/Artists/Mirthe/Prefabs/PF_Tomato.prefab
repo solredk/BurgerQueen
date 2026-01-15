@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &5948041953922381977
+--- !u!1001 &687542029495227602
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,20 +9,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: c263016a89b73a148adedff6f880a1aa, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c263016a89b73a148adedff6f880a1aa, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.19500002
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c263016a89b73a148adedff6f880a1aa, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c263016a89b73a148adedff6f880a1aa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.021217
+      value: 22.389275
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c263016a89b73a148adedff6f880a1aa, type: 3}
       propertyPath: m_LocalPosition.y
@@ -30,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c263016a89b73a148adedff6f880a1aa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.5188994
+      value: -0.80729717
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c263016a89b73a148adedff6f880a1aa, type: 3}
       propertyPath: m_LocalRotation.w
@@ -60,14 +48,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c263016a89b73a148adedff6f880a1aa, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: c263016a89b73a148adedff6f880a1aa, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 0501b74713483f445b56f7baf4538f00, type: 2}
+      objectReference: {fileID: 2100000, guid: c71a1a49b3b83e148a30e8a609d70a4a, type: 2}
     - target: {fileID: 919132149155446097, guid: c263016a89b73a148adedff6f880a1aa, type: 3}
       propertyPath: m_Name
       value: Tomato

@@ -61,10 +61,10 @@ public class IceMachine : MonoBehaviour
                     {
                         case Glass.container.IceCreamCone:
                             poorDrink.SetActive(true);
-                            Size = 0.026f;
-                            sizeX = 0.026f;
-                            sizeZ = 0.026f;
-                            hight = 0.085f;
+                            Size = 1.5f;
+                            sizeX = 1.8f;
+                            sizeZ = 1.8f;
+                            hight = 0.07f;
                             break;
                         case Glass.container.IceCreamCup:
                             poorDrink.SetActive(true);
@@ -83,15 +83,12 @@ public class IceMachine : MonoBehaviour
                     {
                         drink.Drink.transform.localScale = Vector3.MoveTowards(drink.Drink.transform.localScale, drink.Drink.transform.localScale + new Vector3(sizeX * Time.deltaTime, Size * Time.deltaTime, sizeZ * Time.deltaTime), timer);
                         drink.Drink.transform.position = Vector3.MoveTowards(drink.Drink.transform.position, drink.Drink.transform.position + new Vector3(0, hight * Time.deltaTime, 0), timer);
-
-                        Debug.Log("filling");
                     }
                     else if (drink.Drink.transform.localScale.y >= Size && on)
                     {
                         drink.Full = true;
                         on = false;
                         poorDrink.SetActive(false);
-                        Debug.Log("done");
                     }
                 }
             }

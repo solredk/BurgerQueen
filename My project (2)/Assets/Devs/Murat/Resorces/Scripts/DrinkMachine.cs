@@ -17,6 +17,7 @@ public class DrinkMachine : MonoBehaviour
     private float Size;
     private float hight;
     [SerializeField] private float timer = 2;
+    private bool Ice = false;
     void Update()
     {
         PushButton();
@@ -28,14 +29,14 @@ public class DrinkMachine : MonoBehaviour
         {
             if(drink.place!= null)
             {
-                if (color==0&& !drink.Ice.active)
-                {
-                    drink.Ice.active = true;
-                }
-                else if(color != 0)
+                if(color != 0)
                 {
                     on = true;
                     chosenColor = color;
+                }
+                else
+                {
+                    Ice = true;
                 }
 
             }
@@ -71,14 +72,10 @@ public class DrinkMachine : MonoBehaviour
                     if (chosenColor != 0)
                     {
                         poorDrink.SetActive(true);
-                        Size = 0.25f;
-                        hight = 0.15f;
+                        Size = 0.125f;
+                        hight = 0.13f;
                         sizeX = 0;
                         sizeZ = 0;
-                    }
-                    else
-                    {
-                        on = false;
                     }
                     poorDrink.GetComponent<MeshRenderer>().material = ColorDrink[chosenColor];
                     drink.Drink.GetComponent<MeshRenderer>().material = ColorDrink[chosenColor];
@@ -87,15 +84,17 @@ public class DrinkMachine : MonoBehaviour
                     {
                         drink.Drink.transform.localScale = Vector3.MoveTowards(drink.Drink.transform.localScale, drink.Drink.transform.localScale + new Vector3(sizeX * Time.deltaTime, Size * Time.deltaTime, sizeZ * Time.deltaTime), timer);
                         drink.Drink.transform.position = Vector3.MoveTowards(drink.Drink.transform.position, drink.Drink.transform.position + new Vector3(0, hight * Time.deltaTime, 0), timer);
-
-                        Debug.Log("filling");
                     }
                     else if (drink.Drink.transform.localScale.y >= Size && on)
                     {
+                        if (Ice && !drink.Ice.active)
+                        {
+                            drink.Ice.active = true;
+                        }
                         drink.Full = true;
                         on = false;
                         poorDrink.SetActive(false);
-                        Debug.Log("done");
+                        Ice = false;
                     }
                 }
             }

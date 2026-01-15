@@ -23,12 +23,12 @@ public class Glass : MonoBehaviour
             if (!Full)
             {
                 transform.position = place.transform.position + new Vector3(0, 0, 0);
-                gameObject.layer = filling.value;
+                gameObject.layer = 0;
                 GetComponent<Rigidbody>().isKinematic = true;
             }
             else
             {
-                gameObject.layer = filled.value;
+                gameObject.layer = 6;
                 place = null;
                 GetComponent<Rigidbody>().isKinematic = false;
             }

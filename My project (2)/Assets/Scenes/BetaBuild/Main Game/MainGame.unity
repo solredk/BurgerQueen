@@ -2930,7 +2930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d444694b0fb923243980fb4e6c66291f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Grabing
-  look: 0
+  look: 1
   Helditem: {fileID: 0}
   mask:
     serializedVersion: 2
@@ -5174,7 +5174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Fryingstation
   frituur: {fileID: 0}
   cookingTime: 10
-  friedFriesSpawn: {fileID: 0}
+  friedFriesSpawn: {fileID: 1707546870}
 --- !u!1 &1604204281
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,62 +7,69 @@ public class IngredientPurchaseUI : MonoBehaviour
     [Header("UI")]
     public List<Text> quantityTexts;
     public List<string> ingredientNames;
-    public List<int> quantities;
-    public List<int> maxQuantities;
 
     [Header("Money")]
-    public int playerMoney = 1000;
+    public static int playerMoney = 1000;
     public Text moneyText;
     public int costPerItem = 10;
 
     private void Start()
     {
-        if (quantities == null || quantities.Count == 0)
-        {
-            quantities = new List<int>();
-            maxQuantities = new List<int>();
-            for (int i = 0; i < ingredientNames.Count; i++)
-            {
-                quantities.Add(0);
-                maxQuantities.Add(100);
-            }
-        }
         UpdateAllUI();
     }
 
     public void PurchaseByIndex(int index)
     {
-        if (index < 0 || index >= quantities.Count)
+        if (index < 0 || index >= ingredientNames.Count)
             return;
 
-        if (quantities[index] >= maxQuantities[index])
+        string ingredientName = ingredientNames[index];
+        int currentQuantity = IngredientManager.instance.GetAmount(ingredientName);
+        int maxQuantity = GetMaxQuantity(ingredientName);
+
+        if (currentQuantity >= maxQuantity)
             return;
 
         if (playerMoney >= costPerItem)
         {
             playerMoney -= costPerItem;
-            quantities[index]++;
+            IngredientManager.instance.GiveAmount(ingredientName, 1);
             UpdateAllUI();
         }
     }
 
+    public int GetMaxQuantity(string ingredientName)
+    {
+        foreach (Ingredient ingredient in IngredientManager.instance.ingredients)
+        {
+            if (ingredient.Name == ingredientName)
+            {
+                return ingredient.MaxQuantity;
+            }
+        }
+        return 45;
+    }
+
     public void UpdateAllUI()
     {
-        for (int i = 0; i < quantities.Count; i++)
+        for (int i = 0; i < ingredientNames.Count; i++)
         {
             if (i >= quantityTexts.Count)
                 continue;
 
+            string ingredientName = ingredientNames[i];
+            int quantity = IngredientManager.instance.GetAmount(ingredientName);
+            int maxQuantity = GetMaxQuantity(ingredientName);
             Text text = quantityTexts[i];
 
-            if (quantities[i] >= maxQuantities[i])
+            if (quantity >= maxQuantity)
             {
-                text.text = quantities[i] + " [MAX]";
+                text.text = quantity + " [MAX]";
                 text.color = Color.red;
             }
             else
             {
-                text.text = quantities[i] + "/" + maxQuantities[i];
+                text.text = quantity + "/" + maxQuantity;
                 text.color = Color.white;
             }
         }
@@ -73,10 +80,9 @@ public class IngredientPurchaseUI : MonoBehaviour
         }
     }
 
-    public int GetQuantity(int index)
+    public void AddMoney(int amount)
     {
-        if (index >= 0 && index < quantities.Count)
-            return quantities[index];
-        return 0;
+        playerMoney += amount;
+        UpdateAllUI();
     }
 }

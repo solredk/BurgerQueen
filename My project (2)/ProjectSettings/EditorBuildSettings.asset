@@ -9,17 +9,17 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 7a28a3ab07982f4478a7371c0293336e
   - enabled: 1
-    path: Assets/Scenes/CoreBuild/Settings.unity
-    guid: 25a59352094629a4a840d69c4554a398
+    path: Assets/Scenes/BetaBuild/Main menu scenes/Credits.unity
+    guid: a0c45a87f3556574395d096994eeba58
   - enabled: 1
-    path: Assets/Scenes/CoreBuild/Credits.unity
-    guid: bbbb0438c0977694898d69c580ef5300
+    path: Assets/Scenes/BetaBuild/Main menu scenes/Settings.unity
+    guid: 04d4bdc4caa779c48a3276e9a4e19bf1
   - enabled: 1
-    path: Assets/Scenes/CoreBuild/Trainings.unity
-    guid: 5bad0355a12260b4c9ddc7eacb191c44
+    path: Assets/Scenes/BetaBuild/Main menu scenes/Trainings.unity
+    guid: b6774b70b874fd640bc89f1f296e5f6d
   - enabled: 1
-    path: Assets/Scenes/AlphaBuilt/MainGame.unity
-    guid: a4b92d2171f64c04aa3d02b10b60c4ae
+    path: Assets/Scenes/BetaBuild/Main Game/MainGame.unity
+    guid: 674d79928483bac468633076798564ff
   - enabled: 1
     path: Assets/Scenes/ManasseTestScene.unity
     guid: babf612be2c170d4995c069dd1f4eafb

@@ -11,6 +11,8 @@ public class Glass : MonoBehaviour
     }
     public container contaner;
     public bool Full = false;
+    public bool Done = false;
+    public bool Sprinkeled = false;
     public GameObject Drink;
     public GameObject place;
     public GameObject Ice;
@@ -20,7 +22,7 @@ public class Glass : MonoBehaviour
     {
         if (place != null)
         {
-            if (!Full)
+            if (!Done)
             {
                 transform.position = place.transform.position + new Vector3(0, 0, 0);
                 gameObject.layer = 0;

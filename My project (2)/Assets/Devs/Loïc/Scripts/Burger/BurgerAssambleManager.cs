@@ -26,6 +26,7 @@ public class BurgerAssambleManager : MonoBehaviour
     [SerializeField] private List<Collider> cheeseBucket;
     [SerializeField] private List<Collider> tomatoBucket;
     [SerializeField] private List<Collider> meatBucket;
+    [SerializeField] private List<Collider> onionBucket;
 
     [SerializeField] private List<GameObject> ingredients;
     
@@ -47,6 +48,9 @@ public class BurgerAssambleManager : MonoBehaviour
 
         storageText[4].text = IngredientManager.instance.GetAmount("Meat").ToString();
 
+        storageText[5].text = IngredientManager.instance.GetAmount("Onions").ToString();
+
+
         if (StorageIngridientsCheck())
         {
             // hoeveelheidBrood = Hoeveel brood de speler heeft toegevoegd van supply
@@ -62,6 +66,9 @@ public class BurgerAssambleManager : MonoBehaviour
        
 
     }
+
+    
+
 
     public void Pause()
     {
@@ -127,6 +134,10 @@ public class BurgerAssambleManager : MonoBehaviour
     {
         AddIngredient("Meat", 4, meatBucket);
     }
+    public void AddOnion()
+    {
+        AddIngredient("Onions", 5, onionBucket);
+    }
 
-    
+
 }

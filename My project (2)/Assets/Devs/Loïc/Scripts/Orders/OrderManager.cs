@@ -73,10 +73,6 @@ public class OrderManager : MonoBehaviour
 
                 spotfilled = true;
             }
-
-            //  Vector3 cardPosition = currentCard.transform.position += ordersTab.transform.position;
-            // cardPosition.x = currentCard.transform.position.x - ordersTab.transform.position.x * 5 * orderCards.Count + 1;
-            // currentCard.transform.position = cardPosition;
         }
 
         AddCustomerOrder(new List<int>() { currentOrder[0], currentOrder[1], currentOrder[2] });

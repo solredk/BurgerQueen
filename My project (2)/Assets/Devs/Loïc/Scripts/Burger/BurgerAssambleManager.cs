@@ -14,8 +14,6 @@ public class BurgerAssambleManager : MonoBehaviour
     [SerializeField] private List <string> orderIngredients;
     public List<GameObject> burger;
 
-  //  [SerializeField] private IngredientManager ingredientManager;
-
     [SerializeField] private GameObject workStation;
     [SerializeField] private GameObject breadObject;
     [SerializeField] private GameObject prepPlaceObj;
@@ -66,8 +64,6 @@ public class BurgerAssambleManager : MonoBehaviour
        
 
     }
-
-    
 
 
     public void Pause()

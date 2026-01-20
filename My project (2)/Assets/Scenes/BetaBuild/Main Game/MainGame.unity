@@ -9176,6 +9176,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4982881981531224720, guid: 2acda9c2e085aec48b6f3b8218da11ef, type: 3}
+      propertyPath: ingredients.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4982881981531224720, guid: 2acda9c2e085aec48b6f3b8218da11ef, type: 3}
+      propertyPath: 'ingredients.Array.data[6]'
+      value: 
+      objectReference: {fileID: 11400000, guid: bd3c7988947dc4f43a02bc96be2e77b4, type: 2}
     - target: {fileID: 6433268140003713000, guid: 2acda9c2e085aec48b6f3b8218da11ef, type: 3}
       propertyPath: m_Name
       value: Storage

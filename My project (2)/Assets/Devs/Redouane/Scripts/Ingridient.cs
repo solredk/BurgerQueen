@@ -7,13 +7,13 @@ public class Ingridient : MonoBehaviour
     [SerializeField] private int addedQuantity;
     [SerializeField] private int quantity;
     [SerializeField] private TextMeshProUGUI quantityText;
-    private void Awake()
+
+
+    private void Start()
     {
         quantity = IngredientManager.instance.GetAmount(ingredientName);
         quantityText.text = quantity.ToString();
     }
-
-
     public void GiveAmount() 
     {
         IngredientManager.instance.GiveAmount(ingredientName, addedQuantity);

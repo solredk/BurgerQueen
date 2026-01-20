@@ -6062,66 +6062,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1348124817519544299, guid: 4954bb7832bd3e64999358e72014f105, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1348124817519544299, guid: 4954bb7832bd3e64999358e72014f105, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1348124817519544299, guid: 4954bb7832bd3e64999358e72014f105, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 799.99994
-      objectReference: {fileID: 0}
-    - target: {fileID: 1348124817519544299, guid: 4954bb7832bd3e64999358e72014f105, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 449.99997
-      objectReference: {fileID: 0}
-    - target: {fileID: 1348124817519544299, guid: 4954bb7832bd3e64999358e72014f105, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.012433592
-      objectReference: {fileID: 0}
-    - target: {fileID: 1348124817519544299, guid: 4954bb7832bd3e64999358e72014f105, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.012433592
-      objectReference: {fileID: 0}
-    - target: {fileID: 1348124817519544299, guid: 4954bb7832bd3e64999358e72014f105, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.012433592
-      objectReference: {fileID: 0}
-    - target: {fileID: 1348124817519544299, guid: 4954bb7832bd3e64999358e72014f105, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 163.66
-      objectReference: {fileID: 0}
-    - target: {fileID: 1348124817519544299, guid: 4954bb7832bd3e64999358e72014f105, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1348124817519544299, guid: 4954bb7832bd3e64999358e72014f105, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1348124817519544299, guid: 4954bb7832bd3e64999358e72014f105, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1348124817519544299, guid: 4954bb7832bd3e64999358e72014f105, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -839.92
-      objectReference: {fileID: 0}
-    - target: {fileID: 1348124817519544299, guid: 4954bb7832bd3e64999358e72014f105, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -827.22
-      objectReference: {fileID: 0}
-    - target: {fileID: 2781516980834774675, guid: 4954bb7832bd3e64999358e72014f105, type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3002211783556813832, guid: 4954bb7832bd3e64999358e72014f105, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.33062
-      objectReference: {fileID: 0}
     - target: {fileID: 3834876213395855740, guid: 4954bb7832bd3e64999358e72014f105, type: 3}
       propertyPath: m_LocalPosition.x
       value: 839.87933
@@ -6162,26 +6102,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3834876213395855740, guid: 4954bb7832bd3e64999358e72014f105, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4982528841019861098, guid: 4954bb7832bd3e64999358e72014f105, type: 3}
-      propertyPath: orderCard
-      value: 
-      objectReference: {fileID: 5111162787270687711, guid: 783e7e358e29f9240a93916a6202e866, type: 3}
     - target: {fileID: 4982528841019861098, guid: 4954bb7832bd3e64999358e72014f105, type: 3}
       propertyPath: ordersTab
       value: 
       objectReference: {fileID: 1038816309}
-    - target: {fileID: 4982528841019861098, guid: 4954bb7832bd3e64999358e72014f105, type: 3}
-      propertyPath: orderCards.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4982528841019861098, guid: 4954bb7832bd3e64999358e72014f105, type: 3}
-      propertyPath: cardPositions.Array.size
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 4982528841019861098, guid: 4954bb7832bd3e64999358e72014f105, type: 3}
       propertyPath: 'cardPositions.Array.data[0]'
       value: 
@@ -6201,10 +6125,6 @@ PrefabInstance:
     - target: {fileID: 5936240025427119056, guid: 4954bb7832bd3e64999358e72014f105, type: 3}
       propertyPath: m_Name
       value: Orders
-      objectReference: {fileID: 0}
-    - target: {fileID: 7722088621491215126, guid: 4954bb7832bd3e64999358e72014f105, type: 3}
-      propertyPath: m_RenderMode
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

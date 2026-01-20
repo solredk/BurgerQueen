@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 1185018142936782654}
   - component: {fileID: 4613744918059754003}
   m_Layer: 6
-  m_Name: Sla
-  m_TagString: lettuce
+  m_Name: Onion
+  m_TagString: onion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1818501504e30cc4392b9c77ec3f7367, type: 2}
+  - {fileID: 2100000, guid: 873cfee79125d5f42a48e3eb73823d23, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

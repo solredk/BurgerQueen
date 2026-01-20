@@ -25,6 +25,11 @@ public class OrderManager : MonoBehaviour
     private bool closed = true;
     private bool spotfilled;
 
+    public int currentBurg;
+    public int currentFrit;
+    public int currentDrink;
+
+
 
     private void Start()
     {

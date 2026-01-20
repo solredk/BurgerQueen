@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5866167344784747722}
   m_Layer: 6
   m_Name: Brood
-  m_TagString: Meat
+  m_TagString: bread
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

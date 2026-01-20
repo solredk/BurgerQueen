@@ -57,6 +57,7 @@ public class IceMachine : MonoBehaviour
                 {
                     case 0: drinkColor(button.flaverNumber);break;
                     case 1: KindSprinkle(button.flaverNumber); break;
+                    case 2: Done(); break;
                     default: break;
                 }
             }
@@ -101,17 +102,19 @@ public class IceMachine : MonoBehaviour
     }
     private void AddSprinkels()
     {
-        if (true)
-        {
-            drink.Sprinkeled = true;
-        }
+        drink.Ice.SetActive(true);
+        drink.Sprinkeled = true;
     }
-    public void Done()
+    private void Done()
     {
-        drink.Done = true;
-        filling = false;
-        sprinkeling = false;
-        drink = null;
+        
+        if (drink.Full)
+        {
+            drink.Done = true;
+            filling = false;
+            sprinkeling = false;
+            drink = null;
+        }
     }
     void FillDrink()
     {
@@ -127,7 +130,7 @@ public class IceMachine : MonoBehaviour
                 {
                     AddIceCream();
                 }
-                else if (drink.Full&& sprinkeling)
+                else if (drink.Full&& sprinkeling&& !drink.Ice.activeSelf)
                 {
                     AddSprinkels();
                 }

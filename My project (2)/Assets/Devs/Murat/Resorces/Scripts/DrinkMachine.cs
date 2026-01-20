@@ -87,9 +87,9 @@ public class DrinkMachine : MonoBehaviour
                     }
                     else if (drink.Drink.transform.localScale.y >= Size && on)
                     {
-                        if (Ice && !drink.Ice.active)
+                        if (Ice && !drink.Ice.activeSelf)
                         {
-                            drink.Ice.active = true;
+                            drink.Ice.SetActive(true);
                         }
                         drink.Full = true;
                         on = false;

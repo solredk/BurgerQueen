@@ -29,6 +29,9 @@ public class OrderManager : MonoBehaviour
     public int currentFrit;
     public int currentDrink;
 
+    public TextMeshProUGUI currentBurgT;
+    public TextMeshProUGUI currentFritT;
+    public TextMeshProUGUI currentDrinkT;
 
 
     private void Start()
@@ -86,19 +89,18 @@ public class OrderManager : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
-            //thisOrder.Add(allOrders[orderNumberI].Order[i]);
-            //  thisOrder[0] = 4;
 
             if (allOrders[orderNumberI].Order[i] == thisOrder[i])
             {
-                print("nice soup");
                 orderGiveReverse = true;
+                currentBurgT.text = "Burger: ";
+                currentDrinkT.text = "Drink: ";
+                currentFritT.text = "Fry: ";
+
             }
             else
             {
-                print("I ASKED FOR NO PICKLES");
                 WrongOrder();
-
             }
         }
 

@@ -25,6 +25,7 @@ public class PlaatTrigger : MonoBehaviour
     [SerializeField] private TextMeshProUGUI noBurgT;
 
 
+
     private void Start()
     {
         m_AssambleManager = FindAnyObjectByType<BurgerAssambleManager>();
@@ -69,6 +70,7 @@ public class PlaatTrigger : MonoBehaviour
                 {
                     m_OrderManager.thisOrder[0] = 0;
                     noBurgT.text = string.Empty;
+                    m_OrderManager.currentBurgT.text = "Burger: Basic";
                 }
                 else
                 {
@@ -85,6 +87,7 @@ public class PlaatTrigger : MonoBehaviour
                 {
                     m_OrderManager.thisOrder[0] = 1;
                     noBurgT.text = string.Empty;
+                    m_OrderManager.currentBurgT.text = "Burger: Deluxe";
                 }
                 else
                 {
@@ -101,6 +104,7 @@ public class PlaatTrigger : MonoBehaviour
                 {
                     m_OrderManager.thisOrder[0] = 2;
                     noBurgT.text = string.Empty;
+                    m_OrderManager.currentBurgT.text = "Burger: Deluxe Cheese";
                 }
                 else
                 {
@@ -116,6 +120,7 @@ public class PlaatTrigger : MonoBehaviour
                 {
                     m_OrderManager.thisOrder[0] = 3;
                     noBurgT.text = string.Empty;
+                    m_OrderManager.currentBurgT.text = "Burger: Cheese burger";
                 }
                 else
                 {
@@ -131,6 +136,7 @@ public class PlaatTrigger : MonoBehaviour
                 {
                     m_OrderManager.thisOrder[0] = 4;
                     noBurgT.text = string.Empty;
+                    m_OrderManager.currentBurgT.text = "Burger: Kaasbroodje";
                 }
                 else
                 {

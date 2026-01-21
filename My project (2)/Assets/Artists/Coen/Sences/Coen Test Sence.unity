@@ -346,6 +346,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7511558181221131132, guid: ee9b582621c01e642bde5b92317e1ea0, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 30eec1cf36684544baa6077397530718, type: 2}
     - target: {fileID: 5740082596167622635, guid: ee9b582621c01e642bde5b92317e1ea0, type: 3}
       propertyPath: m_Name
       value: PRE_BurgerAssembyStation_01
@@ -417,7 +421,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5972431377681997887, guid: 49560b849074e9d42bb7943ebb15b4cc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 5972431377681997887, guid: 49560b849074e9d42bb7943ebb15b4cc, type: 3}
       propertyPath: m_LocalRotation.w

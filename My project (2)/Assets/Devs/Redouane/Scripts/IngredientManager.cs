@@ -46,4 +46,16 @@ public class IngredientManager : MonoBehaviour
         }
         Debug.Log("ingredient not found");
     }
+    public void setAmount()
+    {
+        foreach (Ingredient ingredient in ingredients)
+        {
+            if (ingredient.Quantity < 20)
+            {
+                ingredient.Quantity += 10;
+                break;
+            }
+        }
+        Debug.Log("ingredient not found");
+    }
 }

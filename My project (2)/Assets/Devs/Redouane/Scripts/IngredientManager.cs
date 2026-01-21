@@ -40,12 +40,14 @@ public class IngredientManager : MonoBehaviour
             if (ingredient.Name == ingredientName)
             {
                 ingredient.Quantity += amount;
+                if (ingredient.Quantity > 50)
+                    ingredient.Quantity = 50;
                 break;
             }
         }
         Debug.Log("ingredient not found");
     }
-    public void setAmount()
+    public void SetAmount()
     {
         foreach (Ingredient ingredient in ingredients)
         {

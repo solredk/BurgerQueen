@@ -434,7 +434,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5462660550689369555, guid: c59334c6eb87de649b42cb666d9d3c8b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -5167069693817308918, guid: c59334c6eb87de649b42cb666d9d3c8b, type: 3}
       propertyPath: m_IsActive
@@ -494,7 +494,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 8acf65d47d6578442857ec667b0d75bb, type: 2}
     - target: {fileID: 8452952474245838804, guid: c59334c6eb87de649b42cb666d9d3c8b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -645,6 +645,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Ice Cream Cone_01
       objectReference: {fileID: 0}
+    - target: {fileID: 2889003639626783270, guid: d132d95e1a8e62e418a7a1763635368c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -661,6 +665,10 @@ PrefabInstance:
     - target: {fileID: 6960102347964767859, guid: 6a047d89a3c57d6449a5be848b677e91, type: 3}
       propertyPath: m_Name
       value: SK_Rat_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6960102347964767859, guid: 6a047d89a3c57d6449a5be848b677e91, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7772246043881440457, guid: 6a047d89a3c57d6449a5be848b677e91, type: 3}
       propertyPath: m_LocalPosition.x
@@ -758,6 +766,10 @@ PrefabInstance:
     - target: {fileID: 834057190361819460, guid: 686eb78756cc2c24c82049dd3b2b0e4b, type: 3}
       propertyPath: m_Name
       value: SM_Box_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 834057190361819460, guid: 686eb78756cc2c24c82049dd3b2b0e4b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

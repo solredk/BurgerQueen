@@ -12,6 +12,7 @@ TagManager:
   - trashBag
   - CleanWater
   - CleanWC
+  - Box
   layers:
   - Default
   - TransparentFX

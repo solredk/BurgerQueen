@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class TashBin : MonoBehaviour
 {
@@ -12,26 +13,12 @@ public class TashBin : MonoBehaviour
     public TextMeshProUGUI trashText;
     public GameObject trashbag;
     public int numberOffTrash;
+    public BoxCrush crushMinigame;
+    public bool miniGame = false;
+    public bool boxesEnded = false;
     private int reachTrash;
 
 
-    private void Start()
-    {
-        
-        trashRequirement = trashTotal.Length;
-        numberOffTrash = Random.Range(0, 10);
-        reachTrash = Random.Range(-20, -30);
-
-        for (int i = 0; i < numberOffTrash; i++)
-        {
-            reachTrash = Random.Range(-20, -30);
-            Instantiate(trashbag, new Vector3(reachTrash, -7, 15), Quaternion.identity);
-
-        }
-        trashTotal = GameObject.FindGameObjectsWithTag("trashBag");
-        trashRequirement = trashTotal.Length;
-
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -44,11 +31,38 @@ public class TashBin : MonoBehaviour
 
     private void Update()
     {
-        trashText.text = "Trash:" + trashFilled + "/" + trashRequirement;
-
-        if(trashFilled == trashRequirement)
+        if (boxesEnded)
         {
-            lidAnimator.SetBool("Closing", true);
+            trashText.text = "Trash:" + trashFilled + "/" + trashRequirement;
+            if (trashFilled == trashRequirement)
+            {
+                lidAnimator.SetBool("Closing", true);
+            }
         }
+        if (miniGame)
+        {
+            trashMinigame();
+
+
+        }
+        
+    }
+
+    public void trashMinigame() {
+
+        trashRequirement = trashTotal.Length;
+        numberOffTrash = Random.Range(5, 10);
+        reachTrash = Random.Range(-20, -30);
+
+        for (int i = 0; i < numberOffTrash; i++)
+        {
+            reachTrash = Random.Range(-20, -28);
+            Instantiate(trashbag, new Vector3(reachTrash, -7, 15), Quaternion.identity);
+
+        }
+        trashTotal = GameObject.FindGameObjectsWithTag("trashBag");
+        trashRequirement = trashTotal.Length;
+
+        miniGame = false;
     }
 }

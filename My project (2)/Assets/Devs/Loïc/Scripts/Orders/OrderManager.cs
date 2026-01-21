@@ -10,9 +10,9 @@ public class OrderManager : MonoBehaviour
     [SerializeField] private TMP_InputField orderNumberGO;
     [SerializeField] private GameObject orderCard;
 
-    [SerializeField] private List<int> currentOrder;
+    public List<int> currentOrder;
     [SerializeField] private List<Customer> allOrders;
-    [SerializeField] private List<int> thisOrder;
+    public List<int> thisOrder;
     [SerializeField] private List<GameObject> orderCards;
     [SerializeField] private List<Transform> cardPositions;
 

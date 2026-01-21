@@ -19,7 +19,8 @@ public class BurgerAssambleManager : MonoBehaviour
     [SerializeField] private GameObject prepPlaceObj;
     private GameObject currentIngredient;
 
-    [SerializeField] private List<Collider> breadBucket;
+    [SerializeField] private List<Collider> breadBucketT;
+    [SerializeField] private List<Collider> breadBucketB;
     [SerializeField] private List<Collider> lettuceBucket;
     [SerializeField] private List<Collider> cheeseBucket;
     [SerializeField] private List<Collider> tomatoBucket;
@@ -94,7 +95,7 @@ public class BurgerAssambleManager : MonoBehaviour
     }
 
 
-    private void AddIngredient(string ingredientName, int ingredientNumber, List<Collider> buckets)
+    private void AddIngredient(string ingredientName, int ingredientNumber, List<Collider> buckets, int textNumber)
     {
         for (int i = 0; i < buckets.Count; i++)
         {
@@ -107,32 +108,36 @@ public class BurgerAssambleManager : MonoBehaviour
                     IngredientManager.instance.GiveAmount(ingredientName, -1);
                 }
             }
-            storageText[ingredientNumber].text = IngredientManager.instance.GetAmount(ingredientName).ToString();
+            storageText[textNumber].text = IngredientManager.instance.GetAmount(ingredientName).ToString();
         }
     }
-    public void AddBun()
+    public void AddBunT()
     {
-        AddIngredient("Burger Bun", 0, breadBucket);
+        AddIngredient("Burger Bun", 0, breadBucketT, 0);
+    }
+    public void AddBunB()
+    {
+        AddIngredient("Burger Bun", 6, breadBucketB, 0);
     }
     public void AddLettuce()
     {
-        AddIngredient("Lettuce", 1, lettuceBucket);
+        AddIngredient("Lettuce", 1, lettuceBucket, 1);
     }
     public void AddCheese()
     {
-        AddIngredient("Cheese", 2, cheeseBucket);
+        AddIngredient("Cheese", 2, cheeseBucket, 2);
     }
     public void AddTomatoes()
     {
-        AddIngredient("Tomatoes", 3, tomatoBucket);
+        AddIngredient("Tomatoes", 3, tomatoBucket, 3);
     }
     public void AddMeat()
     {
-        AddIngredient("Meat", 4, meatBucket);
+        AddIngredient("Meat", 4, meatBucket, 4);
     }
     public void AddOnion()
     {
-        AddIngredient("Onions", 5, onionBucket);
+        AddIngredient("Onions", 5, onionBucket, 5);
     }
 
 

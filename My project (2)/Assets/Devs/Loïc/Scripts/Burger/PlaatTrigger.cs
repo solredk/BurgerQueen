@@ -1,11 +1,20 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using TMPro;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlaatTrigger : MonoBehaviour
 {
     private BurgerAssambleManager m_AssambleManager;
-    public GameObject addedIngredient;
+    private OrderManager m_OrderManager;
+    private GameObject addedIngredient;
+    [SerializeField] private List<GameObject> burger0;
+    [SerializeField] private List<GameObject> burger1;
+    [SerializeField] private List<GameObject> burger2;
+    [SerializeField] private List<GameObject> burger3;
+    [SerializeField] private List<GameObject> burger4;
+
     [SerializeField] float ingredientDistance;
     [SerializeField] float sauseDistance;
 
@@ -13,10 +22,15 @@ public class PlaatTrigger : MonoBehaviour
     [SerializeField] private GameObject mayoSplat;
     [SerializeField] private GameObject mustSplat;
 
+    [SerializeField] private TextMeshProUGUI noBurgT;
+
 
     private void Start()
     {
         m_AssambleManager = FindAnyObjectByType<BurgerAssambleManager>();
+        m_OrderManager = FindAnyObjectByType<OrderManager>();
+        noBurgT.text = string.Empty;
+        noBurgT.color = Color.red;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -47,28 +61,88 @@ public class PlaatTrigger : MonoBehaviour
 
     public void doesBrunoMarsIsGay()
     {
-        if (m_AssambleManager.burger[0].gameObject.tag == ("bread"))
+        if (m_OrderManager.currentOrder[0] == 0)
         {
-            if (m_AssambleManager.burger[1].gameObject.tag == ("Meat") && m_AssambleManager.burger[2].gameObject.tag == ("ketchup") && m_AssambleManager.burger[3].gameObject.tag == ("mustord") && m_AssambleManager.burger[4].gameObject.tag == ("bread"))
+            for (int i = 0; i < burger0.Count; i++)
             {
-                print("you basic ass bitch");
-            }
-            else
-            {
-                print("fake ass burger");
+                if (m_AssambleManager.burger[i].gameObject.tag == burger0[i].gameObject.tag)
+                {
+                    m_OrderManager.thisOrder[0] = 0;
+                    noBurgT.text = string.Empty;
+                }
+                else
+                {
+                    noBurgT.text = "Not a valid burger";
+                }
             }
         }
-        else 
+
+        if (m_OrderManager.currentOrder[0] == 1)
         {
-            print("neit eens een burger wtihowea");
+            for (int i = 0; i < burger1.Count; i++)
+            {
+                if (m_AssambleManager.burger[i].gameObject.tag == burger1[i].gameObject.tag)
+                {
+                    m_OrderManager.thisOrder[0] = 1;
+                    noBurgT.text = string.Empty;
+                }
+                else
+                {
+                    noBurgT.text = "Not a valid burger";
+                }
+            } 
         }
 
-
-        
+        if (m_OrderManager.currentOrder[0] == 2)
+        {
+            for (int i = 0; i < burger2.Count; i++)
+            {
+                if (m_AssambleManager.burger[i].gameObject.tag == burger2[i].gameObject.tag)
+                {
+                    m_OrderManager.thisOrder[0] = 2;
+                    noBurgT.text = string.Empty;
+                }
+                else
+                {
+                    noBurgT.text = "Not a valid burger";
+                }
+            }
+        }
+        if (m_OrderManager.currentOrder[0] == 3)
+        {
+            for (int i = 0; i < burger3.Count; i++)
+            {
+                if (m_AssambleManager.burger[i].gameObject.tag == burger3[i].gameObject.tag)
+                {
+                    m_OrderManager.thisOrder[0] = 3;
+                    noBurgT.text = string.Empty;
+                }
+                else
+                {
+                    noBurgT.text = "Not a valid burger";
+                }
+            }
+        }
+        if (m_OrderManager.currentOrder[0] == 4)
+        {
+            for (int i = 0; i < burger4.Count; i++)
+            {
+                if (m_AssambleManager.burger[i].gameObject.tag == burger4[i].gameObject.tag)
+                {
+                    m_OrderManager.thisOrder[0] = 4;
+                    noBurgT.text = string.Empty;
+                }
+                else
+                {
+                    noBurgT.text = "Not a valid burger";
+                }
+            }
+        }    
     }
 
     public void ClearButton()
     {
+        noBurgT.text = string.Empty;
         for (int i = 0; i < m_AssambleManager.burger.Count; i++)
         {
             Destroy(m_AssambleManager.burger[i]);

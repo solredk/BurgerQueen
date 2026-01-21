@@ -12,15 +12,18 @@ public class Burger : MonoBehaviour
         {
             if (timer < 5)
             {
-                gameObject.GetComponent<MeshRenderer>().material = Heated[0];
+                Transform meat = gameObject.transform.GetChild(0);
+                meat.gameObject.GetComponent<MeshRenderer>().material = Heated[0];
             }
             else if (5 <= timer && timer <= 15)
             {
-                gameObject.GetComponent<MeshRenderer>().material = Heated[1];
+                Transform meat = gameObject.transform.GetChild(0);
+                meat.gameObject.GetComponent<MeshRenderer>().material = Heated[1];
             }
             else if (timer > 15)
             {
-                gameObject.GetComponent<MeshRenderer>().material = Heated[2];
+                Transform meat = gameObject.transform.GetChild(0);
+                meat.gameObject.GetComponent<MeshRenderer>().material = Heated[2];
             }
             timer += Time.deltaTime;
         }

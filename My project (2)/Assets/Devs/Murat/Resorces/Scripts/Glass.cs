@@ -29,6 +29,7 @@ public class Glass : MonoBehaviour
             else
             {
                 gameObject.layer = 6;
+                place.GetComponent<Snap>().Glass = null;
                 place = null;
                 GetComponent<Rigidbody>().isKinematic = false;
             }
@@ -36,9 +37,14 @@ public class Glass : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Snap")
+        if (other.gameObject.GetComponent<Snap>())
         {
-            place = other.gameObject;
+            if(!other.gameObject.GetComponent<Snap>().Glass|| other.gameObject.GetComponent<Snap>().Glass==gameObject)
+            {
+                place = other.gameObject;
+                other.gameObject.GetComponent<Snap>().Glass = gameObject;
+            }
+            
         }
     }
 }

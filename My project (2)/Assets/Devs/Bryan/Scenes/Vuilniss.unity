@@ -1063,8 +1063,8 @@ Transform:
   m_GameObject: {fileID: 801143038}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.10195203, z: -2.7767045}
-  m_LocalScale: {x: 1, y: 5.590573, z: 0.17887256}
+  m_LocalPosition: {x: 0.013, y: 0.10195203, z: -2.7767045}
+  m_LocalScale: {x: 0.8208294, y: 3.7336643, z: 0.17887256}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2065997412}
@@ -1086,7 +1086,7 @@ MonoBehaviour:
   trashTotal: []
   lidAnimator: {fileID: 376083208}
   trashText: {fileID: 1647496967}
-  trashbag: {fileID: 1778845939713634916, guid: bd0684c4ad1455642843cedf37a447ce, type: 3}
+  trashbag: {fileID: 7203151189859637324, guid: 4ec2610f86c4bf54abb3d859b609fa11, type: 3}
   numberOffTrash: 0
   crushMinigame: {fileID: 0}
   miniGame: 0

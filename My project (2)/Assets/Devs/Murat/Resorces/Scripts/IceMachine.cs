@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,6 +9,7 @@ public class IceMachine : MonoBehaviour
 {
     [SerializeField] private List<Mech> MechList;
     [SerializeField] private List<Material> ColorDrink;
+    [SerializeField] private Material sprinkels;
     [SerializeField] private List<GameObject> Buttons;
     private float Size;
     private float hight;
@@ -65,9 +68,9 @@ public class IceMachine : MonoBehaviour
         {
             case Glass.container.IceCreamCone:
                 MechList[i].poorDrink.SetActive(true);
-                Size = 1.5f;
-                sizeX = 1.8f;
-                sizeZ = 1.8f;
+                Size = 700f;
+                sizeX = 700f;
+                sizeZ = 700f;
                 hight = 0.07f;
                 break;
             case Glass.container.IceCreamCup:
@@ -97,7 +100,10 @@ public class IceMachine : MonoBehaviour
     }
     private void AddSprinkels(int i)
     {
-        MechList[i].drink.Ice.SetActive(true);
+        List<Material> addSprinkel = new List<Material>();
+        addSprinkel.Add(MechList[i].drink.Drink.GetComponent<MeshRenderer>().material);
+        addSprinkel.Add(sprinkels);
+        MechList[i].drink.Drink.GetComponent<MeshRenderer>().SetMaterials(addSprinkel);
         MechList[i].drink.Sprinkeled = true;
     }
     private void Done(int i)
@@ -126,7 +132,7 @@ public class IceMachine : MonoBehaviour
                     {
                         AddIceCream(i);
                     }
-                    else if (MechList[i].drink.Full && MechList[i].sprinkeling && !MechList[i].drink.Ice.activeSelf)
+                    else if (MechList[i].drink.Full && MechList[i].sprinkeling && !MechList[i].drink.Drink.GetComponent<MeshRenderer>().materials.Contains(sprinkels))
                     {
                         AddSprinkels(i);
                     }

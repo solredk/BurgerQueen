@@ -11,24 +11,25 @@ public class Glass : MonoBehaviour
     }
     public container contaner;
     public bool Full = false;
+    public bool Done = false;
+    public bool Sprinkeled = false;
     public GameObject Drink;
     public GameObject place;
     public GameObject Ice;
-    [SerializeField] private LayerMask filling;
-    [SerializeField] private LayerMask filled;
     private void Update()
     {
         if (place != null)
         {
-            if (!Full)
+            if (!Done)
             {
                 transform.position = place.transform.position + new Vector3(0, 0, 0);
-                gameObject.layer = filling.value;
+                gameObject.layer = 0;
                 GetComponent<Rigidbody>().isKinematic = true;
             }
             else
             {
-                gameObject.layer = filled.value;
+                gameObject.layer = 6;
+                place.GetComponent<Snap>().Glass = null;
                 place = null;
                 GetComponent<Rigidbody>().isKinematic = false;
             }
@@ -36,9 +37,14 @@ public class Glass : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Snap")
+        if (other.gameObject.GetComponent<Snap>())
         {
-            place = other.gameObject;
+            if(!other.gameObject.GetComponent<Snap>().Glass|| other.gameObject.GetComponent<Snap>().Glass==gameObject)
+            {
+                place = other.gameObject;
+                other.gameObject.GetComponent<Snap>().Glass = gameObject;
+            }
+            
         }
     }
 }

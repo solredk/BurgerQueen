@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class IngredientManager : MonoBehaviour
@@ -7,17 +8,18 @@ public class IngredientManager : MonoBehaviour
 
     [SerializeField] public List<Ingredient> ingredients;
 
-    private void Start()
+    [SerializeField] public int money;
+
+    private void Awake()
     {
-        instance = this;
-        ResetIngridients();
+        instance = this;        
     }
 
-    private void ResetIngridients()
+    public void ResetIngridients(int defeaultValue)
     {
         foreach (Ingredient ingredients in ingredients)
         {
-            ingredients.Quantity = 0;
+            ingredients.Quantity = defeaultValue;
         }
     }
 
@@ -41,12 +43,14 @@ public class IngredientManager : MonoBehaviour
             if (ingredient.Name == ingredientName)
             {
                 ingredient.Quantity += amount;
+                if (ingredient.Quantity > 50)
+                    ingredient.Quantity = 50;
                 break;
             }
         }
         Debug.Log("ingredient not found");
     }
-    public void setAmount()
+    public void SetAmount()
     {
         foreach (Ingredient ingredient in ingredients)
         {
@@ -57,5 +61,18 @@ public class IngredientManager : MonoBehaviour
             }
         }
         Debug.Log("ingredient not found");
+    }
+
+    public int GetPrice(string ingredientName)
+    {
+        foreach (Ingredient ingredient in ingredients)
+        {
+            if (ingredient.name == ingredientName)
+            {
+                return ingredient.price;
+            }
+        }
+        Debug.Log("ingridient is null");
+        return 0;
     }
 }

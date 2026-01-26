@@ -51,12 +51,12 @@ public class TashBin : MonoBehaviour
     public void trashMinigame() {
 
         trashRequirement = trashTotal.Length;
-        numberOffTrash = Random.Range(5, 10);
+        numberOffTrash = Random.Range(5, 7);
         reachTrash = Random.Range(-20, -30);
 
         for (int i = 0; i < numberOffTrash; i++)
         {
-            reachTrash = Random.Range(-20, -28);
+            reachTrash = Random.Range(-25, -28);
             Instantiate(trashbag, new Vector3(reachTrash, -7, 15), Quaternion.identity);
 
         }

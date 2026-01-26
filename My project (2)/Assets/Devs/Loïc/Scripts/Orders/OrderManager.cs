@@ -33,6 +33,8 @@ public class OrderManager : MonoBehaviour
     public TextMeshProUGUI currentFritT;
     public TextMeshProUGUI currentDrinkT;
 
+    public int served;
+
 
     private void Start()
     {
@@ -97,11 +99,17 @@ public class OrderManager : MonoBehaviour
                 currentDrinkT.text = "Drink: ";
                 currentFritT.text = "Fry: ";
 
+                served++;
             }
             else
             {
                 WrongOrder();
             }
+        }
+
+        if (served >= 5) 
+        {
+            //HIER LOAD EINDE SHIFT SCREEN / SCORE SCENE
         }
 
     }

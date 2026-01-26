@@ -37,18 +37,7 @@ public class BurgerAssambleManager : MonoBehaviour
         
         IngredientManager.instance.ResetIngridients(20);
 
-        storageText[0].text = IngredientManager.instance. GetAmount("Burger Bun").ToString();
-
-        storageText[1].text = IngredientManager.instance.GetAmount("Lettuce").ToString();
-
-        storageText[2].text = IngredientManager.instance.GetAmount("Cheese").ToString();
-
-        storageText[3].text = IngredientManager.instance.GetAmount("Tomatoes").ToString();
-
-        storageText[4].text = IngredientManager.instance.GetAmount("Meat").ToString();
-
-        storageText[5].text = IngredientManager.instance.GetAmount("Onions").ToString();
-
+        
 
         if (StorageIngridientsCheck())
         {
@@ -63,6 +52,22 @@ public class BurgerAssambleManager : MonoBehaviour
         }
 
        
+
+    }
+
+    private void Update()
+    {
+        storageText[0].text = IngredientManager.instance.GetAmount("Burger Bun").ToString();
+
+        storageText[1].text = IngredientManager.instance.GetAmount("Lettuce").ToString();
+
+        storageText[2].text = IngredientManager.instance.GetAmount("Cheese").ToString();
+
+        storageText[3].text = IngredientManager.instance.GetAmount("Tomatoes").ToString();
+
+        storageText[4].text = IngredientManager.instance.GetAmount("Meat").ToString();
+
+        storageText[5].text = IngredientManager.instance.GetAmount("Onions").ToString();
 
     }
 

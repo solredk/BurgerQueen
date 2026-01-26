@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class IngredientManager : MonoBehaviour
@@ -6,6 +7,8 @@ public class IngredientManager : MonoBehaviour
     public static IngredientManager instance;
 
     [SerializeField] public List<Ingredient> ingredients;
+
+    [SerializeField] public int money;
 
     private void Awake()
     {
@@ -58,5 +61,18 @@ public class IngredientManager : MonoBehaviour
             }
         }
         Debug.Log("ingredient not found");
+    }
+
+    public int GetPrice(string ingredientName)
+    {
+        foreach (Ingredient ingredient in ingredients)
+        {
+            if (ingredient.name == ingredientName)
+            {
+                return ingredient.price;
+            }
+        }
+        Debug.Log("ingridient is null");
+        return 0;
     }
 }

@@ -10,9 +10,9 @@ public class OrderManager : MonoBehaviour
     [SerializeField] private TMP_InputField orderNumberGO;
     [SerializeField] private GameObject orderCard;
 
-    [SerializeField] private List<int> currentOrder;
+    public List<int> currentOrder;
     [SerializeField] private List<Customer> allOrders;
-    [SerializeField] private List<int> thisOrder;
+    public List<int> thisOrder;
     [SerializeField] private List<GameObject> orderCards;
     [SerializeField] private List<Transform> cardPositions;
 
@@ -24,6 +24,14 @@ public class OrderManager : MonoBehaviour
     public bool orderGiveReverse = false;
     private bool closed = true;
     private bool spotfilled;
+
+    public int currentBurg;
+    public int currentFrit;
+    public int currentDrink;
+
+    public TextMeshProUGUI currentBurgT;
+    public TextMeshProUGUI currentFritT;
+    public TextMeshProUGUI currentDrinkT;
 
 
     private void Start()
@@ -68,10 +76,6 @@ public class OrderManager : MonoBehaviour
 
                 spotfilled = true;
             }
-
-            //  Vector3 cardPosition = currentCard.transform.position += ordersTab.transform.position;
-            // cardPosition.x = currentCard.transform.position.x - ordersTab.transform.position.x * 5 * orderCards.Count + 1;
-            // currentCard.transform.position = cardPosition;
         }
 
         AddCustomerOrder(new List<int>() { currentOrder[0], currentOrder[1], currentOrder[2] });
@@ -85,19 +89,18 @@ public class OrderManager : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
-            //thisOrder.Add(allOrders[orderNumberI].Order[i]);
-            //  thisOrder[0] = 4;
 
             if (allOrders[orderNumberI].Order[i] == thisOrder[i])
             {
-                print("nice soup");
                 orderGiveReverse = true;
+                currentBurgT.text = "Burger: ";
+                currentDrinkT.text = "Drink: ";
+                currentFritT.text = "Fry: ";
+
             }
             else
             {
-                print("I ASKED FOR NO PICKLES");
                 WrongOrder();
-
             }
         }
 

@@ -15,6 +15,12 @@ TagManager:
   - bread
   - lettuce
   - Trash
+  - cheese
+  - onion
+  - tomato
+  - ketchup
+  - mayo
+  - mustord
   layers:
   - Default
   - TransparentFX

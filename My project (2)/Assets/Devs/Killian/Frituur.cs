@@ -25,12 +25,6 @@ public class Frituur : MonoBehaviour
     {
         grabingS = FindAnyObjectByType<Grabing>();
     }
-
-    void Update()
-    {
-
-    }
-
     public void FriesButton()
     {
         if (ingredientSpawned == false)

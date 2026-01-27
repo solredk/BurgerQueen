@@ -11,13 +11,6 @@ public class Fryingstation : MonoBehaviour
     {
         frituur = FindFirstObjectByType<Frituur>();
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if(isCooking)
@@ -28,10 +21,6 @@ public class Fryingstation : MonoBehaviour
                 isCooking = false;
                 cookingTime = 10.0f;
                 frituur.ingredientSpawned = false;
-                if(frituur.ingredientSpawned2)
-                {
-                    frituur.ingredientSpawned2 = false;
-                }
                 frituur.currentIngredient = Instantiate(frituur.CookingIngredient, friedFriesSpawn.transform.position, Quaternion.identity);
             }
         }

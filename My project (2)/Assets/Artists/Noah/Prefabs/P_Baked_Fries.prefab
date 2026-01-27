@@ -56,6 +56,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_Baked_Fries
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ce06692bfb6e26c4a8c3283b40ea769d, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ce06692bfb6e26c4a8c3283b40ea769d, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -63,6 +71,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ce06692bfb6e26c4a8c3283b40ea769d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3624652481245699363}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ce06692bfb6e26c4a8c3283b40ea769d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4251282437342767440}
   m_SourcePrefab: {fileID: 100100000, guid: ce06692bfb6e26c4a8c3283b40ea769d, type: 3}
 --- !u!1 &6178782727869753458 stripped
 GameObject:
@@ -90,3 +101,30 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.21869779, y: 0.44553733, z: 0.18581711}
   m_Center: {x: -0.0014812984, y: 0.001451619, z: 0.007423304}
+--- !u!54 &4251282437342767440
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6178782727869753458}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

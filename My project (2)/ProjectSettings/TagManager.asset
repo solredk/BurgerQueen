@@ -21,6 +21,7 @@ TagManager:
   - ketchup
   - mayo
   - mustord
+  - FryingIngredient
   layers:
   - Default
   - TransparentFX

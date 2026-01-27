@@ -23,6 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ManasseTestScene.unity
     guid: babf612be2c170d4995c069dd1f4eafb
+  - enabled: 1
+    path: Assets/Devs/Bryan/Scenes/Vuilniss.unity
+    guid: d1a6f0d985d9e01428fc61084794ab5b
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

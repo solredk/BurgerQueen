@@ -4354,6 +4354,7 @@ MeshFilter:
   m_GameObject: {fileID: 481314140}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1 &484351093
 GameObject:
   m_ObjectHideFlags: 0
@@ -4551,6 +4552,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 004cc38e110d2034d809525d1f55cc4c, type: 3}
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 --- !u!1 &496345599
@@ -8321,6 +8324,7 @@ CanvasRenderer:
   m_GameObject: {fileID: 931235949}
   m_CullTransparentMesh: 1
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1001 &978813081
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8397,6 +8401,8 @@ PrefabInstance:
       addedObject: {fileID: 1863212688}
   m_SourcePrefab: {fileID: 100100000, guid: dae44199fbfcf7e4691b1583b1a94bb9, type: 3}
 =======
+=======
+>>>>>>> Stashed changes
 --- !u!1 &948220411
 GameObject:
   m_ObjectHideFlags: 0
@@ -8509,6 +8515,9 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.014537637, y: 0.008466307, z: 0.016323907}
   m_Center: {x: 0.0040682578, y: 4.656785e-10, z: -0.0005858521}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 --- !u!1 &988435148
 GameObject:
@@ -15957,8 +15966,13 @@ PrefabInstance:
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6141731963adc0c4380e2b0b9aaa3e4c, type: 3}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!65 &1942901876
 BoxCollider:
+=======
+--- !u!1 &1929105369
+GameObject:
+>>>>>>> Stashed changes
 =======
 --- !u!1 &1929105369
 GameObject:
@@ -15967,6 +15981,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
   m_GameObject: {fileID: 465002434}
   m_Material: {fileID: 0}
@@ -15986,6 +16001,8 @@ GameObject:
 --- !u!114 &1942901877
 MonoBehaviour:
 =======
+=======
+>>>>>>> Stashed changes
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1929105370}
@@ -15998,11 +16015,15 @@ MonoBehaviour:
   m_IsActive: 1
 --- !u!4 &1929105370
 Transform:
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
   m_GameObject: {fileID: 465002434}
   m_Enabled: 1
@@ -16017,6 +16038,8 @@ Transform:
   messyMaterial: {fileID: 2100000, guid: b0ddae8988664024d805eca79bee7b3d, type: 2}
   cleanMaterial: {fileID: 2100000, guid: a7b43fe0b97ebcb41a362db60b9fe114, type: 2}
 =======
+=======
+>>>>>>> Stashed changes
   m_GameObject: {fileID: 1929105369}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0.0000000026341784, z: -0.0000000026341782, w: 0.7071067}
@@ -16026,6 +16049,9 @@ Transform:
   m_Children: []
   m_Father: {fileID: 948220414}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 --- !u!1001 &1958350125
 PrefabInstance:
@@ -17737,4 +17763,7 @@ SceneRoots:
   - {fileID: 334405880}
   - {fileID: 860519248}
   - {fileID: 1289009485}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

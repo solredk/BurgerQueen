@@ -8,9 +8,15 @@ using UnityEngine.Rendering;
 public class Frituur : MonoBehaviour
 {
     public bool noFriesSpawned = true;
+    public bool noNuggetsSpawned = true;
+    public bool noOnionRingsSpawned = true;
     public GameObject currentIngredient;
     [SerializeField] private GameObject friesObj;
     [SerializeField] public GameObject friedFriesobj;
+    [SerializeField] private GameObject chickenNuggetObj;
+    [SerializeField] private GameObject friedChickenNuggetObj;
+    [SerializeField] private GameObject onionRingObj;
+    [SerializeField] private GameObject friedOnionRingObj;
     [SerializeField] private GameObject friesSpawnPos;
     private Grabing grabingS;
 
@@ -32,6 +38,24 @@ public class Frituur : MonoBehaviour
         {
             currentIngredient = Instantiate(friesObj, friesSpawnPos.transform.position, Quaternion.identity);
             noFriesSpawned = false;
+        }
+    }
+
+    public void ChickenNuggetButton()
+    {
+        if (noFriesSpawned)
+        {
+            currentIngredient = Instantiate(chickenNuggetObj, friesSpawnPos.transform.position, Quaternion.identity);
+            noNuggetsSpawned = false;
+        }
+    }
+
+    public void OnionRingButton()
+    {
+        if (noFriesSpawned)
+        {
+            currentIngredient = Instantiate(onionRingObj, friesSpawnPos.transform.position, Quaternion.identity);
+            noNuggetsSpawned = false;
         }
     }
 

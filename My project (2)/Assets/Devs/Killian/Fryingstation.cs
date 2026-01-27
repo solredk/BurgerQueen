@@ -35,7 +35,7 @@ public class Fryingstation : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Fries") && !isCooking)
+        if (collision.gameObject.CompareTag("FryingIngredient")&& !isCooking)
         {
             Destroy(collision.gameObject);
             frituur.noFriesSpawned = true;

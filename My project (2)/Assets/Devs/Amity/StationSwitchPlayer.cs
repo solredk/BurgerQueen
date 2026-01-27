@@ -28,29 +28,37 @@ public class StationSwitchPlayer : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        
         if (transform.position.x == agent.destination.x && transform.position.z == agent.destination.z)
         {
             if (currentStation != null)
             {
-                agent.isStopped = true;
-                transform.rotation = Quaternion.Slerp(transform.rotation, currentStation.rotation, turnSpeed);
                 if (currentStation.gameObject.tag == "Respawn")
-                {
-                    if (currentStation.eulerAngles.y - transform.eulerAngles.y < 1 && currentStation.eulerAngles.y - transform.eulerAngles.y > -1)
-                    {
-                        agent.enabled = false;
-                        transform.position = currentStation.GetComponent<TeleportPoints>().endPoint.transform.position;
-                        transform.rotation = currentStation.GetComponent<TeleportPoints>().endPoint.transform.rotation;
-                        transform.Rotate(transform.rotation.x, transform.rotation.y - 180, transform.rotation.z);
-                        agent.enabled = true;
-                        currentStation = null;
-                    }
-                }
-                else
-                {
+            {
+                agent.isStopped = true;
+                agent.enabled = false;
+                transform.position = currentStation.GetComponent<TeleportPoints>().endPoint.transform.position;
+                transform.rotation = currentStation.GetComponent<TeleportPoints>().endPoint.transform.rotation;
+                agent.enabled = true;
+                currentStation = null;
+            }
+            else
+            {
                     atStation = true;
                     moving = true;
+                    transform.rotation = Quaternion.Slerp(transform.rotation, currentStation.rotation, turnSpeed);
+                    agent.isStopped = true;
+                    if (currentStation.gameObject.tag == "Fries")
+                    {
+                        Debug.Log("at frying station");
+                    }
+                    if (currentStation.gameObject.tag == "Grill")
+                    {
+                        Debug.Log("at burger station");
+                    }
+                    if (currentStation.gameObject.tag == "Finish")
+                    {
+                        Debug.Log("at checkout counter");
+                    }
                 }
             }
         }

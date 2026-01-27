@@ -37,7 +37,7 @@ public class DrinkMachine : MonoBehaviour
     }
     private void AddIce()
     {
-        if (mech.drink != null && !mech.sprinkeling)
+        if (mech.drink != null && !mech.sprinkeling&&mech.filling)
         {
             if (mech.drink.place != null)
             {

@@ -19,8 +19,9 @@ public class Cleaning : MonoBehaviour
 
                 Ray ray = cam.ScreenPointToRay(screenPos);
                
-                if (Physics.Raycast(ray, out RaycastHit hit, 100))
+                if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
                 {
+                    Debug.Log(hit.collider.name);
                     if (hit.collider.TryGetComponent<Table>(out Table table))
                     {
                         tableToClean = table;

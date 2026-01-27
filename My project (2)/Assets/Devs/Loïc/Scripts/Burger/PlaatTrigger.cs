@@ -79,7 +79,7 @@ public class PlaatTrigger : MonoBehaviour
             }
         }
 
-        if (m_OrderManager.currentOrder[0] == 1)
+        else if (m_OrderManager.currentOrder[0] == 1)
         {
             for (int i = 0; i < burger1.Count; i++)
             {
@@ -96,7 +96,7 @@ public class PlaatTrigger : MonoBehaviour
             } 
         }
 
-        if (m_OrderManager.currentOrder[0] == 2)
+        else if (m_OrderManager.currentOrder[0] == 2)
         {
             for (int i = 0; i < burger2.Count; i++)
             {
@@ -112,7 +112,7 @@ public class PlaatTrigger : MonoBehaviour
                 }
             }
         }
-        if (m_OrderManager.currentOrder[0] == 3)
+        else if (m_OrderManager.currentOrder[0] == 3)
         {
             for (int i = 0; i < burger3.Count; i++)
             {
@@ -128,7 +128,7 @@ public class PlaatTrigger : MonoBehaviour
                 }
             }
         }
-        if (m_OrderManager.currentOrder[0] == 4)
+        else if (m_OrderManager.currentOrder[0] == 4)
         {
             for (int i = 0; i < burger4.Count; i++)
             {
@@ -144,6 +144,7 @@ public class PlaatTrigger : MonoBehaviour
                 }
             }
         }    
+        ClearButton();
     }
 
     public void ClearButton()

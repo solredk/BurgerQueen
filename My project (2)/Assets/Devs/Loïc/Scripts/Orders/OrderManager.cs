@@ -49,7 +49,11 @@ public class OrderManager : MonoBehaviour
     private void Start()
     {
         ordersTab.transform.position = new Vector3(Screen.width / 50, Screen.height / 1.5f, 0);
-        currentCost = Instantiate(costumers[0], costumerSpawn.transform);
+        // currentCost = Instantiate(costumers[0], costumerSpawn.transform);
+        costumers[0].SetActive(true);
+        costumers[1].SetActive(false);
+        costumers[2].SetActive(false);
+
     }
 
     private void AddCustomerOrder(List<int> order)
@@ -96,14 +100,14 @@ public class OrderManager : MonoBehaviour
 
     public void CompareOrder()
     {
-        string orderNumberS = orderNumberGO.text;
-        int orderNumberI = 0;
-        int.TryParse(orderNumberS, out orderNumberI);
+        //string orderNumberS = orderNumberGO.text;
+        //int orderNumberI = 0;
+        //int.TryParse(orderNumberS, out orderNumberI);
 
         for (int i = 0; i < 3; i++)
         {
 
-            if (allOrders[orderNumberI].Order[i] == thisOrder[i])
+            if (allOrders[0].Order[i] == thisOrder[i])
             {
                 orderGiveReverse = true;
                 currentBurgT.text = "Burger: ";
@@ -111,6 +115,8 @@ public class OrderManager : MonoBehaviour
                 currentFritT.text = "Fry: ";
                 thisOrder[i] = 0;
                 served++;
+                print("YAAAHSSS");
+                print(served);
             }
             else
             {
@@ -119,13 +125,26 @@ public class OrderManager : MonoBehaviour
             }
         }
         takeOrderButton.SetActive(true);
-        currentCost.SetActive(false);
-        currentCost = Instantiate(costumers[UnityEngine.Random.Range(0, costumers.Count)], costumerSpawn.transform);
+       // currentCost.SetActive(false);
+        //currentCost = Instantiate(costumers[UnityEngine.Random.Range(0, costumers.Count)], costumerSpawn.transform);
 
         currentOrder.Clear();
         allOrders.Clear();
 
-        if (served >= 6) 
+        costumers[0].SetActive(false);
+        costumers[1].SetActive(false);
+        costumers[2].SetActive(false);
+        int cosNum = UnityEngine.Random.Range(0, 3);
+        costumers[cosNum].SetActive(true);
+
+        Destroy(orderCards[0]);
+
+        thisOrder[0] = 0;
+        thisOrder[1] = 0;
+        thisOrder[2] = 0;
+
+
+        if (served >= 9) 
         {
             //HIER LOAD EINDE SHIFT SCREEN / SCORE SCENE
         }

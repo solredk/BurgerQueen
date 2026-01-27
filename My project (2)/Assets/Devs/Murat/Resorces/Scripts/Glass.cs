@@ -16,6 +16,9 @@ public class Glass : MonoBehaviour
     public GameObject Drink;
     public GameObject place;
     public GameObject Ice;
+
+    public int drinkNumber;
+
     private void Update()
     {
         if (place != null)

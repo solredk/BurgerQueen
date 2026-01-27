@@ -34,6 +34,7 @@ public class Frituur : MonoBehaviour
             ingredientSpawned = true;
             currentIngredient = Instantiate(friesObj, friesSpawnPos.transform.position, Quaternion.identity);
             CookingIngredient = friedFriesobj;
+            IngredientManager.instance.GiveAmount("Fries", -1);
         }
     }
     public void ChickenNuggetButton()
@@ -43,6 +44,8 @@ public class Frituur : MonoBehaviour
             currentIngredient = Instantiate(chickenNuggetObj, friesSpawnPos.transform.position, Quaternion.identity);
             ingredientSpawned = true;
             CookingIngredient = friedChickenNuggetObj;
+            IngredientManager.instance.GiveAmount("Nuggets", -1);
+
         }
     }
 
@@ -53,6 +56,8 @@ public class Frituur : MonoBehaviour
             currentIngredient = Instantiate(onionRingObj, friesSpawnPos.transform.position, Quaternion.identity);
             ingredientSpawned = true;
             CookingIngredient = friedOnionRingObj;
+            IngredientManager.instance.GiveAmount("OnionRings", -1);
+
 
         }
     }

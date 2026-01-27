@@ -69,6 +69,11 @@ public class BurgerAssambleManager : MonoBehaviour
 
         storageText[5].text = IngredientManager.instance.GetAmount("Onions").ToString();
 
+        storageText[6].text = IngredientManager.instance.GetAmount("Fries").ToString();
+
+        storageText[7].text = IngredientManager.instance.GetAmount("Nuggets").ToString();
+
+        storageText[8].text = IngredientManager.instance.GetAmount("OnionRings").ToString();
     }
 
 

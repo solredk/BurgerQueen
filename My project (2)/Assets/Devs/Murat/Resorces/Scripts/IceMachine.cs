@@ -14,6 +14,13 @@ public class IceMachine : MonoBehaviour
     private float Size;
     private float hight;
     [SerializeField] private float timer = 2;
+
+    public Glass m_Glass;
+
+    private void Start()
+    {
+        m_Glass = FindAnyObjectByType<Glass>();
+    }
     void Update()
     {
         PushButton();
@@ -49,10 +56,13 @@ public class IceMachine : MonoBehaviour
         {
             if (Buttons.Contains(hit.transform.gameObject))
             {
+                print("huh");
+
                 MacheneButton button = hit.transform.GetComponent<MacheneButton>();
                 switch (button.funcion)
                 {
-                    case 0: drinkColor(button.flaverNumber);break;
+                    case 0: drinkColor(button.flaverNumber);
+                            ;break;
                     case 1: KindSprinkle(button.flaverNumber); break;
                     case 2: Done(button.flaverNumber); break;
                     default: break;

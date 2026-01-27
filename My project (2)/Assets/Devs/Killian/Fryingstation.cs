@@ -28,6 +28,10 @@ public class Fryingstation : MonoBehaviour
                 isCooking = false;
                 cookingTime = 10.0f;
                 frituur.ingredientSpawned = false;
+                if(frituur.ingredientSpawned2)
+                {
+                    frituur.ingredientSpawned2 = false;
+                }
                 frituur.currentIngredient = Instantiate(frituur.CookingIngredient, friedFriesSpawn.transform.position, Quaternion.identity);
             }
         }
@@ -38,7 +42,7 @@ public class Fryingstation : MonoBehaviour
         if (collision.gameObject.CompareTag("FryingIngredient")&& !isCooking)
         {
             Destroy(collision.gameObject);
-            frituur.ingredientSpawned = true;
+            frituur.ingredientSpawned = false;
             isCooking = true;
         }
     }

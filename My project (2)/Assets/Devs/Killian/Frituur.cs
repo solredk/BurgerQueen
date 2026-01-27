@@ -8,6 +8,7 @@ using UnityEngine.Rendering;
 public class Frituur : MonoBehaviour
 {
     public bool ingredientSpawned = false;
+    public bool ingredientSpawned2 = false;
     public GameObject currentIngredient;
     [SerializeField] private GameObject friesObj;
     [SerializeField] public GameObject friedFriesobj;
@@ -35,18 +36,25 @@ public class Frituur : MonoBehaviour
     {
         if (ingredientSpawned == false)
         {
-            currentIngredient = Instantiate(friesObj, friesSpawnPos.transform.position, Quaternion.identity);
             ingredientSpawned = true;
+            currentIngredient = Instantiate(friesObj, friesSpawnPos.transform.position, Quaternion.identity);
+            if (ingredientSpawned)
+            {
+                ingredientSpawned2 = true;
+            }
             CookingIngredient = friedFriesobj;
         }
     }
-
     public void ChickenNuggetButton()
     {
         if (ingredientSpawned == false)
         {
             currentIngredient = Instantiate(chickenNuggetObj, friesSpawnPos.transform.position, Quaternion.identity);
             ingredientSpawned = true;
+            if (ingredientSpawned)
+            {
+                ingredientSpawned2 = true;
+            }
             CookingIngredient = friedChickenNuggetObj;
         }
     }
@@ -57,7 +65,12 @@ public class Frituur : MonoBehaviour
         {
             currentIngredient = Instantiate(onionRingObj, friesSpawnPos.transform.position, Quaternion.identity);
             ingredientSpawned = true;
+            if (ingredientSpawned)
+            {
+                ingredientSpawned2 = true;
+            }
             CookingIngredient = friedOnionRingObj;
+
         }
     }
 

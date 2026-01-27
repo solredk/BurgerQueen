@@ -27,6 +27,13 @@ public class MouseDragSystem : MonoBehaviour
                     m_Dragging = true;
                     m_DraggedObject = hit.collider.gameObject;
                     m_DraggedRigidbody = m_DraggedObject.GetComponent<Rigidbody>();
+
+                    // Notify object it's being held
+                    OldOilCan oldCan = m_DraggedObject.GetComponent<OldOilCan>();
+                    if (oldCan != null) oldCan.SetHeld(true);
+
+                    NewOilCan newCan = m_DraggedObject.GetComponent<NewOilCan>();
+                    if (newCan != null) newCan.SetHeld(true);
                 }
             }
         }
@@ -34,13 +41,19 @@ public class MouseDragSystem : MonoBehaviour
         {
             if (m_Dragging)
             {
-                m_Dragging = false;
-
+                // Notify object it's no longer held
                 if (m_DraggedObject != null)
                 {
-                    m_DraggedObject = null;
-                    m_DraggedRigidbody = null;
+                    OldOilCan oldCan = m_DraggedObject.GetComponent<OldOilCan>();
+                    if (oldCan != null) oldCan.SetHeld(false);
+
+                    NewOilCan newCan = m_DraggedObject.GetComponent<NewOilCan>();
+                    if (newCan != null) newCan.SetHeld(false);
                 }
+
+                m_Dragging = false;
+                m_DraggedObject = null;
+                m_DraggedRigidbody = null;
             }
         }
     }

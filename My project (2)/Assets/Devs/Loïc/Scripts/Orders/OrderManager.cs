@@ -16,9 +16,16 @@ public class OrderManager : MonoBehaviour
     [SerializeField] private List<GameObject> orderCards;
     [SerializeField] private List<Transform> cardPositions;
 
+    [SerializeField] private List<GameObject> burgUi;
+    [SerializeField] private List<GameObject> fryUi;
+    [SerializeField] private List<GameObject> drinkUi;
+
     [SerializeField] private List<int> burger;
     [SerializeField] private List<int> frituur;
     [SerializeField] private List<int> drinks;
+
+    
+
 
     public bool orderGivePoints = false;
     public bool orderGiveReverse = false;
@@ -54,7 +61,7 @@ public class OrderManager : MonoBehaviour
 
     public void TakeOrder()
     {
-        //takeOrderButton.SetActive(false);
+        takeOrderButton.SetActive(false);
         currentOrder.Clear();
 
         int orderBurger = UnityEngine.Random.Range(0, burger.Count);
@@ -72,9 +79,9 @@ public class OrderManager : MonoBehaviour
             {
                 GameObject currentCard = Instantiate(orderCard, cardPositions[i]);
                 orderCards.Insert(i, currentCard);
-                currentCard.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>().text = orderBurger.ToString();
-                currentCard.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>().text = orderFrituur.ToString();
-                currentCard.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>().text = orderDrink.ToString();
+                Instantiate(burgUi[orderBurger], currentCard.transform.GetChild(1).gameObject.transform);
+                Instantiate(fryUi[orderFrituur], currentCard.transform.GetChild(2).gameObject.transform);
+                Instantiate(drinkUi[orderDrink], currentCard.transform.GetChild(3).gameObject.transform);
 
                 spotfilled = true;
             }
@@ -98,7 +105,7 @@ public class OrderManager : MonoBehaviour
                 currentBurgT.text = "Burger: ";
                 currentDrinkT.text = "Drink: ";
                 currentFritT.text = "Fry: ";
-
+                thisOrder[i] = 0;
                 served++;
             }
             else
@@ -106,8 +113,12 @@ public class OrderManager : MonoBehaviour
                 WrongOrder();
             }
         }
+        takeOrderButton.SetActive(true);
 
-        if (served >= 5) 
+        currentOrder.Clear();
+        allOrders.Clear();
+
+        if (served >= 6) 
         {
             //HIER LOAD EINDE SHIFT SCREEN / SCORE SCENE
         }

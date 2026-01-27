@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -36,7 +37,7 @@ public class TashBin : MonoBehaviour
             trashText.text = "Trash:" + trashFilled + "/" + trashRequirement;
             if (trashFilled == trashRequirement)
             {
-                lidAnimator.SetBool("Closing", true);
+                StartCoroutine(closingCase());
             }
         }
         if (miniGame)
@@ -64,5 +65,16 @@ public class TashBin : MonoBehaviour
         trashRequirement = trashTotal.Length;
 
         miniGame = false;
+    }
+
+
+    IEnumerator closingCase()
+    {
+        lidAnimator.SetBool("Closing", true);
+
+        yield return new WaitForSeconds(3f);
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+        yield break;
     }
 }

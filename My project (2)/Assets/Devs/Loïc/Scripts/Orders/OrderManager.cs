@@ -24,9 +24,6 @@ public class OrderManager : MonoBehaviour
     [SerializeField] private List<int> frituur;
     [SerializeField] private List<int> drinks;
 
-    
-
-
     public bool orderGivePoints = false;
     public bool orderGiveReverse = false;
     private bool closed = true;
@@ -40,12 +37,19 @@ public class OrderManager : MonoBehaviour
     public TextMeshProUGUI currentFritT;
     public TextMeshProUGUI currentDrinkT;
 
+    public TextMeshProUGUI wrongText;
+
     public int served;
+
+    public List<GameObject> costumers;
+    public GameObject costumerSpawn;
+    private GameObject currentCost;
 
 
     private void Start()
     {
         ordersTab.transform.position = new Vector3(Screen.width / 50, Screen.height / 1.5f, 0);
+        currentCost = Instantiate(costumers[0], costumerSpawn.transform);
     }
 
     private void AddCustomerOrder(List<int> order)
@@ -111,9 +115,12 @@ public class OrderManager : MonoBehaviour
             else
             {
                 WrongOrder();
+
             }
         }
         takeOrderButton.SetActive(true);
+        currentCost.SetActive(false);
+        currentCost = Instantiate(costumers[UnityEngine.Random.Range(0, costumers.Count)], costumerSpawn.transform);
 
         currentOrder.Clear();
         allOrders.Clear();

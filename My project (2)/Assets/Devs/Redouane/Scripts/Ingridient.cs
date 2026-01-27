@@ -9,6 +9,8 @@ public class Ingridient : MonoBehaviour
     [SerializeField] private int quantity;
     [SerializeField] private int price;
 
+    [SerializeField] private bool hasPrice;
+
     [SerializeField] private TextMeshProUGUI quantityText;
     [SerializeField] private TextMeshProUGUI priceText;
 
@@ -20,9 +22,17 @@ public class Ingridient : MonoBehaviour
     private void StartSetting()
     {
         price = IngredientManager.instance.GetPrice(ingredientName);
-        quantity = IngredientManager.instance.GetAmount(ingredientName);
+
+        if (!hasPrice)
+        {
+            priceText.gameObject.SetActive(false);
+            quantity = IngredientManager.instance.GetAmount(ingredientName);
+        }
+        else         
+        {
+            priceText.text = "€" + price.ToString();
+        }
         quantityText.text = quantity.ToString();
-        priceText.text = "€" + price.ToString();
     }
 
     public void GiveAmount() 

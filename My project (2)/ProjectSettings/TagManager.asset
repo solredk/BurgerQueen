@@ -21,6 +21,10 @@ TagManager:
   - ketchup
   - mayo
   - mustord
+  - FryingIngredient
+  - DoneFries
+  - DoneNugget
+  - DoneOnions
   layers:
   - Default
   - TransparentFX

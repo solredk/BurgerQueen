@@ -24,9 +24,6 @@ public class OrderManager : MonoBehaviour
     [SerializeField] private List<int> frituur;
     [SerializeField] private List<int> drinks;
 
-    
-
-
     public bool orderGivePoints = false;
     public bool orderGiveReverse = false;
     private bool closed = true;
@@ -39,6 +36,8 @@ public class OrderManager : MonoBehaviour
     public TextMeshProUGUI currentBurgT;
     public TextMeshProUGUI currentFritT;
     public TextMeshProUGUI currentDrinkT;
+
+    public TextMeshProUGUI wrongText;
 
     public int served;
 
@@ -111,6 +110,7 @@ public class OrderManager : MonoBehaviour
             else
             {
                 WrongOrder();
+
             }
         }
         takeOrderButton.SetActive(true);

@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Drawing;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -7,13 +8,10 @@ using UnityEngine.UI;
 
 public class DrinkMachine : MonoBehaviour
 {
-    [SerializeField] private GameObject Dispence;
-    [SerializeField] private GameObject poorDrink;
+    [SerializeField] private Mech mech;
     [SerializeField] private List <Material> ColorDrink;
     [SerializeField] private List<GameObject> Buttons;
     private int chosenColor;
-    private bool on = false;
-    private Glass drink;
     private float Size;
     private float hight;
     [SerializeField] private float timer = 2;
@@ -23,25 +21,45 @@ public class DrinkMachine : MonoBehaviour
         PushButton();
         FillDrink();
     }
-    public void drinkColor(int color)
+    private void drinkColor(int color)
     {
-        if(drink!= null&&!on)
+        if(mech.drink != null&& !mech.filling)
         {
-            if(drink.place!= null)
+            if(mech.drink.place!= null)
             {
                 if(color != 0)
                 {
-                    on = true;
+                    mech.filling = true;
                     chosenColor = color;
                 }
-                else
-                {
-                    Ice = true;
-                }
-
             }
         }
     }
+    private void AddIce()
+    {
+        if (mech.drink != null && !mech.sprinkeling)
+        {
+            if (mech.drink.place != null)
+            {
+                if (!mech.sprinkeling&& !mech.drink.Ice.activeSelf)
+                {
+                    mech.sprinkeling = true;
+                    mech.drink.Ice.SetActive(true);
+                }
+            }
+        }
+    }
+    private void Done()
+    {
+        if (mech.drink.Full)
+        {
+            mech.drink.Done = true;
+            mech.filling = false;
+            mech.sprinkeling = false;
+            mech.drink = null;
+        }
+    }
+    
     void PushButton()
     {
         RaycastHit hit;
@@ -51,50 +69,50 @@ public class DrinkMachine : MonoBehaviour
             if (Buttons.Contains(hit.transform.gameObject))
             {
                 MacheneButton button = hit.transform.GetComponent<MacheneButton>();
-                drinkColor(button.flaverNumber);
+                switch (button.funcion)
+                {
+                    case 0: drinkColor(button.flaverNumber);break;
+                    case 1: AddIce(); break;
+                    case 2: Done(); break;
+                    default: break;
+                }
             }
         }
     }
     void FillDrink()
     {
         RaycastHit hit;
-        Ray ray = new Ray(Dispence.transform.position, Dispence.transform.forward);
-        Debug.DrawRay(Dispence.transform.position, Dispence.transform.forward*10, Color.blue);
+        Ray ray = new Ray(mech.Dispence.transform.position, mech.Dispence.transform.forward);
+        Debug.DrawRay(mech.Dispence.transform.position, mech.Dispence.transform.forward*10, UnityEngine.Color.blue);
         if (Physics.Raycast(ray, out hit, 2))
         {
             if (hit.transform.gameObject.GetComponent<Glass>())
             {
-                drink = hit.transform.gameObject.GetComponent<Glass>();
-                if (on)
+                mech.drink = hit.transform.gameObject.GetComponent<Glass>();
+                if (mech.drink.contaner == Glass.container.Drink&& mech.filling)
                 {
                     float sizeX = 0;
                     float sizeZ = 0;
                     if (chosenColor != 0)
                     {
-                        poorDrink.SetActive(true);
+                        mech.poorDrink.SetActive(true);
                         Size = 0.125f;
                         hight = 0.13f;
                         sizeX = 0;
                         sizeZ = 0;
                     }
-                    poorDrink.GetComponent<MeshRenderer>().material = ColorDrink[chosenColor];
-                    drink.Drink.GetComponent<MeshRenderer>().material = ColorDrink[chosenColor];
+                    mech.poorDrink.GetComponent<MeshRenderer>().material = ColorDrink[chosenColor];
+                    mech.drink.Drink.GetComponent<MeshRenderer>().material = ColorDrink[chosenColor];
                     timer = 20;
-                    if (drink.Drink.transform.localScale.y <= Size && !drink.Full && drink.place != null && on)
+                    if (mech.drink.Drink.transform.localScale.y <= Size && !mech.drink.Full && mech.drink.place != null)
                     {
-                        drink.Drink.transform.localScale = Vector3.MoveTowards(drink.Drink.transform.localScale, drink.Drink.transform.localScale + new Vector3(sizeX * Time.deltaTime, Size * Time.deltaTime, sizeZ * Time.deltaTime), timer);
-                        drink.Drink.transform.position = Vector3.MoveTowards(drink.Drink.transform.position, drink.Drink.transform.position + new Vector3(0, hight * Time.deltaTime, 0), timer);
+                        mech.drink.Drink.transform.localScale = Vector3.MoveTowards(mech.drink.Drink.transform.localScale, mech.drink.Drink.transform.localScale + new Vector3(sizeX * Time.deltaTime, Size * Time.deltaTime, sizeZ * Time.deltaTime), timer);
+                        mech.drink.Drink.transform.position = Vector3.MoveTowards(mech.drink.Drink.transform.position, mech.drink.Drink.transform.position + new Vector3(0, hight * Time.deltaTime, 0), timer);
                     }
-                    else if (drink.Drink.transform.localScale.y >= Size && on)
+                    else if (mech.drink.Drink.transform.localScale.y >= Size)
                     {
-                        if (Ice && !drink.Ice.active)
-                        {
-                            drink.Ice.active = true;
-                        }
-                        drink.Full = true;
-                        on = false;
-                        poorDrink.SetActive(false);
-                        Ice = false;
+                        mech.drink.Full = true;
+                        mech.poorDrink.SetActive(false);
                     }
                 }
             }

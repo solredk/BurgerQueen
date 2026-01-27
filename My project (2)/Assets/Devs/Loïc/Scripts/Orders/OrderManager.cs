@@ -41,10 +41,15 @@ public class OrderManager : MonoBehaviour
 
     public int served;
 
+    public List<GameObject> costumers;
+    public GameObject costumerSpawn;
+    private GameObject currentCost;
+
 
     private void Start()
     {
         ordersTab.transform.position = new Vector3(Screen.width / 50, Screen.height / 1.5f, 0);
+        currentCost = Instantiate(costumers[0], costumerSpawn.transform);
     }
 
     private void AddCustomerOrder(List<int> order)
@@ -114,6 +119,8 @@ public class OrderManager : MonoBehaviour
             }
         }
         takeOrderButton.SetActive(true);
+        currentCost.SetActive(false);
+        currentCost = Instantiate(costumers[UnityEngine.Random.Range(0, costumers.Count)], costumerSpawn.transform);
 
         currentOrder.Clear();
         allOrders.Clear();

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-
 public class OrderManager : MonoBehaviour
 {
     [SerializeField] private GameObject ordersTab;
@@ -11,21 +10,37 @@ public class OrderManager : MonoBehaviour
     [SerializeField] private TMP_InputField orderNumberGO;
     [SerializeField] private GameObject orderCard;
 
-    [SerializeField] private List<int> currentOrder;
+    public List<int> currentOrder;
     [SerializeField] private List<Customer> allOrders;
-    [SerializeField] private List<int> thisOrder;
+    public List<int> thisOrder;
     [SerializeField] private List<GameObject> orderCards;
     [SerializeField] private List<Transform> cardPositions;
+
+    [SerializeField] private List<GameObject> burgUi;
+    [SerializeField] private List<GameObject> fryUi;
+    [SerializeField] private List<GameObject> drinkUi;
 
     [SerializeField] private List<int> burger;
     [SerializeField] private List<int> frituur;
     [SerializeField] private List<int> drinks;
+
+    
+
 
     public bool orderGivePoints = false;
     public bool orderGiveReverse = false;
     private bool closed = true;
     private bool spotfilled;
 
+    public int currentBurg;
+    public int currentFrit;
+    public int currentDrink;
+
+    public TextMeshProUGUI currentBurgT;
+    public TextMeshProUGUI currentFritT;
+    public TextMeshProUGUI currentDrinkT;
+
+    public int served;
 
 
     private void Start()
@@ -46,14 +61,14 @@ public class OrderManager : MonoBehaviour
 
     public void TakeOrder()
     {
-        //takeOrderButton.SetActive(false);
+        takeOrderButton.SetActive(false);
         currentOrder.Clear();
-        
+
         int orderBurger = UnityEngine.Random.Range(0, burger.Count);
         currentOrder.Add(orderBurger);
         int orderFrituur = UnityEngine.Random.Range(0, frituur.Count);
         currentOrder.Add(orderFrituur);
-        int orderDrink = UnityEngine.Random.Range(0, drinks.Count);
+        int orderDrink = UnityEngine.Random.Range(0, drinks.Count); 
         currentOrder.Add(orderDrink);
 
         //currentCard.transform.SetParent(ordersTab.transform);
@@ -63,42 +78,51 @@ public class OrderManager : MonoBehaviour
             if (orderCards[i] == null && spotfilled == false)
             {
                 GameObject currentCard = Instantiate(orderCard, cardPositions[i]);
-                orderCards.Insert(i ,currentCard);
+                orderCards.Insert(i, currentCard);
+                Instantiate(burgUi[orderBurger], currentCard.transform.GetChild(1).gameObject.transform);
+                Instantiate(fryUi[orderFrituur], currentCard.transform.GetChild(2).gameObject.transform);
+                Instantiate(drinkUi[orderDrink], currentCard.transform.GetChild(3).gameObject.transform);
+
                 spotfilled = true;
             }
-
-            //  Vector3 cardPosition = currentCard.transform.position += ordersTab.transform.position;
-            // cardPosition.x = currentCard.transform.position.x - ordersTab.transform.position.x * 5 * orderCards.Count + 1;
-            // currentCard.transform.position = cardPosition;
-
-            AddCustomerOrder(new List<int>() { currentOrder[0], currentOrder[1], currentOrder[2] });
         }
+
+        AddCustomerOrder(new List<int>() { currentOrder[0], currentOrder[1], currentOrder[2] });
     }
 
     public void CompareOrder()
-    {   
+    {
         string orderNumberS = orderNumberGO.text;
         int orderNumberI = 0;
         int.TryParse(orderNumberS, out orderNumberI);
 
         for (int i = 0; i < 3; i++)
         {
-            //thisOrder.Add(allOrders[orderNumberI].Order[i]);
-          //  thisOrder[0] = 4;
 
             if (allOrders[orderNumberI].Order[i] == thisOrder[i])
             {
-                print("nice soup");
                 orderGiveReverse = true;
+                currentBurgT.text = "Burger: ";
+                currentDrinkT.text = "Drink: ";
+                currentFritT.text = "Fry: ";
+                thisOrder[i] = 0;
+                served++;
             }
             else
             {
-                print("I ASKED FOR NO PICKLES");
                 WrongOrder();
-
             }
         }
-    
+        takeOrderButton.SetActive(true);
+
+        currentOrder.Clear();
+        allOrders.Clear();
+
+        if (served >= 6) 
+        {
+            //HIER LOAD EINDE SHIFT SCREEN / SCORE SCENE
+        }
+
     }
 
     private void WrongOrder() // wanneer een foute order ingeleverd word

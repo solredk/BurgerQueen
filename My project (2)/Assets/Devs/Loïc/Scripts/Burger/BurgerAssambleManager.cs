@@ -1,36 +1,48 @@
 using System.Collections.Generic;
-using System.Data.SqlTypes;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
+
 
 public class BurgerAssambleManager : MonoBehaviour
 {
     private bool handEmpty = true;
 
-    private int ingedientAmount = 0;
-    private int ingredientID;  
+    public int ingedientAmount = 0;
     
     [SerializeField] private List<int> storage;
     [SerializeField] private List<TextMeshProUGUI> storageText;
     [SerializeField] private List <string> orderIngredients;
     public List<GameObject> burger;
 
-    [SerializeField] private IngredientManager ingredientManager;
-
     [SerializeField] private GameObject workStation;
     [SerializeField] private GameObject breadObject;
     [SerializeField] private GameObject prepPlaceObj;
     private GameObject currentIngredient;
 
+    [SerializeField] private List<Collider> breadBucketT;
+    [SerializeField] private List<Collider> breadBucketB;
+    [SerializeField] private List<Collider> lettuceBucket;
+    [SerializeField] private List<Collider> cheeseBucket;
+    [SerializeField] private List<Collider> tomatoBucket;
+    [SerializeField] private List<Collider> meatBucket;
+    [SerializeField] private List<Collider> onionBucket;
+
+    [SerializeField] private List<GameObject> ingredients;
+    
+    [SerializeField] private GameObject pauseScreen;
+    private bool paused;
 
     void Start()
     {
+        
+        IngredientManager.instance.ResetIngridients(20);
+
+        
+
         if (StorageIngridientsCheck())
         {
             // hoeveelheidBrood = Hoeveel brood de speler heeft toegevoegd van supply
-            for (int i = 0; i < ingredientManager.ingredients.Count; i++)
+            for (int i = 0; i < IngredientManager.instance.ingredients.Count; i++)
             {
 
                 storageText[i].text = storage[i].ToString();
@@ -38,11 +50,48 @@ public class BurgerAssambleManager : MonoBehaviour
 
             handEmpty = true;
         }
+
+       
+
+    }
+
+    private void Update()
+    {
+        storageText[0].text = IngredientManager.instance.GetAmount("Burger Bun").ToString();
+
+        storageText[1].text = IngredientManager.instance.GetAmount("Lettuce").ToString();
+
+        storageText[2].text = IngredientManager.instance.GetAmount("Cheese").ToString();
+
+        storageText[3].text = IngredientManager.instance.GetAmount("Tomatoes").ToString();
+
+        storageText[4].text = IngredientManager.instance.GetAmount("Meat").ToString();
+
+        storageText[5].text = IngredientManager.instance.GetAmount("Onions").ToString();
+
+    }
+
+
+    public void Pause()
+    {
+        if (paused == false)
+        {
+            pauseScreen.SetActive(true);
+            paused = true;
+            Time.timeScale = 0f;
+           
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            pauseScreen.SetActive(false);
+            paused = false;
+        }   
     }
 
     public bool StorageIngridientsCheck()
     {
-        if (ingredientManager.GetAmount("Burger Bun") > 1) 
+        if (IngredientManager.instance.GetAmount("Burger Bun") > 1) 
         { 
 
             return true;
@@ -50,72 +99,51 @@ public class BurgerAssambleManager : MonoBehaviour
         return false;
     }
 
-    public void AddToBurger()
+
+    private void AddIngredient(string ingredientName, int ingredientNumber, List<Collider> buckets, int textNumber)
     {
-        if (!handEmpty)
+        for (int i = 0; i < buckets.Count; i++)
         {
-            if (ingedientAmount == 0)
+            bool bucketFilled = buckets[i].gameObject.GetComponent<CollisionDetector>().occupied;
+            if (bucketFilled == false)
             {
-                GameObject ingredient = Instantiate(currentIngredient, new Vector2(prepPlaceObj.transform.position.x, prepPlaceObj.transform.position.y - 200), Quaternion.identity);
-                burger.Add(ingredient);
+                if (IngredientManager.instance.GetAmount(ingredientName) > 0)
+                {
+                    Instantiate(ingredients[ingredientNumber], buckets[i].gameObject.transform.position, Quaternion.identity);
+                    IngredientManager.instance.GiveAmount(ingredientName, -1);
+                }
             }
-            Destroy(currentIngredient);
-            handEmpty = true;
-            ingedientAmount++;
+            storageText[textNumber].text = IngredientManager.instance.GetAmount(ingredientName).ToString();
         }
     }
-
-    public void TempButton()
+    public void AddBunT()
     {
-        //check oger
-        bool goodOrder = true;
-        for (int i = 0; i < burger.Count; i++)
-        {
-            if (burger[i].gameObject.name != orderIngredients[i])
-            {
-                print("roblox oof");
-                goodOrder = false;
-            }
-            else if (goodOrder)
-            {
-                print("that burger is a burger");
-            }
-        }
+        AddIngredient("Burger Bun", 0, breadBucketT, 0);
     }
-
-    //if (ingredientID == 0)
-    //{
-    //    ingredientID = 1;
-    //}
-    //else
-    //{
-    //    ingredientID = 0;
-    //}
-    //print(ingredientID);
-
-    private void VoorraadCheck()
+    public void AddBunB()
     {
-        int ingredientI = ingredientID;
-        // ingredient I word bepaald wanneer er op de bak met ingredienten word gedrukt
-        // int ingredientI = ingredientDieGepaktWilWordenID
-        if (storage[ingredientI] > 0)
-        {
-            storage[ingredientI]--;
-            storageText[ingredientI].text = storage[ingredientI].ToString();
-        }
-        else
-        {
-            print("geen brood????");
-        }
+        AddIngredient("Burger Bun", 6, breadBucketB, 0);
+    }
+    public void AddLettuce()
+    {
+        AddIngredient("Lettuce", 1, lettuceBucket, 1);
+    }
+    public void AddCheese()
+    {
+        AddIngredient("Cheese", 2, cheeseBucket, 2);
+    }
+    public void AddTomatoes()
+    {
+        AddIngredient("Tomatoes", 3, tomatoBucket, 3);
+    }
+    public void AddMeat()
+    {
+        AddIngredient("Meat", 4, meatBucket, 4);
+    }
+    public void AddOnion()
+    {
+        AddIngredient("Onions", 5, onionBucket, 5);
     }
 
-    public void ClearButton()
-    {
-        for (int i = 0; i < burger.Count; i++)
-        {
-            Destroy(burger[i]);
-        }
-        burger.Clear();
-        ingedientAmount = 0;
-    }
+
 }

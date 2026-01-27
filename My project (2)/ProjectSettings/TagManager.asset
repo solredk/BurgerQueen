@@ -12,6 +12,15 @@ TagManager:
   - trashBag
   - CleanWater
   - CleanWC
+  - bread
+  - lettuce
+  - Trash
+  - cheese
+  - onion
+  - tomato
+  - ketchup
+  - mayo
+  - mustord
   layers:
   - Default
   - TransparentFX

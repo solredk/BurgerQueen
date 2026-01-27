@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Ingredient
   Name: Lettuce
   Description: 
+  ID: 0
   Prefab: {fileID: 0}
   storageType: 0
   Icon: {fileID: 0}
-  Quantity: 0
+  Quantity: 20

@@ -1,16 +1,16 @@
 using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class IceMachine : MonoBehaviour
 {
-    [SerializeField] private GameObject Dispence;
-    [SerializeField] private GameObject poorDrink;
+    [SerializeField] private List<Mech> MechList;
     [SerializeField] private List<Material> ColorDrink;
+    [SerializeField] private Material sprinkels;
     [SerializeField] private List<GameObject> Buttons;
-    private int chosenColor;
-    private bool on = false;
-    private Glass drink;
     private float Size;
     private float hight;
     [SerializeField] private float timer = 2;
@@ -19,18 +19,29 @@ public class IceMachine : MonoBehaviour
         PushButton();
         FillDrink();
     }
-    public void drinkColor(int color)
+    private void drinkColor(int color)
     {
-        if (drink != null && !on)
+        if (MechList[color].drink != null && !MechList[color].filling)
         {
-            if (drink.place != null)
+            if (MechList[color].drink.place != null)
             {
-                on = true;
-                chosenColor = color;
+                MechList[color].filling = true;
+                MechList[color].chosenColor = color;
             }
         }
     }
-    void PushButton()
+    private void KindSprinkle(int kind)
+    {
+        if (MechList[kind].drink != null && !MechList[kind].sprinkeling)
+        {
+            if (MechList[kind].drink.place != null)
+            {
+                MechList[kind].sprinkeling = true;
+                MechList[kind].chosenSprinkel = kind;
+            }
+        }
+    }
+    private void PushButton()
     {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
@@ -39,62 +50,95 @@ public class IceMachine : MonoBehaviour
             if (Buttons.Contains(hit.transform.gameObject))
             {
                 MacheneButton button = hit.transform.GetComponent<MacheneButton>();
-                drinkColor(button.flaverNumber);
+                switch (button.funcion)
+                {
+                    case 0: drinkColor(button.flaverNumber);break;
+                    case 1: KindSprinkle(button.flaverNumber); break;
+                    case 2: Done(button.flaverNumber); break;
+                    default: break;
+                }
             }
+        }
+    }
+    private void AddIceCream(int i)
+    {
+        float sizeX = 0;
+        float sizeZ = 0;
+        switch (MechList[i].drink.contaner)
+        {
+            case Glass.container.IceCreamCone:
+                MechList[i].poorDrink.SetActive(true);
+                Size = 700f;
+                sizeX = 700f;
+                sizeZ = 700f;
+                hight = 0.07f;
+                break;
+            case Glass.container.IceCreamCup:
+                MechList[i].poorDrink.SetActive(true);
+                Size = 0.06f;
+                hight = 0.05f;
+                sizeX = 0;
+                sizeZ = 0;
+                break;
+            default: break;
+        }
+
+        MechList[i].poorDrink.GetComponent<MeshRenderer>().material = ColorDrink[MechList[i].chosenColor];
+        MechList[i].drink.Drink.GetComponent<MeshRenderer>().material = ColorDrink[MechList[i].chosenColor];
+        timer = 20;
+        if (MechList[i].drink.Drink.transform.localScale.y <= Size && MechList[i].drink.place != null)
+        {
+            MechList[i].drink.Drink.transform.localScale = Vector3.MoveTowards(MechList[i].drink.Drink.transform.localScale, MechList[i].drink.Drink.transform.localScale + new Vector3(sizeX * Time.deltaTime, Size * Time.deltaTime, sizeZ * Time.deltaTime), timer);
+            MechList[i].drink.Drink.transform.position = Vector3.MoveTowards(MechList[i].drink.Drink.transform.position, MechList[i].drink.Drink.transform.position + new Vector3(0, hight * Time.deltaTime, 0), timer);
+        }
+        else if (MechList[i].drink.Drink.transform.localScale.y >= Size)
+        {
+            MechList[i].drink.Full = true;
+            MechList[i].poorDrink.SetActive(false);
+        }
+
+    }
+    private void AddSprinkels(int i)
+    {
+        List<Material> addSprinkel = new List<Material>();
+        addSprinkel.Add(MechList[i].drink.Drink.GetComponent<MeshRenderer>().material);
+        addSprinkel.Add(sprinkels);
+        MechList[i].drink.Drink.GetComponent<MeshRenderer>().SetMaterials(addSprinkel);
+        MechList[i].drink.Sprinkeled = true;
+    }
+    private void Done(int i)
+    {
+        if (MechList[i].drink.Full)
+        {
+            MechList[i].drink.Done = true;
+            MechList[i].filling = false;
+            MechList[i].sprinkeling = false;
+            MechList[i].drink = null;
         }
     }
     void FillDrink()
     {
-        RaycastHit hit;
-        Ray ray = new Ray(Dispence.transform.position, Dispence.transform.forward);
-        Debug.DrawRay(Dispence.transform.position, Dispence.transform.forward * 10, Color.blue);
-        if (Physics.Raycast(ray, out hit, 2))
+        for (int i = 0;i < MechList.Count; i++)
         {
-            if (hit.transform.gameObject.GetComponent<Glass>())
+            RaycastHit hit;
+            Ray ray = new Ray(MechList[i].Dispence.transform.position, MechList[i].Dispence.transform.forward);
+            Debug.DrawRay(MechList[i].Dispence.transform.position, MechList[i].Dispence.transform.forward * 10, UnityEngine.Color.blue);
+            if (Physics.Raycast(ray, out hit, 2))
             {
-                drink = hit.transform.gameObject.GetComponent<Glass>();
-                if (on)
+                if (hit.transform.gameObject.GetComponent<Glass>())
                 {
-                    float sizeX = 0;
-                    float sizeZ = 0;
-                    switch (drink.contaner)
+                    MechList[i].drink = hit.transform.gameObject.GetComponent<Glass>();
+                    if (!MechList[i].drink.Full && MechList[i].filling)
                     {
-                        case Glass.container.IceCreamCone:
-                            poorDrink.SetActive(true);
-                            Size = 0.026f;
-                            sizeX = 0.026f;
-                            sizeZ = 0.026f;
-                            hight = 0.085f;
-                            break;
-                        case Glass.container.IceCreamCup:
-                            poorDrink.SetActive(true);
-                            Size = 0.06f;
-                            hight = 0.05f;
-                            sizeX = 0;
-                            sizeZ = 0;
-                            break;
-                        default: break;
+                        AddIceCream(i);
                     }
-
-                    poorDrink.GetComponent<MeshRenderer>().material = ColorDrink[chosenColor];
-                    drink.Drink.GetComponent<MeshRenderer>().material = ColorDrink[chosenColor];
-                    timer = 20;
-                    if (drink.Drink.transform.localScale.y <= Size && !drink.Full && drink.place != null && on)
+                    else if (MechList[i].drink.Full && MechList[i].sprinkeling && !MechList[i].drink.Drink.GetComponent<MeshRenderer>().materials.Contains(sprinkels))
                     {
-                        drink.Drink.transform.localScale = Vector3.MoveTowards(drink.Drink.transform.localScale, drink.Drink.transform.localScale + new Vector3(sizeX * Time.deltaTime, Size * Time.deltaTime, sizeZ * Time.deltaTime), timer);
-                        drink.Drink.transform.position = Vector3.MoveTowards(drink.Drink.transform.position, drink.Drink.transform.position + new Vector3(0, hight * Time.deltaTime, 0), timer);
-
-                        Debug.Log("filling");
-                    }
-                    else if (drink.Drink.transform.localScale.y >= Size && on)
-                    {
-                        drink.Full = true;
-                        on = false;
-                        poorDrink.SetActive(false);
-                        Debug.Log("done");
+                        AddSprinkels(i);
                     }
                 }
             }
         }
     }
 }
+

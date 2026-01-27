@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 91922208254315942, guid: 8f2ed2164bf7f5f4f8bdd25370f73578, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: DoneNugget
       objectReference: {fileID: 0}
     - target: {fileID: 724308157224425244, guid: 8f2ed2164bf7f5f4f8bdd25370f73578, type: 3}
       propertyPath: m_LocalPosition.x

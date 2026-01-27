@@ -20,10 +20,12 @@ public class Frituur : MonoBehaviour
 
     public GameObject CookingIngredient;
 
+    public FryPlate m_FryPlate;
 
     void Start()
     {
         grabingS = FindAnyObjectByType<Grabing>();
+        m_FryPlate = FindAnyObjectByType<FryPlate>();
     }
     public void FriesButton()
     {

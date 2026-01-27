@@ -748,6 +748,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SK_BossAnton_01
       objectReference: {fileID: 0}
+    - target: {fileID: 2948966032812090733, guid: a5189a204bedf264282849f78b73bfab, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

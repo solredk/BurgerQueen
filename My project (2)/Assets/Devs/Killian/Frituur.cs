@@ -7,9 +7,7 @@ using UnityEngine.Rendering;
 
 public class Frituur : MonoBehaviour
 {
-    public bool noFriesSpawned = true;
-    public bool noNuggetsSpawned = true;
-    public bool noOnionRingsSpawned = true;
+    public bool ingredientSpawned = false;
     public GameObject currentIngredient;
     [SerializeField] private GameObject friesObj;
     [SerializeField] public GameObject friedFriesobj;
@@ -20,11 +18,12 @@ public class Frituur : MonoBehaviour
     [SerializeField] private GameObject friesSpawnPos;
     private Grabing grabingS;
 
+    public GameObject CookingIngredient;
+
 
     void Start()
     {
         grabingS = FindAnyObjectByType<Grabing>();
-        noFriesSpawned = true;
     }
 
     void Update()
@@ -34,37 +33,40 @@ public class Frituur : MonoBehaviour
 
     public void FriesButton()
     {
-        if (noFriesSpawned)
+        if (ingredientSpawned == false)
         {
             currentIngredient = Instantiate(friesObj, friesSpawnPos.transform.position, Quaternion.identity);
-            noFriesSpawned = false;
+            ingredientSpawned = true;
+            CookingIngredient = friedFriesobj;
         }
     }
 
     public void ChickenNuggetButton()
     {
-        if (noFriesSpawned)
+        if (ingredientSpawned == false)
         {
             currentIngredient = Instantiate(chickenNuggetObj, friesSpawnPos.transform.position, Quaternion.identity);
-            noNuggetsSpawned = false;
+            ingredientSpawned = true;
+            CookingIngredient = friedChickenNuggetObj;
         }
     }
 
     public void OnionRingButton()
     {
-        if (noFriesSpawned)
+        if (ingredientSpawned == false)
         {
             currentIngredient = Instantiate(onionRingObj, friesSpawnPos.transform.position, Quaternion.identity);
-            noNuggetsSpawned = false;
+            ingredientSpawned = true;
+            CookingIngredient = friedOnionRingObj;
         }
     }
 
     public void TrashButton()
     {
-        if (!noFriesSpawned)
+        if (ingredientSpawned)
         {
             Destroy(currentIngredient);
-            noFriesSpawned = true;
+            ingredientSpawned = false;
         }
     }
 }

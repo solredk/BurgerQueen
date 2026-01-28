@@ -1989,7 +1989,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Frituur
+  m_text: frituur
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ce41344adbd43f74ab746ae05f92f539, type: 2}
   m_sharedMaterial: {fileID: 4466244047798877158, guid: ce41344adbd43f74ab746ae05f92f539, type: 2}
@@ -2314,7 +2314,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1495535816}
   m_LocalRotation: {x: -0.011962788, y: -0.6996358, z: -0.011490203, w: -0.7143071}
-  m_LocalPosition: {x: 0, y: 0, z: -4.673}
+  m_LocalPosition: {x: 0, y: 0, z: -4.845}
   m_LocalScale: {x: 0.12499998, y: 0.12499999, z: 0.125}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2322,7 +2322,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0.058, y: 88.812, z: 1081.9}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -397.62286, y: -224.499}
+  m_AnchoredPosition: {x: -397.62286, y: -224.435}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1495535818
@@ -2345,9 +2345,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'OilCans
-
-'
+  m_text: Cans
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ce41344adbd43f74ab746ae05f92f539, type: 2}
   m_sharedMaterial: {fileID: 4466244047798877158, guid: ce41344adbd43f74ab746ae05f92f539, type: 2}

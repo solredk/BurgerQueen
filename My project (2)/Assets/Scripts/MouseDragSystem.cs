@@ -1,8 +1,13 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class MouseDragSystem : MonoBehaviour
 {
+    [Header("Events")]
+    public UnityEvent OnObjectGrabbed;
+    public UnityEvent OnObjectReleased;
+
     private bool m_Dragging = false;
     private Camera cam;
     private GameObject m_DraggedObject;
@@ -24,9 +29,32 @@ public class MouseDragSystem : MonoBehaviour
             {
                 if (hit.collider != null && hit.collider.CompareTag("Grabable"))
                 {
+                    GameObject targetObject = hit.collider.gameObject;
+
+                    // Check if object can be grabbed
+                    OldOilCan oldCan = targetObject.GetComponent<OldOilCan>();
+                    if (oldCan != null && !oldCan.CanBeGrabbed())
+                    {
+                        return;
+                    }
+
+                    NewOilCan newCan = targetObject.GetComponent<NewOilCan>();
+                    if (newCan != null && !newCan.CanBeGrabbed())
+                    {
+                        return;
+                    }
+
+                    // Start dragging
                     m_Dragging = true;
-                    m_DraggedObject = hit.collider.gameObject;
+                    m_DraggedObject = targetObject;
                     m_DraggedRigidbody = m_DraggedObject.GetComponent<Rigidbody>();
+
+                    // Notify object it's being held
+                    if (oldCan != null) oldCan.SetHeld(true);
+                    if (newCan != null) newCan.SetHeld(true);
+
+                    // Fire grab event
+                    OnObjectGrabbed.Invoke();
                 }
             }
         }
@@ -34,13 +62,22 @@ public class MouseDragSystem : MonoBehaviour
         {
             if (m_Dragging)
             {
-                m_Dragging = false;
-
+                // Notify object it's no longer held
                 if (m_DraggedObject != null)
                 {
-                    m_DraggedObject = null;
-                    m_DraggedRigidbody = null;
+                    OldOilCan oldCan = m_DraggedObject.GetComponent<OldOilCan>();
+                    if (oldCan != null) oldCan.SetHeld(false);
+
+                    NewOilCan newCan = m_DraggedObject.GetComponent<NewOilCan>();
+                    if (newCan != null) newCan.SetHeld(false);
                 }
+
+                // Fire release event
+                OnObjectReleased.Invoke();
+
+                m_Dragging = false;
+                m_DraggedObject = null;
+                m_DraggedRigidbody = null;
             }
         }
     }

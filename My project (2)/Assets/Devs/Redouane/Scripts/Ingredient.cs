@@ -18,6 +18,9 @@ public class Ingredient : ScriptableObject
     public GameObject Prefab;
     public StorageType storageType;
 
-    public Sprite Icon;    
     public int Quantity;
+    public Sprite Icon;
+
+    public int MaxQuantity = 100;
+    public int PurchaseCost = 10;
 }

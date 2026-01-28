@@ -6049,7 +6049,6 @@ GameObject:
   - component: {fileID: 647428686}
   - component: {fileID: 647428685}
   - component: {fileID: 647428684}
-  - component: {fileID: 647428683}
   m_Layer: 5
   m_Name: Canvas (1)
   m_TagString: Untagged
@@ -6082,29 +6081,6 @@ RectTransform:
   m_AnchoredPosition: {x: 4.98, y: 2.584}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &647428683
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 647428681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 502879a3b6b9c924ebc8b9e98cfea687, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Frituur
-  ingredientSpawned: 0
-  currentIngredient: {fileID: 0}
-  friesObj: {fileID: 2388545381091922253, guid: ed016ffaf5b918e4eb36cdef46285964, type: 3}
-  friedFriesobj: {fileID: 6178782727869753458, guid: bec574a1d20d0dc428dd03e68d19c79b, type: 3}
-  chickenNuggetObj: {fileID: 91922208254315942, guid: 8f2ed2164bf7f5f4f8bdd25370f73578, type: 3}
-  friedChickenNuggetObj: {fileID: 4728432287586835873, guid: ef07ed9fe18bcc445be100077a30a429, type: 3}
-  onionRingObj: {fileID: 4712226476490577260, guid: 70ffd8131b3897f41bf884413d397dfe, type: 3}
-  friedOnionRingObj: {fileID: 3460620787129240888, guid: ef45c7e26c5387c4684a5b4602907cc0, type: 3}
-  friesSpawnPos: {fileID: 1604204281}
-  CookingIngredient: {fileID: 0}
-  m_FryPlate: {fileID: 0}
 --- !u!114 &647428684
 MonoBehaviour:
   m_ObjectHideFlags: 0
